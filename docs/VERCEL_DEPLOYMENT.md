@@ -29,6 +29,7 @@ To make the online Control Center update automatically from Charlie/OpenClaw, se
 Charlie/OpenClaw writes with:
 - `SANITY_WRITE_TOKEN`
 - then runs `npm run sanity:sync` (or a pipeline hook) to upsert docs.
+- For near-real-time updates on Charlie’s machine, run `npm run sanity:watch`.
 
 Note: `vercel.json` explicitly preserves `/api/*` routes so Vercel Functions work.
 

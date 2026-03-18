@@ -23,6 +23,8 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
   - Uses Sanity endpoints for order registry, tasks, deliverables index, and artifact preview/download.
 - Added Charlie sync skeleton:
   - `npm run sanity:sync` (writes) / `npm run sanity:sync:dry` (dry-run)
+- Added auto-sync watcher (recommended for Charlie machine):
+  - `npm run sanity:watch` (watches `../deliverables/**/*.md` + `public/ff_state/*.json` and re-syncs on change)
 - Added env template:
   - `.env.example` (tokens remain uncommitted)
 

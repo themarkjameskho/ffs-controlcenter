@@ -13,10 +13,12 @@
     "check:tasks": "node ./scripts/check-tasks.mjs",
     "snapshot:build": "node ./scripts/build-vercel-snapshot.mjs",
     "sanity:sync": "node ./scripts/sanity-sync.mjs",
-    "sanity:sync:dry": "node ./scripts/sanity-sync.mjs --dry-run"
+    "sanity:sync:dry": "node ./scripts/sanity-sync.mjs --dry-run",
+    "sanity:watch": "node ./scripts/sanity-sync-watch.mjs"
   },
   "dependencies": {
     "@sanity/client": "^7.9.0",
+    "chokidar": "^4.0.3",
     "dotenv": "^17.2.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

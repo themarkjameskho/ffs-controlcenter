@@ -20,6 +20,8 @@ If teammates only need to **read** dashboards and **download markdown** artifact
 - Guide: `docs/VERCEL_DEPLOYMENT.md`
 - Charlie/OpenClaw integration plan (Sanity-backed, auto-updating): `docs/CHARLIE_OPENCLAW_INTEGRATION.md`
 
+For auto-updating online data (without manual sync), Charlie can run `npm run sanity:watch` on the machine that writes deliverables.
+
 ## CSV Uploader (No Generator)
 
 `CSV Importer 1` uploads selected CSV files directly into:
