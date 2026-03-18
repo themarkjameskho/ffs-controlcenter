@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "sourceCsv": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_2.csv",
+  "sourceInput": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_2.csv",
+  "sourceType": "csv",
+  "generatedAt": "2026-03-17T15:50:31.300Z",
+  "orders": [
+    {
+      "id": "order-0-week16-16",
+      "label": "Week 16-16",
+      "year": 0,
+      "startWeek": 16,
+      "endWeek": 16,
+      "plannedTotal": 20,
+      "plannedByClient": {
+        "bed_bug_bbq": 5,
+        "bed_bugs_be_gone": 5,
+        "chapman_plumbing": 5,
+        "heat_tech_bed_bug": 5
+      },
+      "plannedByType": {
+        "blog_post": 8,
+        "link_1": 4,
+        "link_2": 4,
+        "link_3": 4
+      }
+    }
+  ]
+}

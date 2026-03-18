@@ -1,0 +1,159 @@
+import { useEffect, useMemo, useState } from 'react'
+import { dataSource } from './dataSource'
+
+export type DeliverablesArtifact = {
+  id: string
+  name: string
+  weekBucket: string
+  weekNumbers: number[]
+  clientSlug: string
+  clientName: string
+  artifactType: string
+  contentCategory: 'blog' | 'qc' | 'gmb' | 'l1' | 'l2' | 'l3' | 'research' | 'other'
+  level: 'L1' | 'L2' | 'L3' | 'OTHER'
+  workflow: 'draft' | 'qc' | 'research' | 'other'
+  date: string | null
+  modifiedAt: string
+  sizeBytes: number
+  relativePath: string
+}
+
+export type DeliverablesClientSummary = {
+  slug: string
+  name: string
+  ordersCreated: number
+  blogsCreated: number
+  gpp: number
+  qc: number
+  l1: number
+  l2: number
+  l3: number
+  artifactCount: number
+  weeks: string[]
+  lastUpdated: string | null
+}
+
+type DeliverablesIndexResponse = {
+  ok?: boolean
+  generatedAt?: string
+  weeks?: string[]
+  clients?: DeliverablesClientSummary[]
+  artifacts?: DeliverablesArtifact[]
+}
+
+export type DeliverablesIndexState = {
+  loading: boolean
+  error: string
+  generatedAt: string
+  weeks: string[]
+  clients: DeliverablesClientSummary[]
+  artifacts: DeliverablesArtifact[]
+}
+
+const EMPTY_STATE: DeliverablesIndexState = {
+  loading: true,
+  error: '',
+  generatedAt: '',
+  weeks: [],
+  clients: [],
+  artifacts: []
+}
+
+function sortByName<T extends { name: string }>(items: T[]) {
+  return [...items].sort((a, b) => a.name.localeCompare(b.name))
+}
+
+async function loadDeliverablesIndex(): Promise<DeliverablesIndexState> {
+  const source = dataSource()
+  const url =
+    source === 'sanity'
+      ? '/api/sanity/deliverables-index'
+      : source === 'static'
+        ? '/ff_state/deliverables-index.json'
+        : '/api/deliverables-index'
+  const res = await fetch(url, { cache: 'no-store' })
+  const payload = (await res.json()) as DeliverablesIndexResponse
+  if (!res.ok || payload.ok === false) {
+    throw new Error('Failed to load deliverables index')
+  }
+
+  return {
+    loading: false,
+    error: '',
+    generatedAt: payload.generatedAt ?? '',
+    weeks: Array.isArray(payload.weeks) ? payload.weeks : [],
+    clients: sortByName(Array.isArray(payload.clients) ? payload.clients : []),
+    artifacts: Array.isArray(payload.artifacts) ? payload.artifacts : []
+  }
+}
+
+export function useDeliverablesIndex(pollIntervalMs = 12000) {
+  const [state, setState] = useState<DeliverablesIndexState>(EMPTY_STATE)
+
+  useEffect(() => {
+    let cancelled = false
+
+    const run = async () => {
+      try {
+        const next = await loadDeliverablesIndex()
+        if (!cancelled) {
+          setState(next)
+        }
+      } catch (error) {
+        if (cancelled) return
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error: error instanceof Error ? error.message : 'Failed to load deliverables index'
+        }))
+      }
+    }
+
+    void run()
+    const timer = window.setInterval(() => {
+      void run()
+    }, pollIntervalMs)
+
+    return () => {
+      cancelled = true
+      window.clearInterval(timer)
+    }
+  }, [pollIntervalMs])
+
+  return useMemo(() => state, [state])
+}
+
+export function humanizeClientSlug(slug: string) {
+  return slug
+    .replace(/[_-]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+export function formatArtifactType(value: string) {
+  return value
+    .replace(/[_-]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+export function formatWorkflow(value: DeliverablesArtifact['workflow']) {
+  if (value === 'qc') return 'Quality Check'
+  if (value === 'draft') return 'Draft'
+  if (value === 'research') return 'Research'
+  return 'Other'
+}
+
+export function formatContentCategory(value: DeliverablesArtifact['contentCategory']) {
+  if (value === 'gmb') return 'GMB/GPP'
+  if (value === 'qc') return 'QC'
+  if (value === 'blog') return 'Blog'
+  if (value === 'research') return 'Research'
+  return value.toUpperCase()
+}

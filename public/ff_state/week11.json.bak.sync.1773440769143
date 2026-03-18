@@ -1,0 +1,2286 @@
+{
+  "clients": {
+    "bed_bug_bbq": {
+      "kanban": {
+        "tasks": [
+          {
+            "id": "draft_a49e11cafb23",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md"
+          },
+          {
+            "id": "draft_93328dce1a07",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md"
+          },
+          {
+            "id": "draft_8119bbc5c954",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md"
+          },
+          {
+            "id": "draft_4f082bb2fcb2",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md"
+          },
+          {
+            "id": "draft_59c169fd2314",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md"
+          },
+          {
+            "id": "draft_6fb03b38c425",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md"
+          },
+          {
+            "id": "draft_3b31b234d8c9",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md"
+          },
+          {
+            "id": "draft_7bc85dcb1710",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md"
+          },
+          {
+            "id": "qc_report_1d6067428ae0",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md"
+          },
+          {
+            "id": "qc_report_b9551e7533f0",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md"
+          },
+          {
+            "id": "qc_report_80f411bb1ab4",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md"
+          },
+          {
+            "id": "qc_report_ea412d95f41f",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md"
+          },
+          {
+            "id": "qc_report_21b3be9c3452",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md"
+          },
+          {
+            "id": "qc_report_584145a94479",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md"
+          },
+          {
+            "id": "qc_report_da58375d5fe9",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md"
+          },
+          {
+            "id": "qc_report_906118e24b34",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md"
+          },
+          {
+            "id": "research_pack_98232b2852bf",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_01/2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md"
+          },
+          {
+            "id": "research_pack_64d2370139cd",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_02/2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md"
+          },
+          {
+            "id": "research_pack_503a35b0a7fa",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_03/2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md"
+          },
+          {
+            "id": "research_pack_8915ef7accfe",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_04/2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md"
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "client_slug": "bed_bug_bbq",
+          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+          "id": "ho-2026-w11-bed_bug_bbq",
+          "parent_id": null,
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "human-order",
+          "status": "active",
+          "title": "Week 11 \u2014 bed_bug_bbq",
+          "type": "human_order",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "client_slug": "bed_bug_bbq",
+          "deliverables": {
+            "blog_post": 2,
+            "gpp_post": 1,
+            "link_2": 1,
+            "link_3": 1
+          },
+          "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+          "id": "pl-2026-w11-bed_bug_bbq",
+          "parent_id": "ho-2026-w11-bed_bug_bbq",
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "planner",
+          "status": "active",
+          "title": "Week 11 Plan \u2014 bed_bug_bbq",
+          "type": "plan_artifact",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "id": "w11_bed_bug_bbq_research_pack_98232b2852bf",
+          "client_slug": "bed_bug_bbq",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_01/2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md",
+          "title": "2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_research_pack_64d2370139cd",
+          "client_slug": "bed_bug_bbq",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_02/2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md",
+          "title": "2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_research_pack_503a35b0a7fa",
+          "client_slug": "bed_bug_bbq",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_03/2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md",
+          "title": "2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_research_pack_8915ef7accfe",
+          "client_slug": "bed_bug_bbq",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_04/2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md",
+          "title": "2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_a49e11cafb23",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md",
+          "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_93328dce1a07",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md",
+          "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_8119bbc5c954",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_4f082bb2fcb2",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_59c169fd2314",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_6fb03b38c425",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_3b31b234d8c9",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_draft_7bc85dcb1710",
+          "client_slug": "bed_bug_bbq",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md",
+          "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_1d6067428ae0",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md",
+          "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_b9551e7533f0",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md",
+          "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_80f411bb1ab4",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_ea412d95f41f",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_21b3be9c3452",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_584145a94479",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_da58375d5fe9",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bug_bbq_qc_report_906118e24b34",
+          "client_slug": "bed_bug_bbq",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md",
+          "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md"
+        }
+      ]
+    },
+    "bed_bugs_be_gone": {
+      "kanban": {
+        "tasks": [
+          {
+            "id": "draft_4f439007bf07",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md"
+          },
+          {
+            "id": "draft_1e9e3dfcd7ab",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md"
+          },
+          {
+            "id": "draft_56968b12afab",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md"
+          },
+          {
+            "id": "draft_96795f332aa5",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md"
+          },
+          {
+            "id": "qc_report_c185a127fd60",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md"
+          },
+          {
+            "id": "qc_report_48e6ee9cf118",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md"
+          },
+          {
+            "id": "qc_report_2e618a444ff0",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md"
+          },
+          {
+            "id": "qc_report_59fff3aff138",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md"
+          },
+          {
+            "id": "research_pack_7a45ffd8737b",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_01/2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md"
+          },
+          {
+            "id": "research_pack_379dd62a9ef1",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_02/2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md"
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "client_slug": "bed_bugs_be_gone",
+          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+          "id": "ho-2026-w11-bed_bugs_be_gone",
+          "parent_id": null,
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "human-order",
+          "status": "active",
+          "title": "Week 11 \u2014 bed_bugs_be_gone",
+          "type": "human_order",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "client_slug": "bed_bugs_be_gone",
+          "deliverables": {
+            "blog_post": 1,
+            "gpp_post": 1,
+            "link_1": 1,
+            "link_3": 1
+          },
+          "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_3: 1",
+          "id": "pl-2026-w11-bed_bugs_be_gone",
+          "parent_id": "ho-2026-w11-bed_bugs_be_gone",
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "planner",
+          "status": "active",
+          "title": "Week 11 Plan \u2014 bed_bugs_be_gone",
+          "type": "plan_artifact",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_research_pack_7a45ffd8737b",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_01/2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md",
+          "title": "2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_research_pack_379dd62a9ef1",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_02/2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md",
+          "title": "2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_draft_4f439007bf07",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md",
+          "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_draft_1e9e3dfcd7ab",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md",
+          "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_draft_56968b12afab",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md",
+          "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_draft_96795f332aa5",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md",
+          "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_qc_report_c185a127fd60",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md",
+          "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_qc_report_48e6ee9cf118",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md",
+          "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_qc_report_2e618a444ff0",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md",
+          "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md"
+        },
+        {
+          "id": "w11_bed_bugs_be_gone_qc_report_59fff3aff138",
+          "client_slug": "bed_bugs_be_gone",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md",
+          "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md"
+        }
+      ]
+    },
+    "chapman_plumbing": {
+      "kanban": {
+        "tasks": [
+          {
+            "id": "draft_91ead5646381",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md"
+          },
+          {
+            "id": "draft_2b9a483ac5e4",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md"
+          },
+          {
+            "id": "qc_report_cc7abf0bf54c",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md"
+          },
+          {
+            "id": "qc_report_69c6d4f2055d",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md"
+          },
+          {
+            "id": "research_pack_c890c95a644d",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/research/pack_01/2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md"
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "client_slug": "chapman_plumbing",
+          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+          "id": "ho-2026-w11-chapman_plumbing",
+          "parent_id": null,
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "human-order",
+          "status": "active",
+          "title": "Week 11 \u2014 chapman_plumbing",
+          "type": "human_order",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "client_slug": "chapman_plumbing",
+          "deliverables": {
+            "blog_post": 1,
+            "gpp_post": 1,
+            "link_1": 1,
+            "link_2": 1
+          },
+          "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_2: 1",
+          "id": "pl-2026-w11-chapman_plumbing",
+          "parent_id": "ho-2026-w11-chapman_plumbing",
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "planner",
+          "status": "active",
+          "title": "Week 11 Plan \u2014 chapman_plumbing",
+          "type": "plan_artifact",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "id": "w11_chapman_plumbing_research_pack_c890c95a644d",
+          "client_slug": "chapman_plumbing",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/research/pack_01/2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md",
+          "title": "2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md"
+        },
+        {
+          "id": "w11_chapman_plumbing_draft_91ead5646381",
+          "client_slug": "chapman_plumbing",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md",
+          "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md"
+        },
+        {
+          "id": "w11_chapman_plumbing_draft_2b9a483ac5e4",
+          "client_slug": "chapman_plumbing",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md",
+          "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md"
+        },
+        {
+          "id": "w11_chapman_plumbing_qc_report_cc7abf0bf54c",
+          "client_slug": "chapman_plumbing",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md",
+          "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md"
+        },
+        {
+          "id": "w11_chapman_plumbing_qc_report_69c6d4f2055d",
+          "client_slug": "chapman_plumbing",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md",
+          "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md"
+        }
+      ]
+    },
+    "heat_tech_bed_bug": {
+      "kanban": {
+        "tasks": [
+          {
+            "id": "draft_9cdefcbc613c",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md"
+          },
+          {
+            "id": "draft_4c769db39607",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md"
+          },
+          {
+            "id": "draft_ab65c39c6340",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md"
+          },
+          {
+            "id": "draft_79d0888c5481",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md"
+          },
+          {
+            "id": "draft_c51ba1fc4a2a",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md"
+          },
+          {
+            "id": "draft_e4eae65653f9",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md"
+          },
+          {
+            "id": "draft_51595e73aa8e",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md"
+          },
+          {
+            "id": "draft_b2155beaaf88",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md"
+          },
+          {
+            "id": "draft_d3610c8e1105",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md"
+          },
+          {
+            "id": "draft_40aaa6fdab76",
+            "type": "draft",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md"
+          },
+          {
+            "id": "qc_report_f8ff9e9788b0",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md"
+          },
+          {
+            "id": "qc_report_c0bfd1810ad6",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md"
+          },
+          {
+            "id": "qc_report_1b876d21d73f",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md"
+          },
+          {
+            "id": "qc_report_93da82a8e9db",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md"
+          },
+          {
+            "id": "qc_report_03590f254683",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md"
+          },
+          {
+            "id": "qc_report_1a64cc7eb01c",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md"
+          },
+          {
+            "id": "qc_report_d2db34b8ed61",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md"
+          },
+          {
+            "id": "qc_report_59263317c608",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md"
+          },
+          {
+            "id": "qc_report_6f6bc7de24cc",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md"
+          },
+          {
+            "id": "qc_report_586fbc6f0bf8",
+            "type": "qc_report",
+            "status": "qc_passed",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md"
+          },
+          {
+            "id": "research_pack_154468272bd3",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_01/2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md"
+          },
+          {
+            "id": "research_pack_3af23bc86fb6",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_02/2026-03-10_heat-tech_research-pack_02_additional-topics.md"
+          },
+          {
+            "id": "research_pack_5e33e1189f94",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_03/2026-03-11_heat-tech_research-pack_03_additional-topics.md"
+          },
+          {
+            "id": "research_pack_932f359619e6",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_04/2026-03-11_heat-tech_research-pack_04_additional-topics.md"
+          },
+          {
+            "id": "research_pack_6810a6292d49",
+            "type": "research_pack",
+            "status": "done",
+            "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_05/2026-03-11_heat-tech_research-pack_05_additional-topics.md"
+          }
+        ]
+      },
+      "tasks": [
+        {
+          "client_slug": "heat_tech_bed_bug",
+          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+          "id": "ho-2026-w11-heat_tech_bed_bug",
+          "parent_id": null,
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "human-order",
+          "status": "active",
+          "title": "Week 11 \u2014 heat_tech_bed_bug",
+          "type": "human_order",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "client_slug": "heat_tech_bed_bug",
+          "deliverables": {
+            "blog_post": 2,
+            "gpp_post": 2,
+            "link_2": 1,
+            "link_3": 1
+          },
+          "description": "Week 11 deliverables \u2192 gpp_post: 2 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+          "id": "pl-2026-w11-heat_tech_bed_bug",
+          "parent_id": "ho-2026-w11-heat_tech_bed_bug",
+          "publish_date": null,
+          "qc_date": null,
+          "research_date": null,
+          "stage": "planner",
+          "status": "active",
+          "title": "Week 11 Plan \u2014 heat_tech_bed_bug",
+          "type": "plan_artifact",
+          "week": 11,
+          "writer_date": null
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_research_pack_154468272bd3",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_01/2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md",
+          "title": "2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_research_pack_3af23bc86fb6",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_02/2026-03-10_heat-tech_research-pack_02_additional-topics.md",
+          "title": "2026-03-10_heat-tech_research-pack_02_additional-topics.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_research_pack_5e33e1189f94",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_03/2026-03-11_heat-tech_research-pack_03_additional-topics.md",
+          "title": "2026-03-11_heat-tech_research-pack_03_additional-topics.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_research_pack_932f359619e6",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_04/2026-03-11_heat-tech_research-pack_04_additional-topics.md",
+          "title": "2026-03-11_heat-tech_research-pack_04_additional-topics.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_research_pack_6810a6292d49",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "research_pack",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_05/2026-03-11_heat-tech_research-pack_05_additional-topics.md",
+          "title": "2026-03-11_heat-tech_research-pack_05_additional-topics.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_9cdefcbc613c",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md",
+          "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_4c769db39607",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md",
+          "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_ab65c39c6340",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md",
+          "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_79d0888c5481",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md",
+          "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_c51ba1fc4a2a",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md",
+          "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_e4eae65653f9",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md",
+          "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_51595e73aa8e",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md",
+          "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_b2155beaaf88",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md",
+          "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_d3610c8e1105",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md",
+          "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_draft_40aaa6fdab76",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "draft",
+          "status": "done",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md",
+          "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_f8ff9e9788b0",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md",
+          "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_c0bfd1810ad6",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md",
+          "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_1b876d21d73f",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md",
+          "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_93da82a8e9db",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md",
+          "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_03590f254683",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md",
+          "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_1a64cc7eb01c",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md",
+          "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_d2db34b8ed61",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md",
+          "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_59263317c608",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md",
+          "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_6f6bc7de24cc",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md",
+          "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md"
+        },
+        {
+          "id": "w11_heat_tech_bed_bug_qc_report_586fbc6f0bf8",
+          "client_slug": "heat_tech_bed_bug",
+          "type": "qc_report",
+          "status": "qc_passed",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md",
+          "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md"
+        }
+      ]
+    }
+  },
+  "columns": [
+    "human-order",
+    "planner",
+    "researcher",
+    "writer",
+    "qc",
+    "publisher"
+  ],
+  "kanban": {
+    "tasks": {
+      "0": {
+        "client_slug": "bed_bug_bbq",
+        "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+        "id": "ho-2026-w11-bed_bug_bbq",
+        "parent_id": null,
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "human-order",
+        "status": "active",
+        "title": "Week 11 \u2014 bed_bug_bbq",
+        "type": "human_order",
+        "week": 11,
+        "writer_date": null
+      },
+      "1": {
+        "client_slug": "bed_bug_bbq",
+        "deliverables": {
+          "blog_post": 2,
+          "gpp_post": 1,
+          "link_2": 1,
+          "link_3": 1
+        },
+        "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+        "id": "pl-2026-w11-bed_bug_bbq",
+        "parent_id": "ho-2026-w11-bed_bug_bbq",
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "planner",
+        "status": "active",
+        "title": "Week 11 Plan \u2014 bed_bug_bbq",
+        "type": "plan_artifact",
+        "week": 11,
+        "writer_date": null
+      },
+      "2": {
+        "client_slug": "bed_bugs_be_gone",
+        "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+        "id": "ho-2026-w11-bed_bugs_be_gone",
+        "parent_id": null,
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "human-order",
+        "status": "active",
+        "title": "Week 11 \u2014 bed_bugs_be_gone",
+        "type": "human_order",
+        "week": 11,
+        "writer_date": null
+      },
+      "3": {
+        "client_slug": "bed_bugs_be_gone",
+        "deliverables": {
+          "blog_post": 1,
+          "gpp_post": 1,
+          "link_1": 1,
+          "link_3": 1
+        },
+        "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_3: 1",
+        "id": "pl-2026-w11-bed_bugs_be_gone",
+        "parent_id": "ho-2026-w11-bed_bugs_be_gone",
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "planner",
+        "status": "active",
+        "title": "Week 11 Plan \u2014 bed_bugs_be_gone",
+        "type": "plan_artifact",
+        "week": 11,
+        "writer_date": null
+      },
+      "4": {
+        "client_slug": "chapman_plumbing",
+        "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+        "id": "ho-2026-w11-chapman_plumbing",
+        "parent_id": null,
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "human-order",
+        "status": "active",
+        "title": "Week 11 \u2014 chapman_plumbing",
+        "type": "human_order",
+        "week": 11,
+        "writer_date": null
+      },
+      "5": {
+        "client_slug": "chapman_plumbing",
+        "deliverables": {
+          "blog_post": 1,
+          "gpp_post": 1,
+          "link_1": 1,
+          "link_2": 1
+        },
+        "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_2: 1",
+        "id": "pl-2026-w11-chapman_plumbing",
+        "parent_id": "ho-2026-w11-chapman_plumbing",
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "planner",
+        "status": "active",
+        "title": "Week 11 Plan \u2014 chapman_plumbing",
+        "type": "plan_artifact",
+        "week": 11,
+        "writer_date": null
+      },
+      "6": {
+        "client_slug": "heat_tech_bed_bug",
+        "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+        "id": "ho-2026-w11-heat_tech_bed_bug",
+        "parent_id": null,
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "human-order",
+        "status": "active",
+        "title": "Week 11 \u2014 heat_tech_bed_bug",
+        "type": "human_order",
+        "week": 11,
+        "writer_date": null
+      },
+      "7": {
+        "client_slug": "heat_tech_bed_bug",
+        "deliverables": {
+          "blog_post": 2,
+          "gpp_post": 2,
+          "link_2": 1,
+          "link_3": 1
+        },
+        "description": "Week 11 deliverables \u2192 gpp_post: 2 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+        "id": "pl-2026-w11-heat_tech_bed_bug",
+        "parent_id": "ho-2026-w11-heat_tech_bed_bug",
+        "publish_date": null,
+        "qc_date": null,
+        "research_date": null,
+        "stage": "planner",
+        "status": "active",
+        "title": "Week 11 Plan \u2014 heat_tech_bed_bug",
+        "type": "plan_artifact",
+        "week": 11,
+        "writer_date": null
+      },
+      "8": {
+        "id": "w11_bed_bug_bbq_draft_a49e11cafb23",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md",
+        "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md"
+      },
+      "9": {
+        "id": "w11_bed_bug_bbq_draft_93328dce1a07",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md",
+        "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md"
+      },
+      "10": {
+        "id": "w11_bed_bug_bbq_draft_8119bbc5c954",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md"
+      },
+      "11": {
+        "id": "w11_bed_bug_bbq_draft_4f082bb2fcb2",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md"
+      },
+      "12": {
+        "id": "w11_bed_bug_bbq_draft_59c169fd2314",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md"
+      },
+      "13": {
+        "id": "w11_bed_bug_bbq_draft_6fb03b38c425",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md"
+      },
+      "14": {
+        "id": "w11_bed_bug_bbq_draft_3b31b234d8c9",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md"
+      },
+      "15": {
+        "id": "w11_bed_bug_bbq_draft_7bc85dcb1710",
+        "client_slug": "bed_bug_bbq",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md",
+        "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md"
+      },
+      "16": {
+        "id": "w11_bed_bug_bbq_qc_report_1d6067428ae0",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_passed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md",
+        "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md"
+      },
+      "17": {
+        "id": "w11_bed_bug_bbq_qc_report_b9551e7533f0",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md",
+        "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md"
+      },
+      "18": {
+        "id": "w11_bed_bug_bbq_qc_report_80f411bb1ab4",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_passed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md"
+      },
+      "19": {
+        "id": "w11_bed_bug_bbq_qc_report_ea412d95f41f",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md"
+      },
+      "20": {
+        "id": "w11_bed_bug_bbq_qc_report_21b3be9c3452",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md"
+      },
+      "21": {
+        "id": "w11_bed_bug_bbq_qc_report_584145a94479",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_passed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md"
+      },
+      "22": {
+        "id": "w11_bed_bug_bbq_qc_report_da58375d5fe9",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_passed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md"
+      },
+      "23": {
+        "id": "w11_bed_bug_bbq_qc_report_906118e24b34",
+        "client_slug": "bed_bug_bbq",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md",
+        "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md"
+      },
+      "24": {
+        "id": "w11_bed_bug_bbq_research_pack_98232b2852bf",
+        "client_slug": "bed_bug_bbq",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_01/2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md",
+        "title": "2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md"
+      },
+      "25": {
+        "id": "w11_bed_bug_bbq_research_pack_64d2370139cd",
+        "client_slug": "bed_bug_bbq",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_02/2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md",
+        "title": "2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md"
+      },
+      "26": {
+        "id": "w11_bed_bug_bbq_research_pack_503a35b0a7fa",
+        "client_slug": "bed_bug_bbq",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_03/2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md",
+        "title": "2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md"
+      },
+      "27": {
+        "id": "w11_bed_bug_bbq_research_pack_8915ef7accfe",
+        "client_slug": "bed_bug_bbq",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_04/2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md",
+        "title": "2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md"
+      },
+      "28": {
+        "id": "w11_bed_bugs_be_gone_draft_4f439007bf07",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md",
+        "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md"
+      },
+      "29": {
+        "id": "w11_bed_bugs_be_gone_draft_1e9e3dfcd7ab",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md",
+        "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md"
+      },
+      "30": {
+        "id": "w11_bed_bugs_be_gone_draft_56968b12afab",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md",
+        "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md"
+      },
+      "31": {
+        "id": "w11_bed_bugs_be_gone_draft_96795f332aa5",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md",
+        "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md"
+      },
+      "32": {
+        "id": "w11_bed_bugs_be_gone_qc_report_c185a127fd60",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md",
+        "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md"
+      },
+      "33": {
+        "id": "w11_bed_bugs_be_gone_qc_report_48e6ee9cf118",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md",
+        "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md"
+      },
+      "34": {
+        "id": "w11_bed_bugs_be_gone_qc_report_2e618a444ff0",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md",
+        "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md"
+      },
+      "35": {
+        "id": "w11_bed_bugs_be_gone_qc_report_59fff3aff138",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md",
+        "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md"
+      },
+      "36": {
+        "id": "w11_bed_bugs_be_gone_research_pack_7a45ffd8737b",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_01/2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md",
+        "title": "2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md"
+      },
+      "37": {
+        "id": "w11_bed_bugs_be_gone_research_pack_379dd62a9ef1",
+        "client_slug": "bed_bugs_be_gone",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_02/2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md",
+        "title": "2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md"
+      },
+      "38": {
+        "id": "w11_chapman_plumbing_draft_91ead5646381",
+        "client_slug": "chapman_plumbing",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md",
+        "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md"
+      },
+      "39": {
+        "id": "w11_chapman_plumbing_draft_2b9a483ac5e4",
+        "client_slug": "chapman_plumbing",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md",
+        "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md"
+      },
+      "40": {
+        "id": "w11_chapman_plumbing_qc_report_cc7abf0bf54c",
+        "client_slug": "chapman_plumbing",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md",
+        "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md"
+      },
+      "41": {
+        "id": "w11_chapman_plumbing_qc_report_69c6d4f2055d",
+        "client_slug": "chapman_plumbing",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md",
+        "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md"
+      },
+      "42": {
+        "id": "w11_chapman_plumbing_research_pack_c890c95a644d",
+        "client_slug": "chapman_plumbing",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/research/pack_01/2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md",
+        "title": "2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md"
+      },
+      "43": {
+        "id": "w11_heat_tech_bed_bug_draft_9cdefcbc613c",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md",
+        "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md"
+      },
+      "44": {
+        "id": "w11_heat_tech_bed_bug_draft_4c769db39607",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md",
+        "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md"
+      },
+      "45": {
+        "id": "w11_heat_tech_bed_bug_draft_ab65c39c6340",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md",
+        "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md"
+      },
+      "46": {
+        "id": "w11_heat_tech_bed_bug_draft_79d0888c5481",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md",
+        "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md"
+      },
+      "47": {
+        "id": "w11_heat_tech_bed_bug_draft_c51ba1fc4a2a",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md",
+        "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md"
+      },
+      "48": {
+        "id": "w11_heat_tech_bed_bug_draft_e4eae65653f9",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md",
+        "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md"
+      },
+      "49": {
+        "id": "w11_heat_tech_bed_bug_draft_51595e73aa8e",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md",
+        "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md"
+      },
+      "50": {
+        "id": "w11_heat_tech_bed_bug_draft_b2155beaaf88",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md",
+        "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md"
+      },
+      "51": {
+        "id": "w11_heat_tech_bed_bug_draft_d3610c8e1105",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md",
+        "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md"
+      },
+      "52": {
+        "id": "w11_heat_tech_bed_bug_draft_40aaa6fdab76",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "draft",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md",
+        "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md"
+      },
+      "53": {
+        "id": "w11_heat_tech_bed_bug_qc_report_f8ff9e9788b0",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md",
+        "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md"
+      },
+      "54": {
+        "id": "w11_heat_tech_bed_bug_qc_report_c0bfd1810ad6",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_passed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md",
+        "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md"
+      },
+      "55": {
+        "id": "w11_heat_tech_bed_bug_qc_report_1b876d21d73f",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md",
+        "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md"
+      },
+      "56": {
+        "id": "w11_heat_tech_bed_bug_qc_report_93da82a8e9db",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md",
+        "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md"
+      },
+      "57": {
+        "id": "w11_heat_tech_bed_bug_qc_report_03590f254683",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md",
+        "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md"
+      },
+      "58": {
+        "id": "w11_heat_tech_bed_bug_qc_report_1a64cc7eb01c",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md",
+        "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md"
+      },
+      "59": {
+        "id": "w11_heat_tech_bed_bug_qc_report_d2db34b8ed61",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md",
+        "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md"
+      },
+      "60": {
+        "id": "w11_heat_tech_bed_bug_qc_report_59263317c608",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md",
+        "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md"
+      },
+      "61": {
+        "id": "w11_heat_tech_bed_bug_qc_report_6f6bc7de24cc",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md",
+        "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md"
+      },
+      "62": {
+        "id": "w11_heat_tech_bed_bug_qc_report_586fbc6f0bf8",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "qc_report",
+        "status": "qc_failed",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md",
+        "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md"
+      },
+      "63": {
+        "id": "w11_heat_tech_bed_bug_research_pack_154468272bd3",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_01/2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md",
+        "title": "2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md"
+      },
+      "64": {
+        "id": "w11_heat_tech_bed_bug_research_pack_3af23bc86fb6",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_02/2026-03-10_heat-tech_research-pack_02_additional-topics.md",
+        "title": "2026-03-10_heat-tech_research-pack_02_additional-topics.md"
+      },
+      "65": {
+        "id": "w11_heat_tech_bed_bug_research_pack_5e33e1189f94",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_03/2026-03-11_heat-tech_research-pack_03_additional-topics.md",
+        "title": "2026-03-11_heat-tech_research-pack_03_additional-topics.md"
+      },
+      "66": {
+        "id": "w11_heat_tech_bed_bug_research_pack_932f359619e6",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_04/2026-03-11_heat-tech_research-pack_04_additional-topics.md",
+        "title": "2026-03-11_heat-tech_research-pack_04_additional-topics.md"
+      },
+      "67": {
+        "id": "w11_heat_tech_bed_bug_research_pack_6810a6292d49",
+        "client_slug": "heat_tech_bed_bug",
+        "type": "research_pack",
+        "status": "done",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_05/2026-03-11_heat-tech_research-pack_05_additional-topics.md",
+        "title": "2026-03-11_heat-tech_research-pack_05_additional-topics.md"
+      }
+    }
+  },
+  "schema_version": 3,
+  "tasks": [
+    {
+      "client_slug": "bed_bug_bbq",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "id": "ho-2026-w11-bed_bug_bbq",
+      "parent_id": null,
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "human-order",
+      "status": "active",
+      "title": "Week 11 \u2014 bed_bug_bbq",
+      "type": "human_order",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "bed_bug_bbq",
+      "deliverables": {
+        "blog_post": 2,
+        "gpp_post": 1,
+        "link_2": 1,
+        "link_3": 1
+      },
+      "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+      "id": "pl-2026-w11-bed_bug_bbq",
+      "parent_id": "ho-2026-w11-bed_bug_bbq",
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "planner",
+      "status": "active",
+      "title": "Week 11 Plan \u2014 bed_bug_bbq",
+      "type": "plan_artifact",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "bed_bugs_be_gone",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "id": "ho-2026-w11-bed_bugs_be_gone",
+      "parent_id": null,
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "human-order",
+      "status": "active",
+      "title": "Week 11 \u2014 bed_bugs_be_gone",
+      "type": "human_order",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "bed_bugs_be_gone",
+      "deliverables": {
+        "blog_post": 1,
+        "gpp_post": 1,
+        "link_1": 1,
+        "link_3": 1
+      },
+      "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_3: 1",
+      "id": "pl-2026-w11-bed_bugs_be_gone",
+      "parent_id": "ho-2026-w11-bed_bugs_be_gone",
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "planner",
+      "status": "active",
+      "title": "Week 11 Plan \u2014 bed_bugs_be_gone",
+      "type": "plan_artifact",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "chapman_plumbing",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "id": "ho-2026-w11-chapman_plumbing",
+      "parent_id": null,
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "human-order",
+      "status": "active",
+      "title": "Week 11 \u2014 chapman_plumbing",
+      "type": "human_order",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "chapman_plumbing",
+      "deliverables": {
+        "blog_post": 1,
+        "gpp_post": 1,
+        "link_1": 1,
+        "link_2": 1
+      },
+      "description": "Week 11 deliverables \u2192 gpp_post: 1 \u2022 blog_post: 1 \u2022 link_1: 1 \u2022 link_2: 1",
+      "id": "pl-2026-w11-chapman_plumbing",
+      "parent_id": "ho-2026-w11-chapman_plumbing",
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "planner",
+      "status": "active",
+      "title": "Week 11 Plan \u2014 chapman_plumbing",
+      "type": "plan_artifact",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "heat_tech_bed_bug",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "id": "ho-2026-w11-heat_tech_bed_bug",
+      "parent_id": null,
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "human-order",
+      "status": "active",
+      "title": "Week 11 \u2014 heat_tech_bed_bug",
+      "type": "human_order",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "client_slug": "heat_tech_bed_bug",
+      "deliverables": {
+        "blog_post": 2,
+        "gpp_post": 2,
+        "link_2": 1,
+        "link_3": 1
+      },
+      "description": "Week 11 deliverables \u2192 gpp_post: 2 \u2022 blog_post: 2 \u2022 link_2: 1 \u2022 link_3: 1",
+      "id": "pl-2026-w11-heat_tech_bed_bug",
+      "parent_id": "ho-2026-w11-heat_tech_bed_bug",
+      "publish_date": null,
+      "qc_date": null,
+      "research_date": null,
+      "stage": "planner",
+      "status": "active",
+      "title": "Week 11 Plan \u2014 heat_tech_bed_bug",
+      "type": "plan_artifact",
+      "week": 11,
+      "writer_date": null
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_a49e11cafb23",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md",
+      "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_93328dce1a07",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md",
+      "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_8119bbc5c954",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_4f082bb2fcb2",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_59c169fd2314",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_6fb03b38c425",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_3b31b234d8c9",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_draft_7bc85dcb1710",
+      "client_slug": "bed_bug_bbq",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md",
+      "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_draft.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_1d6067428ae0",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_passed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_01/2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md",
+      "title": "2026-03-10_bed-bug-to-go_spot-bed-bugs-early-before-infestation-spreads_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_b9551e7533f0",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_02/2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md",
+      "title": "2026-03-10_bed-bug-to-go_heat-treatment-for-bed-bugs-what-to-expect_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_80f411bb1ab4",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_passed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_03/2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_secondhand-furniture-bed-bug-risk_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_ea412d95f41f",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_04/2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_travel-bed-bug-prevention-checklist_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_21b3be9c3452",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_05/2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_bed-bug-inspection-guide-room-by-room_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_584145a94479",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_passed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_06/2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_how-heat-treatment-works_bed-bugs_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_da58375d5fe9",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_passed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_07/2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_bed-bugs-in-apartments-cleveland-what-to-do_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_qc_report_906118e24b34",
+      "client_slug": "bed_bug_bbq",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/blog_post/post_08/2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md",
+      "title": "2026-03-11_bed-bug-to-go_can-bed-bugs-live-in-your-car_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_research_pack_98232b2852bf",
+      "client_slug": "bed_bug_bbq",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_01/2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md",
+      "title": "2026-03-10_bed-bug-to-go_research-pack_spring-travel-early-detection-heat-treatment.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_research_pack_64d2370139cd",
+      "client_slug": "bed_bug_bbq",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_02/2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md",
+      "title": "2026-03-11_bed-bug-to-go_research-pack_02_additional-topics.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_research_pack_503a35b0a7fa",
+      "client_slug": "bed_bug_bbq",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_03/2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md",
+      "title": "2026-03-11_bed-bug-to-go_research-pack_03_additional-topics.md"
+    },
+    {
+      "id": "w11_bed_bug_bbq_research_pack_8915ef7accfe",
+      "client_slug": "bed_bug_bbq",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bug_bbq/research/pack_04/2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md",
+      "title": "2026-03-11_bed-bug-to-go_research-pack_04_additional-topics.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_draft_4f439007bf07",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md",
+      "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_draft.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_draft_1e9e3dfcd7ab",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md",
+      "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_draft.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_draft_56968b12afab",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md",
+      "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_draft.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_draft_96795f332aa5",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md",
+      "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_draft.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_qc_report_c185a127fd60",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_01/2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md",
+      "title": "2026-03-10_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_qc_report_48e6ee9cf118",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_02/2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md",
+      "title": "2026-03-10_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-which-fits_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_qc_report_2e618a444ff0",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_03/2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md",
+      "title": "2026-03-11_bed-bugs-be-gone-now_early-detection-after-travel_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_qc_report_59fff3aff138",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/blog_post/post_04/2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md",
+      "title": "2026-03-11_bed-bugs-be-gone-now_diy-vs-professional-bed-bug-treatment_qc_v1.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_research_pack_7a45ffd8737b",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_01/2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md",
+      "title": "2026-03-10_bed-bugs-be-gone-now_research-pack_apartments-treatment-comparison.md"
+    },
+    {
+      "id": "w11_bed_bugs_be_gone_research_pack_379dd62a9ef1",
+      "client_slug": "bed_bugs_be_gone",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/bed_bugs_be_gone/research/pack_02/2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md",
+      "title": "2026-03-11_bed-bugs-be-gone-now_research-pack_02_additional-topics.md"
+    },
+    {
+      "id": "w11_chapman_plumbing_draft_91ead5646381",
+      "client_slug": "chapman_plumbing",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md",
+      "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_draft.md"
+    },
+    {
+      "id": "w11_chapman_plumbing_draft_2b9a483ac5e4",
+      "client_slug": "chapman_plumbing",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md",
+      "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_draft.md"
+    },
+    {
+      "id": "w11_chapman_plumbing_qc_report_cc7abf0bf54c",
+      "client_slug": "chapman_plumbing",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_01/2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md",
+      "title": "2026-03-10_chapman-plumbing_common-causes-of-slow-drains_qc_v1.md"
+    },
+    {
+      "id": "w11_chapman_plumbing_qc_report_69c6d4f2055d",
+      "client_slug": "chapman_plumbing",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/blog_post/post_02/2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md",
+      "title": "2026-03-10_chapman-plumbing_signs-water-heater-needs-repair_qc_v1.md"
+    },
+    {
+      "id": "w11_chapman_plumbing_research_pack_c890c95a644d",
+      "client_slug": "chapman_plumbing",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/chapman_plumbing/research/pack_01/2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md",
+      "title": "2026-03-10_chapman-plumbing_research-pack_drains-water-heater-signs.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_9cdefcbc613c",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md",
+      "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_4c769db39607",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md",
+      "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_ab65c39c6340",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md",
+      "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_79d0888c5481",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md",
+      "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_c51ba1fc4a2a",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md",
+      "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_e4eae65653f9",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md",
+      "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_51595e73aa8e",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md",
+      "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_b2155beaaf88",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md",
+      "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_d3610c8e1105",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md",
+      "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_draft_40aaa6fdab76",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "draft",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md",
+      "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_draft.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_f8ff9e9788b0",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_01/2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md",
+      "title": "2026-03-10_heat-tech_prepare-for-bed-bug-heat-treatment-checklist_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_c0bfd1810ad6",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_passed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_02/2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md",
+      "title": "2026-03-10_heat-tech_how-long-does-bed-bug-treatment-take-one-day-means_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_1b876d21d73f",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_03/2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md",
+      "title": "2026-03-10_heat-tech_travel-bed-bug-prevention-tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_93da82a8e9db",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_04/2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md",
+      "title": "2026-03-11_heat-tech_moving-season-bed-bug-prevention-tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_03590f254683",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_05/2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md",
+      "title": "2026-03-11_heat-tech_bed-bug-treatment-after-moving_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_1a64cc7eb01c",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_06/2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md",
+      "title": "2026-03-11_heat-tech_post-travel-bed-bug-checklist_tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_d2db34b8ed61",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_07/2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md",
+      "title": "2026-03-11_heat-tech_bed-bugs-in-apartments-tulsa-action-plan_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_59263317c608",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_08/2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md",
+      "title": "2026-03-11_heat-tech_bed-bug-prevention-for-businesses-tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_6f6bc7de24cc",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_09/2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md",
+      "title": "2026-03-11_heat-tech_bed-bug-treatment-cost-drivers-tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_qc_report_586fbc6f0bf8",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "qc_report",
+      "status": "qc_failed",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/blog_post/post_10/2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md",
+      "title": "2026-03-11_heat-tech_secondhand-furniture-bed-bug-risk-tulsa_qc_v1.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_research_pack_154468272bd3",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_01/2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md",
+      "title": "2026-03-10_heat-tech_research-pack_preparation-one-day-expectations.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_research_pack_3af23bc86fb6",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_02/2026-03-10_heat-tech_research-pack_02_additional-topics.md",
+      "title": "2026-03-10_heat-tech_research-pack_02_additional-topics.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_research_pack_5e33e1189f94",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_03/2026-03-11_heat-tech_research-pack_03_additional-topics.md",
+      "title": "2026-03-11_heat-tech_research-pack_03_additional-topics.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_research_pack_932f359619e6",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_04/2026-03-11_heat-tech_research-pack_04_additional-topics.md",
+      "title": "2026-03-11_heat-tech_research-pack_04_additional-topics.md"
+    },
+    {
+      "id": "w11_heat_tech_bed_bug_research_pack_6810a6292d49",
+      "client_slug": "heat_tech_bed_bug",
+      "type": "research_pack",
+      "status": "done",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week11-15/heat_tech_bed_bug/research/pack_05/2026-03-11_heat-tech_research-pack_05_additional-topics.md",
+      "title": "2026-03-11_heat-tech_research-pack_05_additional-topics.md"
+    }
+  ],
+  "updatedAt": "2026-03-13T22:16:55.043Z",
+  "week": 11,
+  "year": 2026
+}

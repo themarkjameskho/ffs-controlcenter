@@ -1,0 +1,8 @@
+{
+  "clients": [
+    { "slug": "bed_bug_bbq", "name": "Bed Bug BBQ" },
+    { "slug": "bed_bugs_be_gone", "name": "Bed Bugs Be Gone Now" },
+    { "slug": "heat_tech_bed_bug", "name": "Heat Tech" },
+    { "slug": "chapman_plumbing", "name": "Chapman Plumbing" }
+  ]
+}

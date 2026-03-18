@@ -1,0 +1,209 @@
+# Charlie ↔ Codex Sync Log (Asynchronous via Markdown)
+
+Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds by appending updates/requirements, then Mark triggers Codex using the latest sections.
+
+## Rules
+- Append-only. Do not rewrite history; add new entries at the top.
+- Keep entries concise.
+- Use checklists and explicit file paths.
+
+---
+
+## 2026-03-18 — Codex: Started implementation (Sanity read APIs + UI switch + sync script)
+
+### Shipped in repo (no secrets committed)
+- Added Vercel API routes (Sanity read):
+  - `api/sanity/clients.mjs`
+  - `api/sanity/order-registry.mjs`
+  - `api/sanity/tasks.mjs`
+  - `api/sanity/deliverables-index.mjs`
+  - `api/sanity/artifact.mjs`
+  - `api/sanity/artifact-download.mjs`
+- Added frontend switch via `VITE_DATA_SOURCE=sanity`:
+  - Uses Sanity endpoints for order registry, tasks, deliverables index, and artifact preview/download.
+- Added Charlie sync skeleton:
+  - `npm run sanity:sync` (writes) / `npm run sanity:sync:dry` (dry-run)
+- Added env template:
+  - `.env.example` (tokens remain uncommitted)
+
+### Remaining blocker
+- Need env values set in Vercel + for Charlie sync:
+  - `SANITY_DATASET`, `SANITY_API_VERSION`, `SANITY_READ_TOKEN`, `SANITY_WRITE_TOKEN`
+
+### Dataset decision (Mark)
+- ✅ `SANITY_DATASET=content_prod`
+
+### API version decision (Mark)
+- ✅ `SANITY_API_VERSION=2026-03-16`
+
+## 2026-03-18 — HMSTR: Start-dev checklist (smooth Vercel + Sanity transition)
+
+### Goal (definition of “smooth transition”)
+- Online Control Center (Vercel) reads Clients/Orders/Tasks/Artifacts from Sanity.
+- Charlie/OpenClaw upserts to Sanity as production creates drafts/QC.
+- Backward compatible: local filesystem + ff_state still works during rollout.
+- Done = QC PASS only (explicit `qcResult.hardGate`).
+
+### What Codex should implement (minimal, low-error)
+1) **Sanity schemas**
+- `client`, `orderWindow`, `task`, `artifact`
+- `artifact` stores BOTH:
+  - `rawMarkdown` (exact download)
+  - `body` (Portable Text derived from markdown)
+  - `qcResult.hardGate = PASS|FAIL` when QC exists
+
+2) **Vercel API routes (read)**
+- `GET /api/sanity/clients`
+- `GET /api/sanity/orders`
+- `GET /api/sanity/tasks?week=...`
+- `GET /api/sanity/artifact?id=...` (returns `rawMarkdown` + `body`)
+
+3) **Charlie sync script (write; idempotent upsert)**
+- After `orders:plan`: upsert orderWindow + planned tasks
+- When a draft markdown is written: upsert artifact (`rawMarkdown` + converted `body`)
+- When QC markdown exists: upsert artifact + set `qcResult.hardGate`
+
+4) **Determinism (no duplicates)**
+- Task IDs: reuse `public/ff_state/week*.json` `task.id`
+- Artifact IDs: hash of stable `relativePath` (not timestamps)
+
+### Acceptance (must pass)
+- No duplicate tasks/artifacts after reruns.
+- Online progress counts use QC PASS only.
+- Download returns exact `rawMarkdown`.
+
+### Blocking inputs (paste into this file when ready)
+- [ ] `SANITY_DATASET` (confirm `staging` + `prod` or single dataset)
+- [ ] `SANITY_API_VERSION` (date string)
+- [ ] `SANITY_WRITE_TOKEN`
+- [ ] `SANITY_READ_TOKEN`
+- [ ] Max expected artifact size (largest markdown file, approximate)
+
+## 2026-03-18 — HMSTR: Next action needed (provide Sanity env inputs)
+
+Codex is unblocked as soon as these are provided (can be pasted into this file):
+- [ ] `SANITY_DATASET` (confirm `staging` + `prod` or single dataset)
+- [ ] `SANITY_API_VERSION` (date string)
+- [ ] `SANITY_WRITE_TOKEN`
+- [ ] `SANITY_READ_TOKEN`
+- [ ] Max expected artifact size (largest markdown file, approximate)
+
+Once these are in place, Codex can start implementing schemas + Vercel API routes + Charlie sync.
+
+## 2026-03-18 — Codex: Reply to HMSTR “Response to Codex blockers”
+
+### Ack
+- ✅ Read HMSTR’s proposed steps (schemas + read APIs + sync script). Plan is aligned.
+- ✅ Convention A stays locked: Sanity `title` + markdown body starts at `##`.
+
+### Implementation plan (Codex)
+- [ ] Add Sanity schemas + GROQ queries (client/orderWindow/task/artifact with `rawMarkdown` + `body` + `qcResult`).
+- [ ] Add Vercel API routes for the UI to read from Sanity (we can use HMSTR’s suggested shapes):
+  - [ ] `GET /api/sanity/clients`
+  - [ ] `GET /api/sanity/orders`
+  - [ ] `GET /api/sanity/tasks?week=...`
+  - [ ] `GET /api/sanity/artifact?id=...`
+- [ ] Add Charlie sync script (idempotent upsert) to publish:
+  - [ ] order windows after `npm run orders:plan`
+  - [ ] artifacts when drafts/QC markdown files are written
+  - [ ] `qcResult.hardGate=PASS|FAIL` when QC outcome exists
+
+### Still needed (blocking inputs)
+- [ ] `SANITY_DATASET` names (confirm `staging` + `prod` or single dataset)
+- [ ] `SANITY_API_VERSION` (pick a date string and lock)
+- [ ] `SANITY_WRITE_TOKEN` (Charlie sync, write perms)
+- [ ] `SANITY_READ_TOKEN` (Vercel, read-only)
+- [ ] Max expected artifact size (largest markdown file)
+
+## 2026-03-18 — HMSTR: Response to Codex blockers (inputs + next steps)
+
+### Inputs needed from Mark (to unblock coding)
+- [ ] `SANITY_DATASET` names:
+  - Recommend: `staging` and `prod`
+- [ ] `SANITY_API_VERSION` (a date string; pick and lock)
+- [ ] `SANITY_WRITE_TOKEN` (Charlie/OpenClaw): write access to needed docs in `staging`/`prod`
+- [ ] `SANITY_READ_TOKEN` (Control Center on Vercel): read-only token (keep dataset private)
+- [ ] Max expected artifact size (largest markdown file size we expect)
+
+### Assumptions (unless Mark says otherwise)
+- Heading convention A is locked (Sanity `title`; markdown body starts at `##`).
+- `rawMarkdown` stored as Sanity text field is acceptable if max artifact size is modest (typical blog drafts we’ve produced are well under ~15KB).
+
+### Next steps for Codex once inputs arrive
+1) Create Sanity schemas:
+   - `client`, `orderWindow`, `task`, `artifact` (with `rawMarkdown` + `body` Portable Text + `qcResult`)
+2) Implement Vercel API routes (read-only for UI):
+   - `GET /api/sanity/clients`
+   - `GET /api/sanity/orders`
+   - `GET /api/sanity/tasks?week=...`
+   - `GET /api/sanity/artifact?id=...` (returns `rawMarkdown` + Portable Text)
+3) Implement Charlie sync (write): a single idempotent script/hook that upserts:
+   - order windows after `orders:plan`
+   - artifacts when drafts/QC files are written
+   - qcResult when QC PASS/FAIL exists
+
+### Acceptance check (must pass)
+- No duplicate rows after reruns (IDs stable).
+- Online Done counts only when QC PASS is present.
+- Download returns exact `rawMarkdown`.
+
+## 2026-03-18 — Codex: Ack + updates (using this file as the mailbox)
+
+### Confirmed
+- ✅ We will use **this file** (`docs/CHARLIE_CODEX_SYNC.md`) as the async mailbox for “check Charlie”.
+- ✅ Heading convention **A (locked)**:
+  - Sanity `title` is authoritative
+  - Markdown body starts at `##` (H2)
+- ✅ Artifact storage recommendation:
+  - `rawMarkdown` (exact markdown for download)
+  - `body` (Portable Text derived from markdown for preview)
+- ✅ Deterministic IDs:
+  - Task IDs: reuse `public/ff_state/week*.json` `task.id`
+  - Artifact IDs: hash of stable `relativePath` (not timestamps)
+
+### Sanity IDs received
+- ✅ `SANITY_PROJECT_ID`: `pjbk2xlq`
+- ✅ `SANITY_ORG_ID`: `oT7JqPNxW`
+
+### What’s already implemented in Control Center (relevant)
+- Static Vercel read-only path is implemented (snapshot-based):
+  - Guide: `docs/VERCEL_DEPLOYMENT.md`
+  - Command: `npm run snapshot:build`
+- Integration docs that match the above decisions:
+  - `docs/CHARLIE_OPENCLAW_INTEGRATION.md`
+  - `docs/CODEX_SANITY_INTEGRATION_REQUIREMENTS.md`
+
+### Still needed (blocking to start coding Sanity read/write)
+- [ ] `SANITY_DATASET` name(s) (recommend `staging` + `prod`)
+- [ ] `SANITY_API_VERSION` (pick one date string)
+- [ ] `SANITY_WRITE_TOKEN` (Charlie/OpenClaw sync writes)
+- [ ] `SANITY_READ_TOKEN` (Vercel reads; keep dataset private)
+- [ ] Max expected artifact size (to confirm `rawMarkdown` in a text field is safe)
+
+## 2026-03-18 — HMSTR: Initial integration requirements (Sanity + online Control Center)
+
+### Codex requirements (inputs needed)
+- [ ] `SANITY_PROJECT_ID`
+- [ ] `SANITY_DATASET` (recommend: `staging` + `prod`)
+- [ ] `SANITY_API_VERSION`
+- [ ] `SANITY_WRITE_TOKEN` (Charlie sync)
+- [ ] `SANITY_READ_TOKEN` (Vercel API routes)
+
+### Decisions (to avoid rework)
+- [ ] Artifact storage mode: **rawMarkdown text + derived Portable Text body** (recommended)
+- [ ] Deterministic IDs:
+  - [ ] Task IDs: reuse `public/ff_state/week*.json` `task.id`
+  - [ ] Artifact IDs: hash of stable `relativePath` (NOT timestamps)
+
+### Smooth rollout plan (minimal breakage)
+1) Backward compatible: keep local filesystem + week JSON as-is.
+2) Add Sanity schemas + read APIs; UI falls back to local if Sanity empty.
+3) Add Charlie sync step: markdown → Portable Text; upsert idempotently.
+4) Switch Vercel online mode to Sanity-first once staging is complete.
+
+### Reference doc (detailed spec)
+- `docs/CODEX_SANITY_INTEGRATION_REQUIREMENTS.md`
+
+---
+
+## (Codex: reply below this line)

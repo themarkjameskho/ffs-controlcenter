@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "year": 2026,
+  "week": 17,
+  "columns": [
+    "human-order",
+    "planner",
+    "researcher",
+    "writer",
+    "qc",
+    "publisher"
+  ],
+  "tasks": [
+    {
+      "id": "ho-2026-w17-bed_bug_bbq",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "bed_bug_bbq",
+      "week": 17,
+      "parent_id": null,
+      "title": "Week 17 — bed_bug_bbq",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "status": "planned",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null
+    },
+    {
+      "id": "ho-2026-w17-bed_bugs_be_gone",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "bed_bugs_be_gone",
+      "week": 17,
+      "parent_id": null,
+      "title": "Week 17 — bed_bugs_be_gone",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "status": "planned",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null
+    },
+    {
+      "id": "ho-2026-w17-chapman_plumbing",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "chapman_plumbing",
+      "week": 17,
+      "parent_id": null,
+      "title": "Week 17 — chapman_plumbing",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "status": "planned",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null
+    },
+    {
+      "id": "ho-2026-w17-heat_tech_bed_bug",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "heat_tech_bed_bug",
+      "week": 17,
+      "parent_id": null,
+      "title": "Week 17 — heat_tech_bed_bug",
+      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
+      "status": "planned",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null
+    }
+  ]
+}
