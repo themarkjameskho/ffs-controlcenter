@@ -164,6 +164,20 @@ function loadJson(filePath, fallback) {
   }
 }
 
+function safeYear(value, fallbackIso) {
+  const n = Number(value)
+  if (Number.isFinite(n) && n >= 2000) return Math.trunc(n)
+  const fromStamp = fallbackIso ? new Date(String(fallbackIso)).getFullYear() : NaN
+  if (Number.isFinite(fromStamp) && fromStamp >= 2000) return fromStamp
+  return new Date().getFullYear()
+}
+
+function safeWeek(value) {
+  const n = Number(value)
+  if (!Number.isFinite(n)) return 0
+  return Math.max(1, Math.min(53, Math.trunc(n)))
+}
+
 function argFlag(name) {
   return process.argv.includes(name)
 }
@@ -171,6 +185,17 @@ function argFlag(name) {
 async function main() {
   const dryRun = argFlag('--dry-run')
   const client = sanityWriteClient()
+
+  const existingOrderWindows = await client.fetch(
+    `*[_type == "orderWindow"]{_id, id, year, startWeek, endWeek}`
+  )
+  const existingOrderIdByRange = new Map()
+  for (const entry of Array.isArray(existingOrderWindows) ? existingOrderWindows : []) {
+    const key = `${Number(entry.startWeek)}-${Number(entry.endWeek)}`
+    if (!existingOrderIdByRange.has(key) && entry?._id) {
+      existingOrderIdByRange.set(key, { _id: String(entry._id), id: String(entry.id ?? '') })
+    }
+  }
 
   const clientsPayload = loadJson(CLIENTS_FILE, { clients: [] })
   const clientsDocs = (clientsPayload.clients ?? [])
@@ -180,14 +205,17 @@ async function main() {
 
   const ordersPayload = loadJson(ORDERS_FILE, { orders: [] })
   const orderDocs = (ordersPayload.orders ?? []).map((o) => {
-    const year = Number(o.year)
-    const startWeek = Number(o.startWeek)
-    const endWeek = Number(o.endWeek)
-    const id = String(o.id ?? `order-${year}-${startWeek}-${endWeek}`)
+    const year = safeYear(o.year, ordersPayload.generatedAt)
+    const startWeek = safeWeek(o.startWeek)
+    const endWeek = safeWeek(o.endWeek)
+    const rangeKey = `${startWeek}-${endWeek}`
+    const existing = existingOrderIdByRange.get(rangeKey) ?? null
+    const computedId = `order-${year}-week${startWeek}-${endWeek}`
+    const id = existing?.id ? existing.id : computedId
     return {
-      _id: `order-${year}-${startWeek}-${endWeek}`,
+      _id: existing?._id ? existing._id : `order-${year}-${startWeek}-${endWeek}`,
       _type: 'orderWindow',
-      id,
+      id: computedId,
       label: String(o.label ?? ''),
       year,
       startWeek,

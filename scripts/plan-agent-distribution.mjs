@@ -73,6 +73,7 @@ Optional config:
 }
 
 function asInt(value, fallback = 0) {
+  if (value === null || value === undefined || value === '') return fallback
   const n = Number(value)
   if (!Number.isFinite(n)) return fallback
   return Math.trunc(n)
