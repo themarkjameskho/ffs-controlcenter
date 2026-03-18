@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
 
 # Control Center generated backups (keep local, don't commit)
 public/ff_state/*.bak*

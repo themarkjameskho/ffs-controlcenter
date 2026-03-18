@@ -2,9 +2,16 @@ import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
+import dotenv from 'dotenv'
 
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const WORKSPACE_ROOT = path.resolve(REPO_ROOT, '..')
+
+// Load local .env automatically (never commit it; .gitignore covers it).
+const ENV_FILE = path.resolve(REPO_ROOT, '.env')
+if (fs.existsSync(ENV_FILE)) {
+  dotenv.config({ path: ENV_FILE })
+}
 
 const FF_STATE_DIR = path.resolve(REPO_ROOT, 'public', 'ff_state')
 const CLIENTS_FILE = path.resolve(FF_STATE_DIR, 'clients.json')
@@ -261,4 +268,3 @@ main().catch((err) => {
   console.error(err)
   process.exitCode = 1
 })
-
