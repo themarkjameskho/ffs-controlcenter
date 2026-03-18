@@ -31,7 +31,7 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
   - `SANITY_DATASET`, `SANITY_API_VERSION`, `SANITY_READ_TOKEN`, `SANITY_WRITE_TOKEN`
 
 ### Dataset decision (Mark)
-- ✅ `SANITY_DATASET=content_prod`
+- ✅ `SANITY_DATASET=production`
 
 ### API version decision (Mark)
 - ✅ `SANITY_API_VERSION=2026-03-16`
