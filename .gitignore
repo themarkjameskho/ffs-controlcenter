@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+.env.local
 
 # Control Center generated backups (keep local, don't commit)
 public/ff_state/*.bak*

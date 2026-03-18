@@ -7,9 +7,13 @@ import dotenv from 'dotenv'
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const WORKSPACE_ROOT = path.resolve(REPO_ROOT, '..')
 
-// Load local .env automatically (never commit it; .gitignore covers it).
+// Load local env automatically (never commit it; .gitignore covers it).
+// Prefer `.env.local` (matches Vite convention), fallback to `.env`.
+const ENV_LOCAL_FILE = path.resolve(REPO_ROOT, '.env.local')
 const ENV_FILE = path.resolve(REPO_ROOT, '.env')
-if (fs.existsSync(ENV_FILE)) {
+if (fs.existsSync(ENV_LOCAL_FILE)) {
+  dotenv.config({ path: ENV_LOCAL_FILE })
+} else if (fs.existsSync(ENV_FILE)) {
   dotenv.config({ path: ENV_FILE })
 }
 
