@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Control Center generated backups (keep local, don't commit)
+public/ff_state/*.bak*
+public/ff_state/week*.bak*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
