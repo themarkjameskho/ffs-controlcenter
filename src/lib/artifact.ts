@@ -15,6 +15,7 @@ export type ArtifactPreviewState = {
     external_sources_count?: number | null
     content_revision_count?: number | null
     qc_fail_count_before_pass?: number | null
+    qc_artifact_id?: string | null
     featured_image_present?: boolean | null
     inline_image_count?: number | null
     infographic_count?: number | null

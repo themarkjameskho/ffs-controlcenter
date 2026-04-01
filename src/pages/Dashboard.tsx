@@ -4,6 +4,7 @@ import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/delive
 import { formatArtifactType, formatWorkflow } from '../lib/deliverables'
 import { isoWeekStartDate } from '../lib/date'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
+import { evaluateContentReadiness } from '../lib/contentReadiness'
 import type { LiveState, Stage, Task, WeekState } from '../lib/types'
 import { extractTasksFromWeekState } from '../lib/weekState'
 import { dataSource } from '../lib/dataSource'
@@ -75,13 +76,19 @@ type ContentUnitQuality = {
   draftArtifact: DeliverablesArtifact | null
   qcArtifact: DeliverablesArtifact | null
   qcScore: number | null
-  seoScore: number | null
-  readabilityScore: number | null
-  imageCount: number | null
   wordCount: number | null
   revisionCount: number
   cycleHours: number | null
   qcStatus: string | null
+  internalLinksCount: number | null
+  externalSourcesCount: number | null
+  h2Count: number | null
+  featuredImagePresent: boolean | null
+  imageAssetCount: number | null
+  qcFailCountBeforePass: number | null
+  readinessStatus: 'ready' | 'review' | 'blocked'
+  readinessLabel: string
+  issues: string[]
 }
 
 type ClientQualityRow = {
@@ -89,14 +96,19 @@ type ClientQualityRow = {
   name: string
   unitCount: number
   avgQcScore: number | null
-  avgSeo: number | null
-  avgReadability: number | null
   avgWordCount: number | null
-  missingImages: number
   avgCycleHours: number | null
   avgRevisions: number | null
   qcPassPct: number | null
   avgQcFailBeforePass: number | null
+  readyCount: number
+  reviewCount: number
+  blockedCount: number
+  needsQcCount: number
+  missingFeaturedImageCount: number
+  thinContentCount: number
+  linkGapCount: number
+  sourceGapCount: number
 }
 
 type StageRadarRow = {
@@ -328,6 +340,7 @@ function orderKey(window: OrderWindow) {
   return `${window.year}:${window.startWeek}-${window.endWeek}`
 }
 
+
 function computeBodyWordCount(markdown: string): number | null {
   const md = String(markdown || '')
   const start = md.search(/^##\s+body_content\s*$/m)
@@ -346,6 +359,26 @@ function computeBodyWordCount(markdown: string): number | null {
   return cleaned ? cleaned.split(' ').length : 0
 }
 
+function extractBodyImageRefs(markdown: string): Array<{ alt: string; src: string }> {
+  const md = String(markdown || '')
+  const start = md.search(/^##\s+body_content\s*$/m)
+  if (start === -1) return []
+  const rest = md.slice(start)
+  const next = rest.slice('## body_content'.length).search(/^##\s+/m)
+  const body = next === -1 ? rest : rest.slice(0, '## body_content'.length + next)
+  const refs: Array<{ alt: string; src: string }> = []
+  for (const match of body.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
+    refs.push({ alt: match[1] ?? '', src: match[2] ?? '' })
+  }
+  // De-dupe by src
+  const seen = new Set<string>()
+  return refs.filter((r) => {
+    if (seen.has(r.src)) return false
+    seen.add(r.src)
+    return true
+  })
+}
+
 export default function Dashboard({ deliverables }: DashboardProps) {
   const [selectedArtifact, setSelectedArtifact] = useState<DeliverablesArtifact | null>(null)
   const [locateMessage, setLocateMessage] = useState('')
@@ -358,6 +391,17 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       : preview.status === 'ready'
         ? computeBodyWordCount(preview.content)
         : null
+
+  const bodyImageRefs = preview.status === 'ready' ? extractBodyImageRefs(preview.content) : []
+  const selectedArtifactReadiness = selectedArtifact
+    ? evaluateContentReadiness({
+        contentCategory: selectedArtifact.contentCategory,
+        metrics: preview.metrics ?? selectedArtifact.metrics ?? null,
+        analysis: selectedArtifact.analysis,
+        markers: selectedArtifact.markers,
+        fallbackWordCount: publishableWordCount
+      })
+    : null
 
   const [weekTaskState, setWeekTaskState] = useState<WeekTaskState>({
     loading: true,
@@ -623,15 +667,6 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           : typeof qcArtifact?.metrics?.score_overall === 'number'
             ? qcArtifact.metrics.score_overall
             : null
-      const seoScore = typeof draftArtifact.analysis?.seoScore === 'number' ? draftArtifact.analysis.seoScore : null
-      const readabilityScore =
-        typeof draftArtifact.analysis?.readabilityScore === 'number' ? draftArtifact.analysis.readabilityScore : null
-      const imageCount =
-        typeof draftArtifact.metrics?.inline_image_count === 'number'
-          ? draftArtifact.metrics.inline_image_count + (draftArtifact.metrics.infographic_count ?? 0) + (draftArtifact.metrics.featured_image_present ? 1 : 0)
-          : typeof draftArtifact.analysis?.imageCount === 'number'
-            ? draftArtifact.analysis.imageCount
-            : null
       const wordCount =
         typeof draftArtifact.metrics?.publishable_word_count === 'number'
           ? draftArtifact.metrics.publishable_word_count
@@ -665,19 +700,35 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         cycleHours = Math.round(((qcStamp - draftStamp) / (60 * 60 * 1000)) * 10) / 10
       }
 
+      const readiness = evaluateContentReadiness({
+        contentCategory: draftArtifact.contentCategory,
+        metrics: draftArtifact.metrics ?? qcArtifact?.metrics ?? null,
+        analysis: draftArtifact.analysis,
+        markers: draftArtifact.markers ?? qcArtifact?.markers ?? null,
+        fallbackWordCount: wordCount,
+        fallbackRevisionCount: revisionCount,
+        fallbackCycleHours: cycleHours
+      })
+
       unitQuality.push({
         unitKey,
         clientSlug: draftArtifact.clientSlug,
         draftArtifact,
         qcArtifact,
         qcScore,
-        seoScore,
-        readabilityScore,
-        imageCount,
         wordCount,
         revisionCount,
         cycleHours,
-        qcStatus
+        qcStatus,
+        internalLinksCount: readiness.internalLinksCount,
+        externalSourcesCount: readiness.externalSourcesCount,
+        h2Count: readiness.h2Count,
+        featuredImagePresent: readiness.featuredImagePresent,
+        imageAssetCount: readiness.imageAssetCount,
+        qcFailCountBeforePass: readiness.qcFailCountBeforePass,
+        readinessStatus: readiness.status,
+        readinessLabel: readiness.statusLabel,
+        issues: readiness.issues
       })
     }
 
@@ -793,15 +844,15 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     const clientQualityRows: ClientQualityRow[] = Array.from(unitQualityByClient.entries())
       .map(([slug, units]) => {
         const qcScoreValues = units.map((u) => u.qcScore).filter((v): v is number => typeof v === 'number')
-        const seoValues = units.map((u) => u.seoScore).filter((v): v is number => typeof v === 'number')
-        const readabilityValues = units.map((u) => u.readabilityScore).filter((v): v is number => typeof v === 'number')
         const wordCountValues = units.map((u) => u.wordCount).filter((v): v is number => typeof v === 'number')
         const cycleValues = units.map((u) => u.cycleHours).filter((v): v is number => typeof v === 'number')
         const revisionValues = units.map((u) => u.revisionCount).filter((v): v is number => typeof v === 'number')
         const qcFailValues = units
-          .map((u) => u.draftArtifact?.metrics?.qc_fail_count_before_pass ?? u.qcArtifact?.metrics?.qc_fail_count_before_pass ?? null)
+          .map((u) => u.qcFailCountBeforePass)
           .filter((v): v is number => typeof v === 'number')
-        const missingImages = units.filter((u) => typeof u.imageCount === 'number' && u.imageCount <= 0).length
+        const readyCount = units.filter((u) => u.readinessStatus === 'ready').length
+        const reviewCount = units.filter((u) => u.readinessStatus === 'review').length
+        const blockedCount = units.filter((u) => u.readinessStatus === 'blocked').length
         const qcDoneCount = units.filter((u) => (u.qcStatus ? true : false)).length
         const qcPassCount = units.filter((u) => String(u.qcStatus ?? '').toLowerCase() === 'pass').length
         const qcPassPct = qcDoneCount > 0 ? Math.round((qcPassCount / qcDoneCount) * 100) : null
@@ -811,21 +862,24 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           name: knownClientNames.get(slug) ?? slug.replace(/[_-]+/g, ' '),
           unitCount: units.length,
           avgQcScore: averageDecimalOrNull(qcScoreValues),
-          avgSeo: averageOrNull(seoValues),
-          avgReadability: averageOrNull(readabilityValues),
           avgWordCount: averageOrNull(wordCountValues),
-          missingImages,
           avgCycleHours: averageDecimalOrNull(cycleValues),
           avgRevisions: averageDecimalOrNull(revisionValues),
           qcPassPct,
-          avgQcFailBeforePass: averageDecimalOrNull(qcFailValues)
+          avgQcFailBeforePass: averageDecimalOrNull(qcFailValues),
+          readyCount,
+          reviewCount,
+          blockedCount,
+          needsQcCount: units.filter((u) => u.issues.includes('Needs QC pass')).length,
+          missingFeaturedImageCount: units.filter((u) => u.issues.includes('Missing featured image')).length,
+          thinContentCount: units.filter((u) => u.issues.includes('Thin content') || u.issues.includes('Thin post')).length,
+          linkGapCount: units.filter((u) => u.issues.includes('Needs internal link')).length,
+          sourceGapCount: units.filter((u) => u.issues.includes('Needs source')).length
         }
       })
       .sort((a, b) => {
-        const aScore = a.avgQcScore ?? -1
-        const bScore = b.avgQcScore ?? -1
-        if (aScore !== bScore) return aScore - bScore
-        if (a.missingImages !== b.missingImages) return b.missingImages - a.missingImages
+        if (a.blockedCount !== b.blockedCount) return b.blockedCount - a.blockedCount
+        if (a.reviewCount !== b.reviewCount) return b.reviewCount - a.reviewCount
         return a.name.localeCompare(b.name)
       })
 
@@ -911,29 +965,28 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     )
 
     const overallQcScore = averageDecimalOrNull(unitQuality.map((u) => u.qcScore).filter((v): v is number => typeof v === 'number'))
-    const overallSeo = averageOrNull(unitQuality.map((u) => u.seoScore).filter((v): v is number => typeof v === 'number'))
-    const overallReadability = averageOrNull(
-      unitQuality.map((u) => u.readabilityScore).filter((v): v is number => typeof v === 'number'),
-    )
     const overallWordCount = averageOrNull(unitQuality.map((u) => u.wordCount).filter((v): v is number => typeof v === 'number'))
     const overallCycleValues = unitQuality.map((u) => u.cycleHours).filter((v): v is number => typeof v === 'number')
     const overallCycleHours =
       overallCycleValues.length > 0
         ? Math.round((overallCycleValues.reduce((sum, v) => sum + v, 0) / overallCycleValues.length) * 10) / 10
         : null
-    const overallMissingImages = unitQuality.filter((u) => typeof u.imageCount === 'number' && u.imageCount <= 0).length
-    const lowQualityUnits = [...unitQuality]
-      .filter((u) => u.qcScore !== null || u.seoScore !== null || u.readabilityScore !== null)
+    const readyCount = unitQuality.filter((u) => u.readinessStatus === 'ready').length
+    const reviewCount = unitQuality.filter((u) => u.readinessStatus === 'review').length
+    const blockedCount = unitQuality.filter((u) => u.readinessStatus === 'blocked').length
+    const needsQcCount = unitQuality.filter((u) => u.issues.includes('Needs QC pass')).length
+    const missingFeaturedImageCount = unitQuality.filter((u) => u.issues.includes('Missing featured image')).length
+    const highReworkCount = unitQuality.filter((u) => u.issues.includes('High revisions') || u.issues.includes('QC rework')).length
+    const actionUnits = [...unitQuality]
+      .filter((u) => u.issues.length > 0)
       .sort((a, b) => {
+        if (a.readinessStatus !== b.readinessStatus) {
+          return (a.readinessStatus === 'blocked' ? 0 : 1) - (b.readinessStatus === 'blocked' ? 0 : 1)
+        }
+        if (a.issues.length !== b.issues.length) return b.issues.length - a.issues.length
         const aQc = a.qcScore ?? 11
         const bQc = b.qcScore ?? 11
-        if (aQc !== bQc) return aQc - bQc
-        const aSeo = a.seoScore ?? 101
-        const bSeo = b.seoScore ?? 101
-        if (aSeo !== bSeo) return aSeo - bSeo
-        const aRead = a.readabilityScore ?? 101
-        const bRead = b.readabilityScore ?? 101
-        return aRead - bRead
+        return aQc - bQc
       })
       .slice(0, 10)
 
@@ -972,13 +1025,16 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       qualitySnapshot: {
         unitCount: unitQuality.length,
         overallQcScore,
-        overallSeo,
-        overallReadability,
         overallWordCount,
         overallCycleHours,
-        overallMissingImages
+        readyCount,
+        reviewCount,
+        blockedCount,
+        needsQcCount,
+        missingFeaturedImageCount,
+        highReworkCount
       },
-      lowQualityUnits
+      actionUnits
     }
   }, [
     deliverables.artifacts,
@@ -1062,12 +1118,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           <p style={{ marginTop: 6 }}>Content items written today</p>
         </article>
         <article>
-          <p>Client Status</p>
+          <p>Publish Ready</p>
           <h2>
-            {toNumberString(taskModel.onTrackCount)} / {toNumberString(taskModel.clientRows.length)}
+            {toNumberString(taskModel.qualitySnapshot.readyCount)} / {toNumberString(taskModel.qualitySnapshot.unitCount)}
           </h2>
           <p style={{ marginTop: 6 }}>
-            On Track {taskModel.onTrackCount} · Watch {taskModel.watchCount} · At Risk {taskModel.atRiskCount}
+            Review {toNumberString(taskModel.qualitySnapshot.reviewCount)} · Blocked {toNumberString(taskModel.qualitySnapshot.blockedCount)} · Needs QC {toNumberString(taskModel.qualitySnapshot.needsQcCount)}
           </p>
         </article>
         <article>
@@ -1095,10 +1151,10 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       <section className="dashboard-main-grid">
         <article className="panel-card">
           <header className="panel-card-head">
-            <h3>Content Quality</h3>
+            <h3>Publish Readiness</h3>
             <span>
-              Units {toNumberString(taskModel.qualitySnapshot.unitCount)} · Avg QC {taskModel.qualitySnapshot.overallQcScore ?? '—'} / 10 · Avg words{' '}
-              {taskModel.qualitySnapshot.overallWordCount ?? '—'} · Missing images {toNumberString(taskModel.qualitySnapshot.overallMissingImages)}
+              Units {toNumberString(taskModel.qualitySnapshot.unitCount)} · Ready {toNumberString(taskModel.qualitySnapshot.readyCount)} · Review{' '}
+              {toNumberString(taskModel.qualitySnapshot.reviewCount)} · Blocked {toNumberString(taskModel.qualitySnapshot.blockedCount)}
             </span>
           </header>
           {taskModel.clientQualityRows.length === 0 ? (
@@ -1107,30 +1163,33 @@ export default function Dashboard({ deliverables }: DashboardProps) {
             <ul className="plain-list dashboard-client-list">
               {taskModel.clientQualityRows.map((row) => {
                 let pill: ClientHealthRow['risk'] = 'on_track'
-                if ((row.avgSeo !== null && row.avgSeo < 60) || row.missingImages > 0) {
+                if (row.blockedCount > 0) {
                   pill = 'at_risk'
-                } else if (row.avgSeo !== null && row.avgSeo < 75) {
+                } else if (row.reviewCount > 0) {
                   pill = 'watch'
                 }
 
-                const pct = row.avgQcScore ?? 0
+                const pct = row.unitCount > 0 ? Math.round((row.readyCount / row.unitCount) * 100) : 0
 
                 return (
                   <li key={row.slug} className="dashboard-client-row">
                   <div className="dashboard-client-main">
                     <strong>{row.name}</strong>
                     <p>
-                      Units {row.unitCount} · QC pass {row.qcPassPct ?? '—'}% · Avg QC {row.avgQcScore ?? '—'} / 10 · Missing images {row.missingImages}
+                      Ready {row.readyCount}/{row.unitCount} · Review {row.reviewCount} · Blocked {row.blockedCount} · Needs QC {row.needsQcCount}
                     </p>
                     <p>
-                      Avg words {row.avgWordCount ?? '—'} · Avg cycle {row.avgCycleHours ?? '—'}h · Rework {row.avgRevisions ?? '—'} revs · QC fails before pass {row.avgQcFailBeforePass ?? '—'}
+                      Missing image {row.missingFeaturedImageCount} · Thin content {row.thinContentCount} · Link gaps {row.linkGapCount} · Source gaps {row.sourceGapCount}
+                    </p>
+                    <p>
+                      Avg QC {row.avgQcScore ?? '—'} / 10 · Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC rework {row.avgQcFailBeforePass ?? '—'}
                     </p>
                     <div className="dashboard-bar-track thin">
-                      <div className="dashboard-bar-fill workflow-draft" style={{ width: `${Math.max(0, Math.min(100, (pct / 10) * 100))}%` }} />
+                      <div className="dashboard-bar-fill workflow-draft" style={{ width: `${Math.max(0, Math.min(100, pct))}%` }} />
                     </div>
                   </div>
                   <div className="dashboard-client-actions">
-                    <span className={`risk-pill risk-${pill}`}>{pill === 'at_risk' ? 'Needs Work' : pill === 'watch' ? 'Review' : 'Good'}</span>
+                    <span className={`risk-pill risk-${pill}`}>{pill === 'at_risk' ? 'Blocked' : pill === 'watch' ? 'Review' : 'Ready'}</span>
                   </div>
                 </li>
                 )
@@ -1141,24 +1200,30 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
         <article className="panel-card">
           <header className="panel-card-head">
-            <h3>Content Evaluation</h3>
-            <span>Maintain vs improve by recurring quality gaps</span>
+            <h3>Production Friction</h3>
+            <span>Where the team is losing time or publish readiness</span>
           </header>
           {taskModel.clientQualityRows.length === 0 ? (
             <p className="subhead">No evaluated content yet.</p>
           ) : (
             <ul className="plain-list">
               {taskModel.clientQualityRows.slice(0, 10).map((row) => {
-                const needsImprove =
-                  (row.avgQcScore !== null && row.avgQcScore < 7.5) ||
-                  row.missingImages > 0 ||
-                  ((row.avgQcFailBeforePass ?? 0) > 0.5)
+                const frictionCount =
+                  row.blockedCount +
+                  row.reviewCount +
+                  row.missingFeaturedImageCount +
+                  row.thinContentCount +
+                  row.linkGapCount +
+                  row.sourceGapCount
                 return (
                   <li key={row.slug} className="client-row">
                     <div>
                       <strong>{row.name}</strong>
                       <p>
-                        {needsImprove ? 'Improve' : 'Maintain'} · Avg QC {row.avgQcScore ?? '—'} / 10 · Missing images {row.missingImages} · QC fails before pass {row.avgQcFailBeforePass ?? '—'}
+                        Friction {frictionCount} · Missing image {row.missingFeaturedImageCount} · Thin {row.thinContentCount} · Needs QC {row.needsQcCount}
+                      </p>
+                      <p>
+                        Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC rework {row.avgQcFailBeforePass ?? '—'} · QC pass {row.qcPassPct ?? '—'}%
                       </p>
                     </div>
                   </li>
@@ -1172,20 +1237,23 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       <section className="dashboard-main-grid">
         <article className="panel-card">
           <header className="panel-card-head">
-            <h3>Quality Alerts</h3>
-            <span>Lowest SEO/readability items in this order</span>
+            <h3>Action Queue</h3>
+            <span>Items blocking publish or causing rework</span>
           </header>
-          {taskModel.lowQualityUnits.length === 0 ? (
-            <p className="subhead">No scored content units found.</p>
+          {taskModel.actionUnits.length === 0 ? (
+            <p className="subhead">No publish blockers found.</p>
           ) : (
             <ul className="plain-list">
-              {taskModel.lowQualityUnits.map((unit) => (
+              {taskModel.actionUnits.map((unit) => (
                 <li key={unit.unitKey} className="client-row">
                   <div>
                     <strong>{unit.draftArtifact?.name ?? unit.unitKey}</strong>
                     <p>
-                      {unit.draftArtifact?.clientName ?? unit.clientSlug} · SEO {unit.seoScore ?? '—'} · Read {unit.readabilityScore ?? '—'} · Words{' '}
-                      {unit.wordCount ?? '—'} · Images {unit.imageCount ?? '—'} · Revisions {unit.revisionCount} · Cycle {unit.cycleHours ?? '—'}h
+                      {unit.draftArtifact?.clientName ?? unit.clientSlug} · {unit.readinessLabel} · {unit.issues.join(' · ')}
+                    </p>
+                    <p>
+                      QC {unit.qcScore ?? '—'} / 10 · Words {unit.wordCount ?? '—'} · Links {unit.internalLinksCount ?? '—'} · Sources {unit.externalSourcesCount ?? '—'} · Assets{' '}
+                      {unit.imageAssetCount ?? '—'} · Revisions {unit.revisionCount} · Cycle {unit.cycleHours ?? '—'}h
                     </p>
                   </div>
                 </li>
@@ -1283,39 +1351,66 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                 <p className="subhead">
                   {selectedArtifact.level} · {formatWorkflow(selectedArtifact.workflow)} · {formatArtifactType(selectedArtifact.artifactType)}
                 </p>
-                {preview.metrics || selectedArtifact.analysis ? (
+                {selectedArtifactReadiness ? (
                   <p className="subhead">
-                    QC {preview.metrics?.score_overall ?? '—'} / 10 · Status {preview.metrics?.qc_status ?? selectedArtifact.markers?.qcStatus ?? '—'} · Words{' '}
-                    {publishableWordCount ?? selectedArtifact.analysis?.wordCount ?? '—'} · H2s {preview.metrics?.h2_count_body ?? '—'} · Internal links{' '}
-                    {preview.metrics?.internal_links_count ?? '—'} · Sources {preview.metrics?.external_sources_count ?? '—'}
+                    Status {selectedArtifactReadiness.statusLabel} · {selectedArtifactReadiness.issues.length > 0 ? selectedArtifactReadiness.issues.join(' · ') : 'Ready for publish handoff'}
                   </p>
                 ) : null}
-                {preview.metrics ? (
+                {selectedArtifactReadiness ? (
                   <p className="subhead">
-                    Revisions {preview.metrics.content_revision_count ?? '—'} · QC fails before pass {preview.metrics.qc_fail_count_before_pass ?? '—'} · Featured image{' '}
-                    {preview.metrics.featured_image_present ? 'Yes' : 'No'} · Inline images {preview.metrics.inline_image_count ?? '—'} · Infographics{' '}
-                    {preview.metrics.infographic_count ?? '—'}
+                    QC {selectedArtifactReadiness.qcScore ?? '—'} / 10 · QC status {selectedArtifactReadiness.qcStatus ?? '—'} · Words {selectedArtifactReadiness.wordCount ?? '—'} · H2s{' '}
+                    {selectedArtifactReadiness.h2Count ?? '—'} · Internal links {selectedArtifactReadiness.internalLinksCount ?? '—'} · Sources {selectedArtifactReadiness.externalSourcesCount ?? '—'}
                   </p>
                 ) : null}
-                {preview.images && preview.images.length > 0 ? (
+                {selectedArtifactReadiness ? (
+                  <p className="subhead">
+                    Revisions {selectedArtifactReadiness.revisionCount ?? '—'} · QC rework {selectedArtifactReadiness.qcFailCountBeforePass ?? '—'} · Cycle{' '}
+                    {selectedArtifactReadiness.cycleHours ?? '—'}h · Featured image{' '}
+                    {selectedArtifactReadiness.featuredImagePresent === null ? '—' : selectedArtifactReadiness.featuredImagePresent ? 'Yes' : 'No'} · Uploaded assets{' '}
+                    {selectedArtifactReadiness.imageAssetCount ?? '—'}
+                  </p>
+                ) : null}
+                {(preview.images && preview.images.length > 0) || bodyImageRefs.length > 0 ? (
                   <section style={{ marginTop: 12 }}>
                     <h4 style={{ margin: '8px 0' }}>Images</h4>
-                    <ul className="plain-list">
-                      {preview.images.map((img, idx) => (
-                        <li key={`${img.url ?? img.filename ?? idx}`}>
-                          {img.url ? (
-                            <a href={img.url} target="_blank" rel="noreferrer">
-                              {img.filename ?? `image-${idx + 1}`}
-                            </a>
-                          ) : (
-                            <span>{img.filename ?? `image-${idx + 1}`}</span>
-                          )}
-                          {img.category ? <span className="subhead"> · {img.category}</span> : null}
-                          {typeof img.revision === 'number' ? <span className="subhead"> · rev {img.revision}</span> : null}
-                          {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
-                        </li>
-                      ))}
-                    </ul>
+
+                    {preview.images && preview.images.length > 0 ? (
+                      <>
+                        <div className="subhead">Uploaded to Control Center (downloadable)</div>
+                        <ul className="plain-list">
+                          {preview.images.map((img, idx) => (
+                            <li key={`${img.url ?? img.filename ?? idx}`}>
+                              {img.url ? (
+                                <a href={img.url} target="_blank" rel="noreferrer">
+                                  {img.filename ?? `image-${idx + 1}`}
+                                </a>
+                              ) : (
+                                <span>{img.filename ?? `image-${idx + 1}`}</span>
+                              )}
+                              {img.category ? <span className="subhead"> · {img.category}</span> : null}
+                              {typeof img.revision === 'number' ? <span className="subhead"> · rev {img.revision}</span> : null}
+                              {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <div className="subhead">No images uploaded to Control Center yet.</div>
+                    )}
+
+                    {bodyImageRefs.length > 0 ? (
+                      <>
+                        <div className="subhead" style={{ marginTop: 8 }}>Image placeholders found in body_content (intended placement)</div>
+                        <ul className="plain-list">
+                          {bodyImageRefs.map((img, idx) => (
+                            <li key={`${img.src}-${idx}`}>
+                              <code>{img.src}</code>
+                              {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null}
                   </section>
                 ) : null}
 
@@ -1323,6 +1418,11 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                   <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
                     Download
                   </a>
+                  {preview.metrics?.qc_artifact_id ? (
+                    <a className="action-btn" href={artifactDownloadUrl(preview.metrics.qc_artifact_id)}>
+                      Download QC
+                    </a>
+                  ) : null}
                   {!import.meta.env.PROD ? (
                     <>
                       <button

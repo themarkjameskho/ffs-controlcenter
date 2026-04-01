@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const [clients, artifacts] = await Promise.all([
       client.fetch(`*[_type == "client"] | order(name asc) {slug, name}`),
       client.fetch(
-        `*[_type == "artifact"] | order(coalesce(date, modifiedAt) desc) {
+        `*[_type == "artifact" && workflow != "qc" && contentCategory != "qc"] | order(coalesce(date, modifiedAt) desc) {
           _id,
           id,
           name,
@@ -48,6 +48,7 @@ export default async function handler(req, res) {
             external_sources_count,
             content_revision_count,
             qc_fail_count_before_pass,
+            qc_artifact_id,
             featured_image_present,
             inline_image_count,
             infographic_count,

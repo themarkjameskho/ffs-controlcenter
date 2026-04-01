@@ -585,9 +585,10 @@ function buildDeliverablesIndex() {
     const date = dateFromName(name)
     const weekNumbers = parseWeekNumbers(weekBucket)
     const relativePath = path.relative(WORKSPACE_ROOT, abs).split(path.sep).join('/')
-    const workflow = classifyWorkflow(name, relativePath, artifactType)
-    const contentCategory = classifyContentCategory(name, relativePath, artifactType, workflow)
-    const level = classifyLevel(contentCategory)
+	    const workflow = classifyWorkflow(name, relativePath, artifactType)
+	    const contentCategory = classifyContentCategory(name, relativePath, artifactType, workflow)
+	    if (workflow === 'qc' || contentCategory === 'qc') continue
+	    const level = classifyLevel(contentCategory)
 
     const summary =
       summaries.get(clientSlug) ?? createClientSummaryBuilder(clientSlug, clientNames[clientSlug] ?? prettyClientName(clientSlug))
@@ -596,8 +597,7 @@ function buildDeliverablesIndex() {
     summary.lastUpdatedMs = Math.max(summary.lastUpdatedMs, stat.mtimeMs)
     if (contentCategory === 'blog') summary.actualBlogs += 1
     if (contentCategory === 'gmb') summary.actualGpp += 1
-    if (contentCategory === 'qc') summary.actualQc += 1
-    if (contentCategory === 'l1') summary.actualL1 += 1
+	    if (contentCategory === 'l1') summary.actualL1 += 1
     if (contentCategory === 'l2') summary.actualL2 += 1
     if (contentCategory === 'l3') summary.actualL3 += 1
     summaries.set(clientSlug, summary)

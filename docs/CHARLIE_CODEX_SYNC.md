@@ -9,7 +9,130 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
 
 ---
 
+## 2026-04-01 — Codex: Publish-readiness metrics now replace low-signal dashboard scoring
+
+### Completed
+- `src/lib/contentReadiness.ts`
+  - added a shared readiness evaluator used by Dashboard + Client Dashboard
+  - classifies each content item as:
+    - `Ready`
+    - `Review`
+    - `Blocked`
+  - primary blocker/review signals:
+    - missing QC pass
+    - missing featured image
+    - thin content
+    - missing internal link
+    - missing source
+    - high revisions / QC rework
+    - slow turnaround
+
+- `src/pages/Dashboard.tsx`
+  - replaced low-signal SEO/readability-heavy rollups with:
+    - `Publish Ready`
+    - `Publish Readiness`
+    - `Production Friction`
+    - `Action Queue`
+  - per-client rows now show:
+    - ready / review / blocked counts
+    - needs QC count
+    - missing image count
+    - thin content count
+    - link gap count
+    - source gap count
+    - avg QC / cycle / revisions / QC rework
+
+- `src/pages/ClientDashboard.tsx`
+  - summary cards now show:
+    - publish ready
+    - needs QC
+    - missing image
+    - thin content
+    - avg QC
+    - avg cycle
+    - avg revisions
+
+- Dashboard + Client Dashboard modal
+  - modal now leads with:
+    - readiness status
+    - blockers / review reasons
+    - QC score + QC status
+    - publishable word count
+    - H2 / internal links / sources
+    - revisions / QC rework / cycle time
+    - featured image + uploaded asset count
+
+### Notes
+- This keeps the existing appearance system intact and only changes the information architecture / usefulness of the metrics.
+- QC strict-hide remains in place:
+  - QC artifacts do not appear in lists
+  - QC stays accessible only through metrics + `Download QC`
+
+### Remaining real-world blocker
+- Online values will still only be as good as the latest Sanity sync.
+- Charlie/OpenClaw still needs to run the updated sync on the machine with the real deliverables so the new metrics populate live data.
+
+## CODEx TODO (execute now) — Micro/Macro metrics + images + strict QC hide (Dashboard default = ALL)
+
+### Modal (micro) — per content
+- Show `artifact.metrics` (not heuristic `analysis`) in the modal:
+  - `qc_status`, `score_overall`
+  - `publishable_word_count` (body-only)
+  - `h2_count_body`
+  - `internal_links_count`, `external_sources_count`
+  - `content_revision_count`, `image_revision_count`, `qc_fail_count_before_pass`
+  - `featured_image_present`, `inline_image_count`, `infographic_count`
+- Show `artifact.images[]` as a downloadable list (filename/category/title/alt + asset URL).
+- QC artifacts: **STRICT HIDE** from lists + no QC preview; modal only shows QC metrics + **Download QC** link.
+
+### Dashboard (macro) — default = ALL, optional filter by order/week
+- Default view must aggregate across **all** artifacts (no filter).
+- Add optional dropdown filter for order/week window (e.g., week11–15, week16–19). Selecting a filter recomputes rollups for that subset.
+
+Compute rollups using `artifact.metrics`:
+1) Volume / throughput
+- total items, blog count, link counts (L1/L2/L3), QC PASS count
+
+2) Quality
+- QC pass rate, avg QC score (and avg breakdowns if present)
+
+3) Content strength (publishable-only)
+- avg publishable word count (blogs vs links)
+- word-count compliance rate (% within target bands)
+
+4) Images
+- image completeness rate (% with featured + expected inline)
+- avg inline images
+- infographic usage rate
+
+5) Efficiency / rework
+- avg content revision count
+- avg image revision count
+- avg QC fails before pass
+- avg cycle time to QC PASS (if markers exist)
+
+Add evaluation block under rollups:
+- Maintain (green)
+- Improve (top blockers, short bodies, missing images, high revisions)
+
+### Sanity (Control Center project)
+- Ensure `artifact.metrics` is written during sync/backfill.
+- Ensure `artifact.images[]` is preserved and served with dereferenced `url`.
+
+### Baseline
+- Backfill starting with `week11-15`.
+
+---
+
 ## 2026-04-01 — Codex: Implemented canonical `metrics` + image-aware modal/dashboard plumbing
+
+### Override (Mark decision) — QC artifacts STRICT HIDE
+- QC artifacts must NOT appear in any Control Center lists (Dashboard feeds, ClientDashboard lists, Kanban, Calendar).
+- QC is documentation only:
+  - show QC status/score via `artifact.metrics`
+  - provide Download QC link from the parent content modal
+  - no QC markdown preview by default
+- Implementation: filter out artifacts where `workflow == "qc"` OR `contentCategory == "qc"` in both API + UI.
 
 ### Completed
 - `scripts/sanity-sync.mjs`

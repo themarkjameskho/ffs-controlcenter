@@ -34,6 +34,7 @@ export type DeliverablesArtifact = {
     external_sources_count?: number | null
     content_revision_count?: number | null
     qc_fail_count_before_pass?: number | null
+    qc_artifact_id?: string | null
     featured_image_present?: boolean | null
     inline_image_count?: number | null
     infographic_count?: number | null
@@ -97,6 +98,10 @@ function sortByName<T extends { name: string }>(items: T[]) {
   return [...items].sort((a, b) => a.name.localeCompare(b.name))
 }
 
+function isQcArtifact(artifact: Pick<DeliverablesArtifact, 'workflow' | 'contentCategory'>) {
+  return artifact.workflow === 'qc' || artifact.contentCategory === 'qc'
+}
+
 async function loadDeliverablesIndex(): Promise<DeliverablesIndexState> {
   const source = dataSource()
   const url =
@@ -117,7 +122,7 @@ async function loadDeliverablesIndex(): Promise<DeliverablesIndexState> {
     generatedAt: payload.generatedAt ?? '',
     weeks: Array.isArray(payload.weeks) ? payload.weeks : [],
     clients: sortByName(Array.isArray(payload.clients) ? payload.clients : []),
-    artifacts: Array.isArray(payload.artifacts) ? payload.artifacts : []
+    artifacts: Array.isArray(payload.artifacts) ? payload.artifacts.filter((artifact) => !isQcArtifact(artifact)) : []
   }
 }
 

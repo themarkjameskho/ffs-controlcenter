@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useParams } from 'react-router-dom'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
+import { evaluateContentReadiness } from '../lib/contentReadiness'
 import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/deliverables'
 import { formatContentCategory, humanizeClientSlug } from '../lib/deliverables'
 import { dataSource } from '../lib/dataSource'
@@ -125,6 +126,42 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
       : preview.status === 'ready'
         ? computeBodyWordCount(preview.content)
         : null
+  const selectedArtifactReadiness = selectedArtifact
+    ? evaluateContentReadiness({
+        contentCategory: selectedArtifact.contentCategory,
+        metrics: preview.metrics ?? selectedArtifact.metrics ?? null,
+        analysis: selectedArtifact.analysis,
+        markers: selectedArtifact.markers,
+        fallbackWordCount: publishableWordCount
+      })
+    : null
+  const clientOperationalMetrics = useMemo(() => {
+    const evaluated = clientArtifacts.map((artifact) =>
+      evaluateContentReadiness({
+        contentCategory: artifact.contentCategory,
+        metrics: artifact.metrics,
+        analysis: artifact.analysis,
+        markers: artifact.markers
+      }),
+    )
+    const cycleValues = evaluated.map((entry) => entry.cycleHours).filter((value): value is number => typeof value === 'number')
+    const qcValues = evaluated.map((entry) => entry.qcScore).filter((value): value is number => typeof value === 'number')
+    const revisionValues = evaluated.map((entry) => entry.revisionCount).filter((value): value is number => typeof value === 'number')
+    const average = (values: number[]) =>
+      values.length > 0 ? Math.round((values.reduce((sum, value) => sum + value, 0) / values.length) * 10) / 10 : null
+
+    return {
+      readyCount: evaluated.filter((entry) => entry.status === 'ready').length,
+      reviewCount: evaluated.filter((entry) => entry.status === 'review').length,
+      blockedCount: evaluated.filter((entry) => entry.status === 'blocked').length,
+      needsQcCount: evaluated.filter((entry) => entry.issues.includes('Needs QC pass')).length,
+      missingImageCount: evaluated.filter((entry) => entry.issues.includes('Missing featured image')).length,
+      thinContentCount: evaluated.filter((entry) => entry.issues.includes('Thin content') || entry.issues.includes('Thin post')).length,
+      avgCycleHours: average(cycleValues),
+      avgQcScore: average(qcValues),
+      avgRevisions: average(revisionValues)
+    }
+  }, [clientArtifacts])
 
   return (
     <div className="page-shell">
@@ -148,32 +185,39 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
         <>
           <section className="summary-row">
             <article>
-              <p>Orders Created</p>
-              <h2>{client.ordersCreated}</h2>
+              <p>Publish Ready</p>
+              <h2>{clientOperationalMetrics.readyCount}</h2>
+              <p style={{ marginTop: 6 }}>Review {clientOperationalMetrics.reviewCount} · Blocked {clientOperationalMetrics.blockedCount}</p>
             </article>
             <article>
-              <p>Blogs Created</p>
-              <h2>{client.blogsCreated}</h2>
+              <p>Needs QC</p>
+              <h2>{clientOperationalMetrics.needsQcCount}</h2>
+              <p style={{ marginTop: 6 }}>Items still not passed by QC</p>
             </article>
             <article>
-              <p>GMB</p>
-              <h2>{client.gpp}</h2>
+              <p>Missing Image</p>
+              <h2>{clientOperationalMetrics.missingImageCount}</h2>
+              <p style={{ marginTop: 6 }}>Longform items without featured image</p>
             </article>
             <article>
-              <p>QC</p>
-              <h2>{client.qc}</h2>
+              <p>Thin Content</p>
+              <h2>{clientOperationalMetrics.thinContentCount}</h2>
+              <p style={{ marginTop: 6 }}>Drafts under the baseline length</p>
             </article>
             <article>
-              <p>L1</p>
-              <h2>{client.l1}</h2>
+              <p>Avg QC</p>
+              <h2>{clientOperationalMetrics.avgQcScore ?? '—'}</h2>
+              <p style={{ marginTop: 6 }}>Across indexed content items</p>
             </article>
             <article>
-              <p>L2</p>
-              <h2>{client.l2}</h2>
+              <p>Avg Cycle</p>
+              <h2>{clientOperationalMetrics.avgCycleHours ?? '—'}h</h2>
+              <p style={{ marginTop: 6 }}>Writer to QC turnaround</p>
             </article>
             <article>
-              <p>L3</p>
-              <h2>{client.l3}</h2>
+              <p>Avg Revisions</p>
+              <h2>{clientOperationalMetrics.avgRevisions ?? '—'}</h2>
+              <p style={{ marginTop: 6 }}>Revision pressure per content item</p>
             </article>
           </section>
 
@@ -208,7 +252,6 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                   <option value="l1">L1</option>
                   <option value="l2">L2</option>
                   <option value="l3">L3</option>
-                  <option value="qc">QC</option>
                   <option value="research">Research</option>
                   <option value="other">Other</option>
                 </select>
@@ -302,18 +345,25 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                     <p className="subhead">
                       {formatContentCategory(selectedArtifact.contentCategory)} · {selectedArtifact.weekBucket}
                     </p>
-                    {preview.metrics || selectedArtifact.analysis ? (
+                    {selectedArtifactReadiness ? (
                       <p className="subhead">
-                        QC {preview.metrics?.score_overall ?? '—'} / 10 · Status {preview.metrics?.qc_status ?? selectedArtifact.markers?.qcStatus ?? '—'} · Words{' '}
-                        {publishableWordCount ?? selectedArtifact.analysis?.wordCount ?? '—'} · H2s {preview.metrics?.h2_count_body ?? '—'} · Internal links{' '}
-                        {preview.metrics?.internal_links_count ?? '—'} · Sources {preview.metrics?.external_sources_count ?? '—'}
+                        Status {selectedArtifactReadiness.statusLabel} ·{' '}
+                        {selectedArtifactReadiness.issues.length > 0 ? selectedArtifactReadiness.issues.join(' · ') : 'Ready for publish handoff'}
                       </p>
                     ) : null}
-                    {preview.metrics ? (
+                    {selectedArtifactReadiness ? (
                       <p className="subhead">
-                        Revisions {preview.metrics.content_revision_count ?? '—'} · QC fails before pass {preview.metrics.qc_fail_count_before_pass ?? '—'} · Featured image{' '}
-                        {preview.metrics.featured_image_present ? 'Yes' : 'No'} · Inline images {preview.metrics.inline_image_count ?? '—'} · Infographics{' '}
-                        {preview.metrics.infographic_count ?? '—'}
+                        QC {selectedArtifactReadiness.qcScore ?? '—'} / 10 · QC status {selectedArtifactReadiness.qcStatus ?? '—'} · Words {selectedArtifactReadiness.wordCount ?? '—'} · H2s{' '}
+                        {selectedArtifactReadiness.h2Count ?? '—'} · Internal links {selectedArtifactReadiness.internalLinksCount ?? '—'} · Sources{' '}
+                        {selectedArtifactReadiness.externalSourcesCount ?? '—'}
+                      </p>
+                    ) : null}
+                    {selectedArtifactReadiness ? (
+                      <p className="subhead">
+                        Revisions {selectedArtifactReadiness.revisionCount ?? '—'} · QC rework {selectedArtifactReadiness.qcFailCountBeforePass ?? '—'} · Cycle{' '}
+                        {selectedArtifactReadiness.cycleHours ?? '—'}h · Featured image{' '}
+                        {selectedArtifactReadiness.featuredImagePresent === null ? '—' : selectedArtifactReadiness.featuredImagePresent ? 'Yes' : 'No'} · Uploaded assets{' '}
+                        {selectedArtifactReadiness.imageAssetCount ?? '—'}
                       </p>
                     ) : null}
                     {preview.images && preview.images.length > 0 ? (
@@ -338,11 +388,16 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                       </section>
                     ) : null}
 
-                    <div className="preview-actions">
-                      <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
-                        Download
-                      </a>
-                      {!import.meta.env.PROD ? (
+                <div className="preview-actions">
+                  <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
+                    Download
+                  </a>
+                  {preview.metrics?.qc_artifact_id ? (
+                    <a className="action-btn" href={artifactDownloadUrl(preview.metrics.qc_artifact_id)}>
+                      Download QC
+                    </a>
+                  ) : null}
+                  {!import.meta.env.PROD ? (
                         <>
                           <button
                             type="button"

@@ -30,7 +30,22 @@ export default async function handler(req, res) {
         rawMarkdown,
         body,
         qcResult,
-        metrics,
+        metrics{
+          qc_status,
+          score_overall,
+          publishable_word_count,
+          h2_count_body,
+          pk_first_paragraph,
+          internal_links_count,
+          external_sources_count,
+          content_revision_count,
+          qc_fail_count_before_pass,
+          qc_artifact_id,
+          featured_image_present,
+          inline_image_count,
+          infographic_count,
+          image_revision_count
+        },
         images[]{
           filename,
           category,

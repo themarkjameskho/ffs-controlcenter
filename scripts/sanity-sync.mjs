@@ -546,6 +546,7 @@ async function main() {
       external_sources_count: externalSourcesCount,
       content_revision_count: contentRevisionCount,
       qc_fail_count_before_pass: qcFailCountBeforePass,
+      qc_artifact_id: latestQcRecord ? `artifact-${sha1(latestQcRecord.rel).slice(0, 16)}` : null,
       ...imageMetrics
     }
 
