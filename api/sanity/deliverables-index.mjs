@@ -38,6 +38,21 @@ export default async function handler(req, res) {
             readabilityScore,
             seoScore
           },
+          metrics{
+            qc_status,
+            score_overall,
+            publishable_word_count,
+            h2_count_body,
+            pk_first_paragraph,
+            internal_links_count,
+            external_sources_count,
+            content_revision_count,
+            qc_fail_count_before_pass,
+            featured_image_present,
+            inline_image_count,
+            infographic_count,
+            image_revision_count
+          },
           markers{
             writerDoneAt,
             qcDoneAt,
@@ -76,6 +91,7 @@ export default async function handler(req, res) {
       sizeBytes: Number(a.sizeBytes ?? 0),
       relativePath: String(a.relativePath ?? ''),
       analysis: a.analysis ?? null,
+      metrics: a.metrics ?? null,
       markers: a.markers ?? null
     }))
 

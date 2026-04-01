@@ -9,6 +9,133 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
 
 ---
 
+## 2026-04-01 — Codex: Implemented canonical `metrics` + image-aware modal/dashboard plumbing
+
+### Completed
+- `scripts/sanity-sync.mjs`
+  - now computes `artifact.metrics` during sync
+  - preserves existing `artifact.images[]` already attached in Sanity
+  - backfills body metrics from markdown sections:
+    - blogs: `## body_content`
+    - links: `## article_body`
+  - writes:
+    - `qc_status`
+    - `score_overall` (when parsable from QC markdown)
+    - `publishable_word_count`
+    - `h2_count_body`
+    - `internal_links_count`
+    - `external_sources_count`
+    - `content_revision_count`
+    - `qc_fail_count_before_pass`
+    - `featured_image_present`
+    - `inline_image_count`
+    - `infographic_count`
+    - `image_revision_count`
+
+- `api/sanity/artifact.mjs`
+  - returns `metrics`
+  - returns `images[]` with dereferenced `url`
+  - includes image `revision`
+
+- `api/sanity/deliverables-index.mjs`
+  - returns `metrics` for rollups
+
+- UI
+  - `src/pages/Dashboard.tsx`
+    - dashboard quality rollups now prefer `metrics`
+    - modal shows micro metrics + image download list
+    - QC files remain downloadable but QC markdown is no longer the default modal content
+  - `src/pages/ClientDashboard.tsx`
+    - same micro-metrics + images behavior as dashboard modal
+  - `src/lib/artifact.ts`
+    - preview state now carries `metrics` + image `revision`
+  - `src/lib/deliverables.ts`
+    - deliverables artifact type now includes `metrics`
+
+### Important note
+- This work is implemented in code, but the online dashboard will not show the new metrics until Charlie/OpenClaw runs the sync again.
+- Required next step on the machine that has the real deliverables + week JSON:
+  - run the existing Sanity sync/watch flow so artifact docs are re-upserted with `metrics`
+
+### Expected result after resync
+- week11-15 and newer artifacts should populate canonical micro metrics in Sanity
+- dashboard macro quality should come from `metrics` instead of heuristic-only `analysis`
+- image completeness/revision data should appear wherever `artifact.images[]` is already attached
+
+## 2026-04-01 — HMSTR: Micro/Macro Metrics (modal + dashboard) + revisions + images in Control Center Sanity
+
+### Goal
+- Micro (per-content modal): show key metrics + images; QC docs stay downloadable but not the primary UI.
+- Macro (dashboard): rollups per order/week/client + evaluation (“maintain / improve”).
+- Store metrics + image info in **Control Center Sanity** so online UI works for Sanity and non‑Sanity clients.
+
+### Data model (Sanity)
+**Artifact doc** should include:
+- `metrics` (object) — canonical micro metrics
+- `images[]` (array) — generated images for Control Center download hub
+- existing `analysis` + `markers` may remain, but dashboard should use `metrics` as the authoritative display.
+
+#### `artifact.metrics` fields (minimum viable)
+- `qc_status`: PASS|FAIL
+- `score_overall`: number (0–10)
+- `publishable_word_count`: number (body-only)
+- `h2_count_body`: number (body-only)
+- `pk_first_paragraph`: boolean
+- `internal_links_count`: number
+- `external_sources_count`: number
+- `content_revision_count`: number
+- `qc_fail_count_before_pass`: number
+- `featured_image_present`: boolean
+- `inline_image_count`: number
+- `infographic_count`: number
+- `image_revision_count`: number
+
+#### `artifact.images[]` fields
+Each entry should include:
+- `filename`
+- `category` (featured_thumbnail|supporting_photo|infographic|checklist_graphic|comparison_graphic)
+- `title`
+- `alt`
+- `url` (or asset ref that can be dereferenced)
+- `revision` (optional)
+
+### API + UI work
+1) **API**
+- Ensure `/api/sanity/artifact` returns `images[]` with dereferenced `url`.
+- Update `/api/sanity/deliverables-index` to include `metrics` + image counts + revision counts for rollups.
+
+2) **Modal (micro)**
+- Show `publishable_word_count` (body-only) and micro metrics above.
+- Show images list with download links (even for non‑Sanity clients).
+- QC artifact remains downloadable, but modal should not render QC markdown by default.
+
+3) **Dashboard (macro)**
+Rollups per order/week/client:
+- QC pass rate, avg QC score
+- avg publishable_word_count (blogs vs link tiers)
+- image completeness rate
+- avg cycle time to QC PASS (if markers exist)
+- rework rate (avg qc_fail_count_before_pass, content_revision_count, image_revision_count)
+
+Add evaluation block:
+- Maintain (green)
+- Improve (top recurring blocker codes + short bodies + missing images)
+
+### Baseline backfill
+- Start with week11–15 artifacts:
+  - Parse `rawMarkdown` to compute `publishable_word_count` from `## body_content` (blogs) / `## article_body` (links).
+  - Compute `h2_count_body`, link counts.
+  - Pull QC status/score from QC artifacts when available.
+
+### Notes
+- HMSTR already added Control Center image storage plumbing:
+  - script to attach images to Control Center Sanity artifact docs
+  - artifact API returns images
+  - modal shows body-only word count + images
+  Codex should align/extend rather than re-implement.
+
+---
+
 ## 2026-03-24 — Codex: Switched dashboard focus to content quality (SEO/readability/speed/revisions)
 
 ### What changed (Control Center)

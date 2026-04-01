@@ -30,11 +30,13 @@ export default async function handler(req, res) {
         rawMarkdown,
         body,
         qcResult,
+        metrics,
         images[]{
           filename,
           category,
           title,
           alt,
+          revision,
           "url": asset.asset->url
         }
       }`,
@@ -53,6 +55,7 @@ export default async function handler(req, res) {
         rawMarkdown: doc.rawMarkdown ?? '',
         body: doc.body ?? null,
         qcResult: doc.qcResult ?? null,
+        metrics: doc.metrics ?? null,
         images: doc.images ?? null
       }
     })
@@ -60,4 +63,3 @@ export default async function handler(req, res) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : 'Failed to load artifact' })
   }
 }
-

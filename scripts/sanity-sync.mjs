@@ -252,6 +252,98 @@ function markdownSignals(rawMarkdown) {
   }
 }
 
+function sectionBody(rawMarkdown, headings) {
+  const markdown = String(rawMarkdown || '')
+  const headingList = Array.isArray(headings) ? headings : [headings]
+  for (const heading of headingList) {
+    const escaped = String(heading).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const match = markdown.match(new RegExp(`^##\\s+${escaped}\\s*$`, 'im'))
+    if (!match || match.index == null) continue
+    const startIndex = match.index + match[0].length
+    const rest = markdown.slice(startIndex)
+    const nextHeading = rest.match(/^\s*##\s+/m)
+    const body = nextHeading && nextHeading.index != null ? rest.slice(0, nextHeading.index) : rest
+    return body.trim()
+  }
+  return ''
+}
+
+function plainWordCount(text) {
+  const cleaned = stripMarkdown(String(text || ''))
+  return cleaned ? cleaned.split(' ').filter(Boolean).length : 0
+}
+
+function countHeadingLevel(sectionText, level) {
+  if (!sectionText) return 0
+  const regex = new RegExp(`^${'#'.repeat(level)}\\s+\\S`, 'gm')
+  return (sectionText.match(regex) ?? []).length
+}
+
+function countInternalLinks(sectionText) {
+  const markdownLinks = (sectionText.match(/\[[^\]]+]\((?!https?:\/\/)([^)]+)\)/gi) ?? []).length
+  const placeholderLinks = (sectionText.match(/\[Internal Link:[^\]]+\]/gi) ?? []).length
+  return markdownLinks + placeholderLinks
+}
+
+function countExternalSources(sectionText) {
+  const markdownLinks = (sectionText.match(/\[[^\]]+]\((https?:\/\/[^)]+)\)/gi) ?? []).length
+  const bareUrls = (sectionText.match(/https?:\/\/[^\s)\]]+/gi) ?? []).length
+  return Math.max(markdownLinks, bareUrls)
+}
+
+function normalizeQcStatus(value) {
+  const upper = String(value || '').trim().toUpperCase()
+  if (upper.includes('PASS')) return 'PASS'
+  if (upper.includes('FAIL')) return 'FAIL'
+  return null
+}
+
+function parseQcStatus(rawMarkdown) {
+  const markdown = String(rawMarkdown || '')
+  const hardGate = markdown.match(/hard\s*gate\s*(?:result)?\s*:\s*(pass|fail)/i)
+  if (hardGate) return normalizeQcStatus(hardGate[1])
+  const qcStatus = markdown.match(/qc[_\s-]*status\s*:\s*(pass|fail)/i)
+  if (qcStatus) return normalizeQcStatus(qcStatus[1])
+  return null
+}
+
+function parseQcScore(rawMarkdown) {
+  const markdown = String(rawMarkdown || '')
+  const patterns = [
+    /overall\s*score\s*:\s*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+    /score[_\s-]*overall\s*:\s*(\d+(?:\.\d+)?)/i,
+    /quality\s*score\s*:\s*(\d+(?:\.\d+)?)\s*\/\s*10/i
+  ]
+  for (const pattern of patterns) {
+    const match = markdown.match(pattern)
+    if (!match) continue
+    const score = Number(match[1])
+    if (Number.isFinite(score)) return Math.max(0, Math.min(10, score))
+  }
+  return null
+}
+
+function buildImageMetrics(images) {
+  const list = Array.isArray(images) ? images : []
+  const featured = list.some((image) => String(image?.category || '') === 'featured_thumbnail')
+  const inlineCount = list.filter((image) => String(image?.category || '') === 'supporting_photo').length
+  const infographicCount = list.filter((image) =>
+    ['infographic', 'checklist_graphic', 'comparison_graphic'].includes(String(image?.category || '')),
+  ).length
+  const imageRevisionCount = list.reduce((sum, image) => {
+    const revision = Number(image?.revision ?? 0)
+    if (!Number.isFinite(revision) || revision <= 1) return sum
+    return sum + (revision - 1)
+  }, 0)
+
+  return {
+    featured_image_present: featured,
+    inline_image_count: inlineCount,
+    infographic_count: infographicCount,
+    image_revision_count: imageRevisionCount
+  }
+}
+
 function safeYear(value, fallbackIso) {
   const n = Number(value)
   if (Number.isFinite(n) && n >= 2000) return Math.trunc(n)
@@ -330,26 +422,70 @@ async function main() {
     }
   }
 
-  const artifactDocs = []
-  for (const abs of walkDeliverables(DELIVERABLES_DIR)) {
+  const existingArtifactDocs = await client.fetch(
+    `*[_type == "artifact"]{_id, relativePath, images, metrics, body}`
+  )
+  const existingArtifactByPath = new Map()
+  for (const doc of Array.isArray(existingArtifactDocs) ? existingArtifactDocs : []) {
+    if (!doc?.relativePath) continue
+    existingArtifactByPath.set(String(doc.relativePath), doc)
+  }
+
+  const deliverablePaths = walkDeliverables(DELIVERABLES_DIR)
+  const artifactRecords = []
+  const qcRecordsByFolder = new Map()
+  const draftRecordsByFolder = new Map()
+  for (const abs of deliverablePaths) {
     const rel = path.relative(WORKSPACE_ROOT, abs).split(path.sep).join('/')
     const parts = rel.split('/').filter(Boolean)
-    // deliverables/<weekBucket>/<clientSlug>/<artifactType>/...
     if (parts[0] !== 'deliverables') continue
     const weekBucket = parts[1]
     const clientSlug = cleanSlug(parts[2])
     const artifactType = String(parts[3] ?? '')
     if (!weekBucket || !clientSlug || !artifactType) continue
 
-    const stat = fs.statSync(abs)
-    const modifiedAt = stat.mtime.toISOString()
     const name = path.basename(abs)
-    const date = dateFromName(name)
-    const weekNumbers = parseWeekNumbers(weekBucket)
     const workflow = classifyWorkflow(name, rel, artifactType)
     const contentCategory = classifyContentCategory(name, rel, artifactType, workflow)
+    const folderKey = path.dirname(abs)
+
+    const record = {
+      abs,
+      rel,
+      parts,
+      weekBucket,
+      clientSlug,
+      artifactType,
+      workflow,
+      contentCategory,
+      folderKey,
+      name,
+      rawMarkdown: fs.readFileSync(abs, 'utf8'),
+      existing: existingArtifactByPath.get(rel) ?? null
+    }
+    artifactRecords.push(record)
+
+    if (workflow === 'qc' || contentCategory === 'qc') {
+      const list = qcRecordsByFolder.get(folderKey) ?? []
+      list.push(record)
+      qcRecordsByFolder.set(folderKey, list)
+    }
+    if (workflow === 'draft') {
+      const list = draftRecordsByFolder.get(folderKey) ?? []
+      list.push(record)
+      draftRecordsByFolder.set(folderKey, list)
+    }
+  }
+
+  const artifactDocs = []
+  for (const record of artifactRecords) {
+    const { abs, rel, parts, weekBucket, clientSlug, artifactType, workflow, contentCategory, name, rawMarkdown, existing, folderKey } = record
+
+    const stat = fs.statSync(abs)
+    const modifiedAt = stat.mtime.toISOString()
+    const date = dateFromName(name)
+    const weekNumbers = parseWeekNumbers(weekBucket)
     const level = classifyLevel(contentCategory)
-    const rawMarkdown = fs.readFileSync(abs, 'utf8')
     const analysis = markdownSignals(rawMarkdown)
     const docId = `artifact-${sha1(rel).slice(0, 16)}`
 
@@ -376,6 +512,43 @@ async function main() {
       revisionLastAt
     }
 
+    const bodyContent = sectionBody(rawMarkdown, ['body_content', 'article_body'])
+    const publishableWordCount = bodyContent ? plainWordCount(bodyContent) : null
+    const h2CountBody = bodyContent ? countHeadingLevel(bodyContent, 2) : 0
+    const internalLinksCount = bodyContent ? countInternalLinks(bodyContent) : 0
+    const externalSourcesCount = bodyContent ? countExternalSources(bodyContent) : 0
+    const pkFirstParagraph = bodyContent ? /\bpk\b/i.test(bodyContent.split(/\n\s*\n/)[0] ?? '') : false
+
+    const qcRecords = qcRecordsByFolder.get(folderKey) ?? []
+    const qcStatuses = qcRecords.map((item) => parseQcStatus(item.rawMarkdown)).filter(Boolean)
+    const qcScores = qcRecords.map((item) => parseQcScore(item.rawMarkdown)).filter((value) => Number.isFinite(value))
+    const latestQcRecord = qcRecords
+      .slice()
+      .sort((a, b) => fs.statSync(b.abs).mtimeMs - fs.statSync(a.abs).mtimeMs)[0] ?? null
+    const latestQcStatus =
+      normalizeQcStatus(markers.qcStatus) ??
+      parseQcStatus(latestQcRecord?.rawMarkdown ?? '') ??
+      (qcStatuses.find((value) => value === 'PASS') ? 'PASS' : qcStatuses[0] ?? null)
+    const scoreOverall = latestQcRecord ? parseQcScore(latestQcRecord.rawMarkdown) : (qcScores[0] ?? null)
+    const qcFailCountBeforePass =
+      latestQcStatus === 'PASS' ? qcStatuses.filter((value) => value === 'FAIL').length : qcStatuses.filter((value) => value === 'FAIL').length
+
+    const contentRevisionCount = revisionCount ?? Math.max(0, (draftRecordsByFolder.get(folderKey)?.length ?? 1) - 1)
+    const existingImages = Array.isArray(existing?.images) ? existing.images : []
+    const imageMetrics = buildImageMetrics(existingImages)
+    const metrics = {
+      qc_status: latestQcStatus,
+      score_overall: scoreOverall,
+      publishable_word_count: publishableWordCount,
+      h2_count_body: h2CountBody,
+      pk_first_paragraph: pkFirstParagraph,
+      internal_links_count: internalLinksCount,
+      external_sources_count: externalSourcesCount,
+      content_revision_count: contentRevisionCount,
+      qc_fail_count_before_pass: qcFailCountBeforePass,
+      ...imageMetrics
+    }
+
     artifactDocs.push({
       _id: docId,
       _type: 'artifact',
@@ -396,7 +569,9 @@ async function main() {
       rawMarkdown,
       analysis,
       markers,
-      body: []
+      metrics,
+      images: existingImages,
+      body: Array.isArray(existing?.body) ? existing.body : []
     })
   }
 

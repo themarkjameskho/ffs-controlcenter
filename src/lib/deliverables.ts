@@ -24,6 +24,21 @@ export type DeliverablesArtifact = {
     readabilityScore?: number
     seoScore?: number
   } | null
+  metrics?: {
+    qc_status?: string | null
+    score_overall?: number | null
+    publishable_word_count?: number | null
+    h2_count_body?: number | null
+    pk_first_paragraph?: boolean | null
+    internal_links_count?: number | null
+    external_sources_count?: number | null
+    content_revision_count?: number | null
+    qc_fail_count_before_pass?: number | null
+    featured_image_present?: boolean | null
+    inline_image_count?: number | null
+    infographic_count?: number | null
+    image_revision_count?: number | null
+  } | null
   markers?: {
     writerDoneAt?: string | null
     qcDoneAt?: string | null

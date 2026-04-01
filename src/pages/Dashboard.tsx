@@ -74,6 +74,7 @@ type ContentUnitQuality = {
   clientSlug: string
   draftArtifact: DeliverablesArtifact | null
   qcArtifact: DeliverablesArtifact | null
+  qcScore: number | null
   seoScore: number | null
   readabilityScore: number | null
   imageCount: number | null
@@ -87,12 +88,15 @@ type ClientQualityRow = {
   slug: string
   name: string
   unitCount: number
+  avgQcScore: number | null
   avgSeo: number | null
   avgReadability: number | null
+  avgWordCount: number | null
   missingImages: number
   avgCycleHours: number | null
   avgRevisions: number | null
   qcPassPct: number | null
+  avgQcFailBeforePass: number | null
 }
 
 type StageRadarRow = {
@@ -172,6 +176,11 @@ function safeStamp(value: string | null | undefined) {
 function averageOrNull(values: number[]) {
   if (values.length === 0) return null
   return Math.round(values.reduce((sum, v) => sum + v, 0) / values.length)
+}
+
+function averageDecimalOrNull(values: number[]) {
+  if (values.length === 0) return null
+  return Math.round((values.reduce((sum, v) => sum + v, 0) / values.length) * 10) / 10
 }
 
 function weekNumbersFor(window: OrderWindow) {
@@ -343,7 +352,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
   const [locating, setLocating] = useState(false)
   const previewKey = selectedArtifact ? (dataSource() === 'sanity' ? selectedArtifact.id : selectedArtifact.relativePath) : null
   const preview = useArtifactPreview(previewKey)
-  const publishableWordCount = preview.status === 'ready' ? computeBodyWordCount(preview.content) : null
+  const publishableWordCount =
+    typeof preview.metrics?.publishable_word_count === 'number'
+      ? preview.metrics.publishable_word_count
+      : preview.status === 'ready'
+        ? computeBodyWordCount(preview.content)
+        : null
 
   const [weekTaskState, setWeekTaskState] = useState<WeekTaskState>({
     loading: true,
@@ -603,18 +617,38 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     const unitQuality: ContentUnitQuality[] = []
     for (const [unitKey, draftArtifact] of unitLatestDraft.entries()) {
       const qcArtifact = unitLatestQc.get(unitKey) ?? null
+      const qcScore =
+        typeof draftArtifact.metrics?.score_overall === 'number'
+          ? draftArtifact.metrics.score_overall
+          : typeof qcArtifact?.metrics?.score_overall === 'number'
+            ? qcArtifact.metrics.score_overall
+            : null
       const seoScore = typeof draftArtifact.analysis?.seoScore === 'number' ? draftArtifact.analysis.seoScore : null
       const readabilityScore =
         typeof draftArtifact.analysis?.readabilityScore === 'number' ? draftArtifact.analysis.readabilityScore : null
-      const imageCount = typeof draftArtifact.analysis?.imageCount === 'number' ? draftArtifact.analysis.imageCount : null
-      const wordCount = typeof draftArtifact.analysis?.wordCount === 'number' ? draftArtifact.analysis.wordCount : null
+      const imageCount =
+        typeof draftArtifact.metrics?.inline_image_count === 'number'
+          ? draftArtifact.metrics.inline_image_count + (draftArtifact.metrics.infographic_count ?? 0) + (draftArtifact.metrics.featured_image_present ? 1 : 0)
+          : typeof draftArtifact.analysis?.imageCount === 'number'
+            ? draftArtifact.analysis.imageCount
+            : null
+      const wordCount =
+        typeof draftArtifact.metrics?.publishable_word_count === 'number'
+          ? draftArtifact.metrics.publishable_word_count
+          : typeof draftArtifact.analysis?.wordCount === 'number'
+            ? draftArtifact.analysis.wordCount
+            : null
       const revisionCount =
-        typeof draftArtifact.markers?.revisionCount === 'number'
-          ? draftArtifact.markers.revisionCount
+        typeof draftArtifact.metrics?.content_revision_count === 'number'
+          ? draftArtifact.metrics.content_revision_count
+          : typeof draftArtifact.markers?.revisionCount === 'number'
+            ? draftArtifact.markers.revisionCount
           : typeof qcArtifact?.markers?.revisionCount === 'number'
             ? qcArtifact.markers.revisionCount
             : unitDraftCount.get(unitKey) ?? 1
       const qcStatus =
+        (draftArtifact.metrics?.qc_status ? String(draftArtifact.metrics.qc_status) : null) ??
+        (qcArtifact?.metrics?.qc_status ? String(qcArtifact.metrics.qc_status) : null) ??
         (draftArtifact.markers?.qcStatus ? String(draftArtifact.markers.qcStatus) : null) ??
         (qcArtifact?.markers?.qcStatus ? String(qcArtifact.markers.qcStatus) : null) ??
         null
@@ -636,6 +670,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         clientSlug: draftArtifact.clientSlug,
         draftArtifact,
         qcArtifact,
+        qcScore,
         seoScore,
         readabilityScore,
         imageCount,
@@ -757,10 +792,15 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
     const clientQualityRows: ClientQualityRow[] = Array.from(unitQualityByClient.entries())
       .map(([slug, units]) => {
+        const qcScoreValues = units.map((u) => u.qcScore).filter((v): v is number => typeof v === 'number')
         const seoValues = units.map((u) => u.seoScore).filter((v): v is number => typeof v === 'number')
         const readabilityValues = units.map((u) => u.readabilityScore).filter((v): v is number => typeof v === 'number')
+        const wordCountValues = units.map((u) => u.wordCount).filter((v): v is number => typeof v === 'number')
         const cycleValues = units.map((u) => u.cycleHours).filter((v): v is number => typeof v === 'number')
         const revisionValues = units.map((u) => u.revisionCount).filter((v): v is number => typeof v === 'number')
+        const qcFailValues = units
+          .map((u) => u.draftArtifact?.metrics?.qc_fail_count_before_pass ?? u.qcArtifact?.metrics?.qc_fail_count_before_pass ?? null)
+          .filter((v): v is number => typeof v === 'number')
         const missingImages = units.filter((u) => typeof u.imageCount === 'number' && u.imageCount <= 0).length
         const qcDoneCount = units.filter((u) => (u.qcStatus ? true : false)).length
         const qcPassCount = units.filter((u) => String(u.qcStatus ?? '').toLowerCase() === 'pass').length
@@ -770,18 +810,21 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           slug,
           name: knownClientNames.get(slug) ?? slug.replace(/[_-]+/g, ' '),
           unitCount: units.length,
+          avgQcScore: averageDecimalOrNull(qcScoreValues),
           avgSeo: averageOrNull(seoValues),
           avgReadability: averageOrNull(readabilityValues),
+          avgWordCount: averageOrNull(wordCountValues),
           missingImages,
-          avgCycleHours: cycleValues.length ? Math.round((cycleValues.reduce((sum, v) => sum + v, 0) / cycleValues.length) * 10) / 10 : null,
-          avgRevisions: revisionValues.length ? Math.round((revisionValues.reduce((sum, v) => sum + v, 0) / revisionValues.length) * 10) / 10 : null,
-          qcPassPct
+          avgCycleHours: averageDecimalOrNull(cycleValues),
+          avgRevisions: averageDecimalOrNull(revisionValues),
+          qcPassPct,
+          avgQcFailBeforePass: averageDecimalOrNull(qcFailValues)
         }
       })
       .sort((a, b) => {
-        const aSeo = a.avgSeo ?? -1
-        const bSeo = b.avgSeo ?? -1
-        if (aSeo !== bSeo) return aSeo - bSeo
+        const aScore = a.avgQcScore ?? -1
+        const bScore = b.avgQcScore ?? -1
+        if (aScore !== bScore) return aScore - bScore
         if (a.missingImages !== b.missingImages) return b.missingImages - a.missingImages
         return a.name.localeCompare(b.name)
       })
@@ -867,10 +910,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       (task) => ['writer', 'qc', 'publisher'].includes(task.stage) && !isCompletedTask(task, todayYmd),
     )
 
+    const overallQcScore = averageDecimalOrNull(unitQuality.map((u) => u.qcScore).filter((v): v is number => typeof v === 'number'))
     const overallSeo = averageOrNull(unitQuality.map((u) => u.seoScore).filter((v): v is number => typeof v === 'number'))
     const overallReadability = averageOrNull(
       unitQuality.map((u) => u.readabilityScore).filter((v): v is number => typeof v === 'number'),
     )
+    const overallWordCount = averageOrNull(unitQuality.map((u) => u.wordCount).filter((v): v is number => typeof v === 'number'))
     const overallCycleValues = unitQuality.map((u) => u.cycleHours).filter((v): v is number => typeof v === 'number')
     const overallCycleHours =
       overallCycleValues.length > 0
@@ -878,8 +923,11 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         : null
     const overallMissingImages = unitQuality.filter((u) => typeof u.imageCount === 'number' && u.imageCount <= 0).length
     const lowQualityUnits = [...unitQuality]
-      .filter((u) => u.seoScore !== null || u.readabilityScore !== null)
+      .filter((u) => u.qcScore !== null || u.seoScore !== null || u.readabilityScore !== null)
       .sort((a, b) => {
+        const aQc = a.qcScore ?? 11
+        const bQc = b.qcScore ?? 11
+        if (aQc !== bQc) return aQc - bQc
         const aSeo = a.seoScore ?? 101
         const bSeo = b.seoScore ?? 101
         if (aSeo !== bSeo) return aSeo - bSeo
@@ -923,8 +971,10 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       clientQualityRows,
       qualitySnapshot: {
         unitCount: unitQuality.length,
+        overallQcScore,
         overallSeo,
         overallReadability,
+        overallWordCount,
         overallCycleHours,
         overallMissingImages
       },
@@ -1047,8 +1097,8 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           <header className="panel-card-head">
             <h3>Content Quality</h3>
             <span>
-              Units {toNumberString(taskModel.qualitySnapshot.unitCount)} · Avg SEO {taskModel.qualitySnapshot.overallSeo ?? '—'} · Avg Read{' '}
-              {taskModel.qualitySnapshot.overallReadability ?? '—'} · Missing images {toNumberString(taskModel.qualitySnapshot.overallMissingImages)}
+              Units {toNumberString(taskModel.qualitySnapshot.unitCount)} · Avg QC {taskModel.qualitySnapshot.overallQcScore ?? '—'} / 10 · Avg words{' '}
+              {taskModel.qualitySnapshot.overallWordCount ?? '—'} · Missing images {toNumberString(taskModel.qualitySnapshot.overallMissingImages)}
             </span>
           </header>
           {taskModel.clientQualityRows.length === 0 ? (
@@ -1063,20 +1113,20 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                   pill = 'watch'
                 }
 
-                const pct = row.avgSeo ?? 0
+                const pct = row.avgQcScore ?? 0
 
                 return (
                   <li key={row.slug} className="dashboard-client-row">
                   <div className="dashboard-client-main">
                     <strong>{row.name}</strong>
                     <p>
-                      Units {row.unitCount} · Avg SEO {row.avgSeo ?? '—'} · Avg Read {row.avgReadability ?? '—'} · Missing images {row.missingImages}
+                      Units {row.unitCount} · QC pass {row.qcPassPct ?? '—'}% · Avg QC {row.avgQcScore ?? '—'} / 10 · Missing images {row.missingImages}
                     </p>
                     <p>
-                      Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC pass {row.qcPassPct ?? '—'}%
+                      Avg words {row.avgWordCount ?? '—'} · Avg cycle {row.avgCycleHours ?? '—'}h · Rework {row.avgRevisions ?? '—'} revs · QC fails before pass {row.avgQcFailBeforePass ?? '—'}
                     </p>
                     <div className="dashboard-bar-track thin">
-                      <div className="dashboard-bar-fill workflow-draft" style={{ width: `${Math.max(0, Math.min(100, pct))}%` }} />
+                      <div className="dashboard-bar-fill workflow-draft" style={{ width: `${Math.max(0, Math.min(100, (pct / 10) * 100))}%` }} />
                     </div>
                   </div>
                   <div className="dashboard-client-actions">
@@ -1091,21 +1141,31 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
         <article className="panel-card">
           <header className="panel-card-head">
-            <h3>Stage Deadline Radar</h3>
-            <span>Missed / Today / Tomorrow</span>
+            <h3>Content Evaluation</h3>
+            <span>Maintain vs improve by recurring quality gaps</span>
           </header>
-          <ul className="plain-list">
-            {taskModel.stageRadarRows.map((row) => (
-              <li key={row.stage} className="client-row">
-                <div>
-                  <strong>{row.label}</strong>
-                  <p>
-                    Missed {row.missed} · Today {row.today} · Tomorrow {row.tomorrow}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {taskModel.clientQualityRows.length === 0 ? (
+            <p className="subhead">No evaluated content yet.</p>
+          ) : (
+            <ul className="plain-list">
+              {taskModel.clientQualityRows.slice(0, 10).map((row) => {
+                const needsImprove =
+                  (row.avgQcScore !== null && row.avgQcScore < 7.5) ||
+                  row.missingImages > 0 ||
+                  ((row.avgQcFailBeforePass ?? 0) > 0.5)
+                return (
+                  <li key={row.slug} className="client-row">
+                    <div>
+                      <strong>{row.name}</strong>
+                      <p>
+                        {needsImprove ? 'Improve' : 'Maintain'} · Avg QC {row.avgQcScore ?? '—'} / 10 · Missing images {row.missingImages} · QC fails before pass {row.avgQcFailBeforePass ?? '—'}
+                      </p>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </article>
       </section>
 
@@ -1223,10 +1283,18 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                 <p className="subhead">
                   {selectedArtifact.level} · {formatWorkflow(selectedArtifact.workflow)} · {formatArtifactType(selectedArtifact.artifactType)}
                 </p>
-                {selectedArtifact.analysis ? (
+                {preview.metrics || selectedArtifact.analysis ? (
                   <p className="subhead">
-                    SEO {selectedArtifact.analysis.seoScore ?? '—'} · Read {selectedArtifact.analysis.readabilityScore ?? '—'} · Words{' '}
-                    {publishableWordCount ?? selectedArtifact.analysis.wordCount ?? '—'} · Images {preview.images?.length ?? selectedArtifact.analysis.imageCount ?? '—'}
+                    QC {preview.metrics?.score_overall ?? '—'} / 10 · Status {preview.metrics?.qc_status ?? selectedArtifact.markers?.qcStatus ?? '—'} · Words{' '}
+                    {publishableWordCount ?? selectedArtifact.analysis?.wordCount ?? '—'} · H2s {preview.metrics?.h2_count_body ?? '—'} · Internal links{' '}
+                    {preview.metrics?.internal_links_count ?? '—'} · Sources {preview.metrics?.external_sources_count ?? '—'}
+                  </p>
+                ) : null}
+                {preview.metrics ? (
+                  <p className="subhead">
+                    Revisions {preview.metrics.content_revision_count ?? '—'} · QC fails before pass {preview.metrics.qc_fail_count_before_pass ?? '—'} · Featured image{' '}
+                    {preview.metrics.featured_image_present ? 'Yes' : 'No'} · Inline images {preview.metrics.inline_image_count ?? '—'} · Infographics{' '}
+                    {preview.metrics.infographic_count ?? '—'}
                   </p>
                 ) : null}
                 {preview.images && preview.images.length > 0 ? (
@@ -1243,6 +1311,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                             <span>{img.filename ?? `image-${idx + 1}`}</span>
                           )}
                           {img.category ? <span className="subhead"> · {img.category}</span> : null}
+                          {typeof img.revision === 'number' ? <span className="subhead"> · rev {img.revision}</span> : null}
                           {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
                         </li>
                       ))}
@@ -1281,7 +1350,10 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                 </div>
                 {preview.status === 'loading' ? <p className="subhead">Loading artifact…</p> : null}
                 {preview.status === 'error' ? <pre className="artifact-preview">{preview.content}</pre> : null}
-                {preview.status === 'ready' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                {preview.status === 'ready' && selectedArtifact.contentCategory === 'qc' ? (
+                  <p className="subhead">QC file is available via download. Metrics above are the primary summary.</p>
+                ) : null}
               </article>
             </section>,
             document.body,

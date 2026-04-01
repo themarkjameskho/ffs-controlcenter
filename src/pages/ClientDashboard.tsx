@@ -119,7 +119,12 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
 
   const previewKey = selectedArtifact ? (dataSource() === 'sanity' ? selectedArtifact.id : selectedArtifact.relativePath) : null
   const preview = useArtifactPreview(previewKey)
-  const publishableWordCount = preview.status === 'ready' ? computeBodyWordCount(preview.content) : null
+  const publishableWordCount =
+    typeof preview.metrics?.publishable_word_count === 'number'
+      ? preview.metrics.publishable_word_count
+      : preview.status === 'ready'
+        ? computeBodyWordCount(preview.content)
+        : null
 
   return (
     <div className="page-shell">
@@ -297,10 +302,18 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                     <p className="subhead">
                       {formatContentCategory(selectedArtifact.contentCategory)} · {selectedArtifact.weekBucket}
                     </p>
-                    {selectedArtifact.analysis ? (
+                    {preview.metrics || selectedArtifact.analysis ? (
                       <p className="subhead">
-                        SEO {selectedArtifact.analysis.seoScore ?? '—'} · Read {selectedArtifact.analysis.readabilityScore ?? '—'} · Words{' '}
-                        {publishableWordCount ?? selectedArtifact.analysis.wordCount ?? '—'} · Images {preview.images?.length ?? selectedArtifact.analysis.imageCount ?? '—'}
+                        QC {preview.metrics?.score_overall ?? '—'} / 10 · Status {preview.metrics?.qc_status ?? selectedArtifact.markers?.qcStatus ?? '—'} · Words{' '}
+                        {publishableWordCount ?? selectedArtifact.analysis?.wordCount ?? '—'} · H2s {preview.metrics?.h2_count_body ?? '—'} · Internal links{' '}
+                        {preview.metrics?.internal_links_count ?? '—'} · Sources {preview.metrics?.external_sources_count ?? '—'}
+                      </p>
+                    ) : null}
+                    {preview.metrics ? (
+                      <p className="subhead">
+                        Revisions {preview.metrics.content_revision_count ?? '—'} · QC fails before pass {preview.metrics.qc_fail_count_before_pass ?? '—'} · Featured image{' '}
+                        {preview.metrics.featured_image_present ? 'Yes' : 'No'} · Inline images {preview.metrics.inline_image_count ?? '—'} · Infographics{' '}
+                        {preview.metrics.infographic_count ?? '—'}
                       </p>
                     ) : null}
                     {preview.images && preview.images.length > 0 ? (
@@ -317,6 +330,7 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                                 <span>{img.filename ?? `image-${idx + 1}`}</span>
                               )}
                               {img.category ? <span className="subhead"> · {img.category}</span> : null}
+                              {typeof img.revision === 'number' ? <span className="subhead"> · rev {img.revision}</span> : null}
                               {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
                             </li>
                           ))}
@@ -355,7 +369,10 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                     </div>
                     {preview.status === 'loading' ? <p className="subhead">Loading artifact…</p> : null}
                     {preview.status === 'error' ? <pre className="artifact-preview">{preview.content}</pre> : null}
-                    {preview.status === 'ready' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                    {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                    {preview.status === 'ready' && selectedArtifact.contentCategory === 'qc' ? (
+                      <p className="subhead">QC file is available via download. Metrics above are the primary summary.</p>
+                    ) : null}
                   </article>
                 </section>,
                 document.body,
