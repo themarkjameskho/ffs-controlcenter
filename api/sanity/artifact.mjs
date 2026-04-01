@@ -29,7 +29,14 @@ export default async function handler(req, res) {
         relativePath,
         rawMarkdown,
         body,
-        qcResult
+        qcResult,
+        images[]{
+          filename,
+          category,
+          title,
+          alt,
+          "url": asset.asset->url
+        }
       }`,
       { id }
     )
@@ -45,7 +52,8 @@ export default async function handler(req, res) {
         title: doc.title ?? null,
         rawMarkdown: doc.rawMarkdown ?? '',
         body: doc.body ?? null,
-        qcResult: doc.qcResult ?? null
+        qcResult: doc.qcResult ?? null,
+        images: doc.images ?? null
       }
     })
   } catch (error) {

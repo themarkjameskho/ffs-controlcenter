@@ -97,6 +97,32 @@ OpenClaw should be careful with:
 OpenClaw should not change appearance or layout unless explicitly asked.
 OpenClaw should not force a task to Done in `live.json` unless QC PASS truth exists on disk.
 
+## GitHub + Vercel (OpenClaw operator / Charlie)
+
+Primary goal: teammates can access the **login-protected** Control Center online, and code updates deploy automatically.
+
+Authoritative step-by-step doc:
+- `docs/OPENCLAW_GITHUB_VERCEL_DEPLOY.md`
+
+### What auto-deploys vs what does not
+- ✅ **Code/UI changes** auto-deploy on Vercel when you push to GitHub (usually `main`).
+- ❌ **Content/dashboard data** does not “upload itself” from GitHub. If online mode is `VITE_DATA_SOURCE=sanity`, OpenClaw must sync content/task state into Sanity.
+
+### Minimal safe checklist (code deploy)
+1) Make sure you are inside the repo root:
+   - This workspace repo root is `fast-forward-control-center/` (where `package.json` lives).
+2) Verify you are authenticated to GitHub:
+   - Preferred: SSH deploy key (read-write) for this repo.
+   - Alternate: GitHub PAT (keep it secret; never paste into docs).
+3) Do not commit secrets:
+   - `.env.local` must remain uncommitted (it is ignored by `.gitignore`).
+4) Push to `main`:
+   - Vercel is already connected and will build/deploy after the push.
+
+### Vercel sanity checks
+- If env vars change, you must **redeploy** for them to take effect.
+- Keep the deployment **login-protected** using Vercel’s project protection settings.
+
 ## What To Run
 
 Use these commands:

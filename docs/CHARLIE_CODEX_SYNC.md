@@ -9,6 +9,34 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
 
 ---
 
+## 2026-03-24 — Codex: Switched dashboard focus to content quality (SEO/readability/speed/revisions)
+
+### What changed (Control Center)
+- Dashboard now emphasizes **content quality** instead of “Client Risk”:
+  - “Content Quality” panel (by client): avg SEO, avg readability, missing images, cycle time, revisions, QC pass%.
+  - “Quality Alerts” panel: lowest scoring content units in the current order window.
+
+### Where the data lives (per content unit)
+Everything is stored **per artifact** in Sanity, and the UI groups artifacts into **content units** by folder (`weekBucket|clientSlug|artifactType|unitFolder`).
+- Sanity artifact docs now include:
+  - `analysis` (computed from Markdown): `seoScore`, `readabilityScore`, `wordCount`, `imageCount`, link counts
+  - `markers` (read from `post_<NN>/.ff/*.json`): writer/QC/publish/image timestamps + statuses
+
+### What Charlie/OpenClaw needs to write (so dashboards are accurate)
+- Already supported markers (writer/QC timing + hard gate):
+  - `post_<NN>/.ff/writer_done.json`
+  - `post_<NN>/.ff/qc_done.json`
+- New recommended markers for publishing readiness + revisions:
+  - `post_<NN>/.ff/publish_status.json` (status: `not_uploaded|draft|ready|published`)
+  - `post_<NN>/.ff/image_status.json` (status: `missing|ready`)
+  - `post_<NN>/.ff/revision_log.json` (append-only revision events)
+
+Reference contract: `docs/pipeline_markers.md`
+
+### What Codex already implemented to support this
+- `scripts/sanity-sync.mjs` now computes `analysis` from Markdown and uploads `.ff` markers into `artifact.markers`.
+- `api/sanity/deliverables-index.mjs` now returns `analysis` + `markers` for dashboard use.
+
 ## 2026-03-18 — Codex: Started implementation (Sanity read APIs + UI switch + sync script)
 
 ### Shipped in repo (no secrets committed)

@@ -16,6 +16,25 @@ export type DeliverablesArtifact = {
   modifiedAt: string
   sizeBytes: number
   relativePath: string
+  analysis?: {
+    wordCount?: number
+    linkCount?: number
+    externalLinkCount?: number
+    imageCount?: number
+    readabilityScore?: number
+    seoScore?: number
+  } | null
+  markers?: {
+    writerDoneAt?: string | null
+    qcDoneAt?: string | null
+    qcStatus?: string | null
+    publishStatus?: string | null
+    publishUpdatedAt?: string | null
+    imageStatus?: string | null
+    imageUpdatedAt?: string | null
+    revisionCount?: number | null
+    revisionLastAt?: string | null
+  } | null
 }
 
 export type DeliverablesClientSummary = {

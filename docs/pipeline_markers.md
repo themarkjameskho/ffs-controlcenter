@@ -72,6 +72,68 @@ Schema:
 
 `qc_status` must be one of: `pass | fail`.
 
+### 3.3 Publish status marker (Publishing readiness + online dashboard)
+Path:
+- `.ff/publish_status.json`
+
+Schema:
+```json
+{
+  "stage": "publish_status",
+  "status": "not_uploaded",
+  "timestamp": "<ISO8601 with timezone>",
+  "details": {
+    "cms": "sanity",
+    "cms_doc_id": "<optional>",
+    "url": "<optional>"
+  }
+}
+```
+
+`status` should be one of:
+- `not_uploaded` (content exists locally only)
+- `draft` (uploaded as a draft in the client CMS)
+- `ready` (ready to publish; all gates satisfied)
+- `published` (live)
+
+### 3.4 Image status marker (Publisher/image consolidation gate)
+Path:
+- `.ff/image_status.json`
+
+Schema:
+```json
+{
+  "stage": "image_status",
+  "status": "missing",
+  "timestamp": "<ISO8601 with timezone>",
+  "details": {
+    "count": 0,
+    "notes": "<optional>"
+  }
+}
+```
+
+`status` should be one of: `missing | ready`.
+
+### 3.5 Revision log (optional but recommended for “revisions” dashboards)
+Path:
+- `.ff/revision_log.json`
+
+Schema:
+```json
+{
+  "stage": "revision_log",
+  "events": [
+    {
+      "timestamp": "<ISO8601 with timezone>",
+      "actor": "writer",
+      "reason": "qc_fix",
+      "notes": "<optional>"
+    }
+  ]
+}
+```
+
 ---
 
 ## 4) Event-driven QC (no cron)

@@ -17,6 +17,24 @@ function dateOnly(value: string | null) {
   return parsed.toISOString().slice(0, 10)
 }
 
+function computeBodyWordCount(markdown: string): number | null {
+  const md = String(markdown || '')
+  const start = md.search(/^##\s+body_content\s*$/m)
+  if (start === -1) return null
+  const rest = md.slice(start)
+  const next = rest.slice('## body_content'.length).search(/^##\s+/m)
+  const body = (next === -1 ? rest : rest.slice(0, '## body_content'.length + next)).replace(/^##\s+body_content\s*$/m, '')
+  const cleaned = body
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[Internal Link:[^\]]*\]/g, ' ')
+    .replace(/https?:\/\/[^\s)\]]+/g, ' ')
+    .replace(/[#>*_`]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return cleaned ? cleaned.split(' ').length : 0
+}
+
 function dateLabel(value: string | null) {
   if (!value) return '—'
   const parsed = new Date(value)
@@ -101,6 +119,7 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
 
   const previewKey = selectedArtifact ? (dataSource() === 'sanity' ? selectedArtifact.id : selectedArtifact.relativePath) : null
   const preview = useArtifactPreview(previewKey)
+  const publishableWordCount = preview.status === 'ready' ? computeBodyWordCount(preview.content) : null
 
   return (
     <div className="page-shell">
@@ -278,6 +297,33 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                     <p className="subhead">
                       {formatContentCategory(selectedArtifact.contentCategory)} · {selectedArtifact.weekBucket}
                     </p>
+                    {selectedArtifact.analysis ? (
+                      <p className="subhead">
+                        SEO {selectedArtifact.analysis.seoScore ?? '—'} · Read {selectedArtifact.analysis.readabilityScore ?? '—'} · Words{' '}
+                        {publishableWordCount ?? selectedArtifact.analysis.wordCount ?? '—'} · Images {preview.images?.length ?? selectedArtifact.analysis.imageCount ?? '—'}
+                      </p>
+                    ) : null}
+                    {preview.images && preview.images.length > 0 ? (
+                      <section style={{ marginTop: 12 }}>
+                        <h4 style={{ margin: '8px 0' }}>Images</h4>
+                        <ul className="plain-list">
+                          {preview.images.map((img, idx) => (
+                            <li key={`${img.url ?? img.filename ?? idx}`}>
+                              {img.url ? (
+                                <a href={img.url} target="_blank" rel="noreferrer">
+                                  {img.filename ?? `image-${idx + 1}`}
+                                </a>
+                              ) : (
+                                <span>{img.filename ?? `image-${idx + 1}`}</span>
+                              )}
+                              {img.category ? <span className="subhead"> · {img.category}</span> : null}
+                              {img.alt ? <div className="subhead">Alt: {img.alt}</div> : null}
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    ) : null}
+
                     <div className="preview-actions">
                       <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
                         Download

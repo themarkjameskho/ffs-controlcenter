@@ -164,6 +164,94 @@ function loadJson(filePath, fallback) {
   }
 }
 
+function loadJsonIfExists(filePath) {
+  try {
+    if (!fs.existsSync(filePath)) return null
+    const raw = fs.readFileSync(filePath, 'utf8')
+    return JSON.parse(raw)
+  } catch {
+    return null
+  }
+}
+
+function stripMarkdown(markdown) {
+  return String(markdown || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]*`/g, ' ')
+    .replace(/!\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(/\[[^\]]*]\([^)]*\)/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[#>*_\-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function estimateSyllables(word) {
+  const w = String(word || '')
+    .toLowerCase()
+    .replace(/[^a-z]/g, '')
+  if (!w) return 0
+  if (w.length <= 3) return 1
+  const matches = w.match(/[aeiouy]+/g)
+  let count = matches ? matches.length : 0
+  if (w.endsWith('e')) count -= 1
+  if (w.endsWith('le') && w.length > 2 && !/[aeiouy]/.test(w[w.length - 3] || '')) count += 1
+  return Math.max(1, count)
+}
+
+function markdownSignals(rawMarkdown) {
+  const raw = String(rawMarkdown || '')
+  const headingCounts = { h1: 0, h2: 0, h3: 0, h4: 0, h5: 0, h6: 0 }
+  for (const line of raw.split('\n')) {
+    const m = line.match(/^(#{1,6})\s+\S/)
+    if (!m) continue
+    const level = m[1].length
+    const key = `h${level}`
+    // eslint-disable-next-line no-prototype-builtins
+    if (headingCounts.hasOwnProperty(key)) headingCounts[key] += 1
+  }
+
+  const imageCount = (raw.match(/!\[[^\]]*]\([^)]*\)/g) ?? []).length + (raw.match(/<img\b[^>]*>/gi) ?? []).length
+  const links = raw.match(/\[[^\]]+]\(([^)]+)\)/g) ?? []
+  const linkCount = links.length
+  const externalLinkCount = (raw.match(/\[[^\]]+]\((https?:\/\/[^)]+)\)/gi) ?? []).length
+
+  const text = stripMarkdown(raw)
+  const words = text ? text.split(' ').filter(Boolean) : []
+  const wordCount = words.length
+
+  const sentenceCount = Math.max(1, (text.match(/[.!?]+/g) ?? []).length)
+  const syllableCount = words.reduce((sum, w) => sum + estimateSyllables(w), 0)
+
+  // Flesch Reading Ease (rough); clamp to 0..100 for UI.
+  const wordsPerSentence = wordCount / sentenceCount
+  const syllablesPerWord = wordCount > 0 ? syllableCount / wordCount : 0
+  const flesch = 206.835 - 1.015 * wordsPerSentence - 84.6 * syllablesPerWord
+  const readabilityScore = Math.max(0, Math.min(100, Math.round(flesch)))
+
+  // Lightweight SEO heuristic (0..100). This is intentionally simple + stable.
+  let seoScore = 100
+  if (wordCount < 350) seoScore -= 30
+  if (wordCount < 600) seoScore -= 10
+  if (headingCounts.h2 + headingCounts.h3 < 3) seoScore -= 15
+  if (linkCount < 2) seoScore -= 15
+  if (externalLinkCount < 1) seoScore -= 5
+  if (imageCount < 1) seoScore -= 10
+  if (headingCounts.h1 > 1) seoScore -= 10
+  seoScore = Math.max(0, Math.min(100, Math.round(seoScore)))
+
+  return {
+    wordCount,
+    sentenceCount,
+    linkCount,
+    externalLinkCount,
+    imageCount,
+    headingCounts,
+    readabilityScore,
+    seoScore
+  }
+}
+
 function safeYear(value, fallbackIso) {
   const n = Number(value)
   if (Number.isFinite(n) && n >= 2000) return Math.trunc(n)
@@ -262,7 +350,31 @@ async function main() {
     const contentCategory = classifyContentCategory(name, rel, artifactType, workflow)
     const level = classifyLevel(contentCategory)
     const rawMarkdown = fs.readFileSync(abs, 'utf8')
+    const analysis = markdownSignals(rawMarkdown)
     const docId = `artifact-${sha1(rel).slice(0, 16)}`
+
+    const postFolder = path.dirname(abs)
+    const markerDir = path.join(postFolder, '.ff')
+    const writerDone = loadJsonIfExists(path.join(markerDir, 'writer_done.json'))
+    const qcDone = loadJsonIfExists(path.join(markerDir, 'qc_done.json'))
+    const publishStatus = loadJsonIfExists(path.join(markerDir, 'publish_status.json'))
+    const imageStatus = loadJsonIfExists(path.join(markerDir, 'image_status.json'))
+    const revisionLog = loadJsonIfExists(path.join(markerDir, 'revision_log.json'))
+    const revisionEvents = Array.isArray(revisionLog?.events) ? revisionLog.events : []
+    const revisionCount = revisionEvents.length || null
+    const revisionLastAt = revisionCount ? revisionEvents[revisionEvents.length - 1]?.timestamp ?? null : null
+
+    const markers = {
+      writerDoneAt: writerDone?.timestamp ?? null,
+      qcDoneAt: qcDone?.timestamp ?? null,
+      qcStatus: qcDone?.qc_status ?? null,
+      publishStatus: publishStatus?.status ?? null,
+      publishUpdatedAt: publishStatus?.timestamp ?? null,
+      imageStatus: imageStatus?.status ?? null,
+      imageUpdatedAt: imageStatus?.timestamp ?? null,
+      revisionCount,
+      revisionLastAt
+    }
 
     artifactDocs.push({
       _id: docId,
@@ -282,6 +394,8 @@ async function main() {
       sizeBytes: stat.size,
       relativePath: rel,
       rawMarkdown,
+      analysis,
+      markers,
       body: []
     })
   }

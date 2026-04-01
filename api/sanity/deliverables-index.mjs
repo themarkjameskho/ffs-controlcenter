@@ -29,7 +29,26 @@ export default async function handler(req, res) {
           date,
           modifiedAt,
           sizeBytes,
-          relativePath
+          relativePath,
+          analysis{
+            wordCount,
+            linkCount,
+            externalLinkCount,
+            imageCount,
+            readabilityScore,
+            seoScore
+          },
+          markers{
+            writerDoneAt,
+            qcDoneAt,
+            qcStatus,
+            publishStatus,
+            publishUpdatedAt,
+            imageStatus,
+            imageUpdatedAt,
+            revisionCount,
+            revisionLastAt
+          }
         }`
       )
     ])
@@ -55,7 +74,9 @@ export default async function handler(req, res) {
       date: a.date ?? null,
       modifiedAt: String(a.modifiedAt ?? ''),
       sizeBytes: Number(a.sizeBytes ?? 0),
-      relativePath: String(a.relativePath ?? '')
+      relativePath: String(a.relativePath ?? ''),
+      analysis: a.analysis ?? null,
+      markers: a.markers ?? null
     }))
 
     const weekBuckets = Array.from(new Set(normalizedArtifacts.map((a) => a.weekBucket).filter(Boolean))).sort((a, b) =>
@@ -73,4 +94,3 @@ export default async function handler(req, res) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : 'Failed to build deliverables index' })
   }
 }
-

@@ -103,6 +103,28 @@ If the goal is an **online, auto-updating** dashboard, see `docs/CHARLIE_OPENCLA
 **Why this matters**
 - Improves readability and prevents “missing client” views when new slugs appear.
 
+## 7) Quality + speed signals (recommended for a comprehensive dashboard)
+
+The Control Center can score content quality automatically (SEO + readability) from Markdown, but **speed / revisions** requires explicit timestamps/logs.
+
+### 7.1 Required for cycle-time (writer → QC) accuracy
+Per post folder, write these markers under `post_<NN>/.ff/`:
+- `.ff/writer_done.json` (writer completion timestamp)
+- `.ff/qc_done.json` (QC completion timestamp + pass/fail)
+
+These are already defined in `docs/pipeline_markers.md`.
+
+### 7.2 Recommended for publishing readiness (draft vs ready vs published)
+Also under `post_<NN>/.ff/`:
+- `.ff/publish_status.json` (new; publisher agent writes)
+- `.ff/image_status.json` (new; image consolidation agent writes)
+
+### 7.3 Recommended for revision tracking (counts + reasons)
+Also under `post_<NN>/.ff/`:
+- `.ff/revision_log.json` (new; append-only)
+
+This is the simplest way to let the dashboard show “revisions per post” and “what changed”.
+
 ## “Minimum Viable Data” checklist
 
 If Charlie only provides the minimum, the Control Center can still be useful:

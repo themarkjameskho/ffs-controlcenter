@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "year": 0,
+  "year": 2026,
   "week": 16,
   "columns": [
     "human-order",
@@ -33,6 +33,27 @@
       "eta": "1900-04-20"
     },
     {
+      "id": "ho-2026-w16-bed_bug_bbq",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "bed_bug_bbq",
+      "title": "Week 16 - bed_bug_bbq",
+      "description": "Human order for bed_bug_bbq. Source ranges: Week 16-16",
+      "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
+      "parent_id": null,
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null,
+      "eta": "2026-04-17"
+    },
+    {
       "id": "pl-0-w16-bed_bug_bbq",
       "type": "plan_artifact",
       "stage": "planner",
@@ -60,6 +81,30 @@
       "eta": "1900-04-20"
     },
     {
+      "id": "pl-2026-w16-bed_bug_bbq",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "bed_bug_bbq",
+      "title": "Week 16 Plan - bed_bug_bbq",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-bed_bug_bbq",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
       "id": "rs-0-w16-bed_bug_bbq-blog_post-01",
       "type": "research_pack",
       "stage": "researcher",
@@ -82,6 +127,29 @@
       "qc_date": "1900-04-18",
       "publish_date": "1900-04-19",
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
+    },
+    {
+      "id": "rs-2026-w16-bed_bug_bbq-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "bed_bug_bbq",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - bed_bug_bbq",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-bed_bug_bbq",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
     },
     {
       "id": "rs-0-w16-bed_bug_bbq-blog_post-02",
@@ -204,6 +272,30 @@
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/blog_post/post_01/2026-03-18_bed-bug-to-go_bed-bug-inspection-checklist-cleveland_test2_draft.md"
     },
     {
+      "id": "wr-2026-w16-bed_bug_bbq-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "bed_bug_bbq",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - bed_bug_bbq",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-bed_bug_bbq-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bug_bbq/blog_post/post_01/2026-03-23_bed-bug-bbq_bed-bug-heat-treatment-cost-cleveland_test3_draft.md"
+    },
+    {
       "id": "wr-0-w16-bed_bug_bbq-blog_post-02",
       "type": "draft",
       "stage": "writer",
@@ -320,7 +412,32 @@
       "research_date": "1900-04-16",
       "writer_date": "1900-04-17",
       "qc_date": "1900-04-18",
-      "publish_date": "1900-04-19"
+      "publish_date": "1900-04-19",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bug_bbq/blog_post/post_01/2026-03-23_bed-bug-bbq_bed-bug-heat-treatment-cost-cleveland_test3_qc_v1.md"
+    },
+    {
+      "id": "qc-2026-w16-bed_bug_bbq-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "bed_bug_bbq",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - bed_bug_bbq",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-bed_bug_bbq-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bug_bbq/blog_post/post_01/2026-03-23_bed-bug-bbq_bed-bug-heat-treatment-cost-cleveland_test3_qc_v1.md"
     },
     {
       "id": "qc-0-w16-bed_bug_bbq-blog_post-02",
@@ -438,6 +555,29 @@
       "publish_date": "1900-04-19"
     },
     {
+      "id": "pb-2026-w16-bed_bug_bbq-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "bed_bug_bbq",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - bed_bug_bbq",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-bed_bug_bbq-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
       "id": "pb-0-w16-bed_bug_bbq-blog_post-02",
       "type": "publish_bundle",
       "stage": "publisher",
@@ -530,21 +670,6 @@
       "publish_date": "1900-04-20"
     },
     {
-      "id": "ho-2026-w16-bed_bug_bbq",
-      "type": "human_order",
-      "stage": "publisher",
-      "client_slug": "bed_bug_bbq",
-      "week": 16,
-      "parent_id": null,
-      "title": "Week 16 — bed_bug_bbq",
-      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-      "status": "done",
-      "research_date": null,
-      "writer_date": null,
-      "qc_date": null,
-      "publish_date": null
-    },
-    {
       "id": "ho-0-w16-bed_bugs_be_gone",
       "type": "human_order",
       "stage": "human-order",
@@ -564,6 +689,27 @@
       "qc_date": null,
       "publish_date": null,
       "eta": "1900-04-20"
+    },
+    {
+      "id": "ho-2026-w16-bed_bugs_be_gone",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "bed_bugs_be_gone",
+      "title": "Week 16 - bed_bugs_be_gone",
+      "description": "Human order for bed_bugs_be_gone. Source ranges: Week 16-16",
+      "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
+      "parent_id": null,
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null,
+      "eta": "2026-04-17"
     },
     {
       "id": "pl-0-w16-bed_bugs_be_gone",
@@ -593,6 +739,30 @@
       "eta": "1900-04-20"
     },
     {
+      "id": "pl-2026-w16-bed_bugs_be_gone",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "bed_bugs_be_gone",
+      "title": "Week 16 Plan - bed_bugs_be_gone",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-bed_bugs_be_gone",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
       "id": "rs-0-w16-bed_bugs_be_gone-blog_post-01",
       "type": "research_pack",
       "stage": "researcher",
@@ -615,6 +785,29 @@
       "qc_date": "1900-04-18",
       "publish_date": "1900-04-19",
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
+    },
+    {
+      "id": "rs-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "bed_bugs_be_gone",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - bed_bugs_be_gone",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-bed_bugs_be_gone",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
     },
     {
       "id": "rs-0-w16-bed_bugs_be_gone-blog_post-02",
@@ -737,6 +930,30 @@
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/blog_post/post_01/2026-03-18_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do-first-chicago_test2_draft.md"
     },
     {
+      "id": "wr-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "bed_bugs_be_gone",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - bed_bugs_be_gone",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bugs_be_gone/blog_post/post_01/2026-03-23_bed-bugs-be-gone_bed-bug-heat-treatment-cost-chicago_test3_draft.md"
+    },
+    {
       "id": "wr-0-w16-bed_bugs_be_gone-blog_post-02",
       "type": "draft",
       "stage": "writer",
@@ -781,7 +998,8 @@
       "research_date": "1900-04-18",
       "writer_date": "1900-04-19",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_1/article_01/2026-03-18_BBBGN_link1-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-bed_bugs_be_gone-link_2-01",
@@ -804,7 +1022,8 @@
       "research_date": "1900-04-19",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_2/article_01/2026-03-18_BBBGN_link2-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-bed_bugs_be_gone-link_3-01",
@@ -827,7 +1046,8 @@
       "research_date": "1900-04-20",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_3/article_01/2026-03-18_BBBGN_link3-article_01_draft.md"
     },
     {
       "id": "qc-0-w16-bed_bugs_be_gone-blog_post-01",
@@ -850,7 +1070,32 @@
       "research_date": "1900-04-16",
       "writer_date": "1900-04-17",
       "qc_date": "1900-04-18",
-      "publish_date": "1900-04-19"
+      "publish_date": "1900-04-19",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bugs_be_gone/blog_post/post_01/2026-03-23_bed-bugs-be-gone_bed-bug-heat-treatment-cost-chicago_test3_qc_v1.md"
+    },
+    {
+      "id": "qc-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "bed_bugs_be_gone",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - bed_bugs_be_gone",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/bed_bugs_be_gone/blog_post/post_01/2026-03-23_bed-bugs-be-gone_bed-bug-heat-treatment-cost-chicago_test3_qc_v1.md"
     },
     {
       "id": "qc-0-w16-bed_bugs_be_gone-blog_post-02",
@@ -968,6 +1213,29 @@
       "publish_date": "1900-04-19"
     },
     {
+      "id": "pb-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "bed_bugs_be_gone",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - bed_bugs_be_gone",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-bed_bugs_be_gone-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
       "id": "pb-0-w16-bed_bugs_be_gone-blog_post-02",
       "type": "publish_bundle",
       "stage": "publisher",
@@ -1060,21 +1328,6 @@
       "publish_date": "1900-04-20"
     },
     {
-      "id": "ho-2026-w16-bed_bugs_be_gone",
-      "type": "human_order",
-      "stage": "publisher",
-      "client_slug": "bed_bugs_be_gone",
-      "week": 16,
-      "parent_id": null,
-      "title": "Week 16 — bed_bugs_be_gone",
-      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-      "status": "done",
-      "research_date": null,
-      "writer_date": null,
-      "qc_date": null,
-      "publish_date": null
-    },
-    {
       "id": "ho-0-w16-chapman_plumbing",
       "type": "human_order",
       "stage": "human-order",
@@ -1094,6 +1347,27 @@
       "qc_date": null,
       "publish_date": null,
       "eta": "1900-04-20"
+    },
+    {
+      "id": "ho-2026-w16-chapman_plumbing",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "chapman_plumbing",
+      "title": "Week 16 - chapman_plumbing",
+      "description": "Human order for chapman_plumbing. Source ranges: Week 16-16",
+      "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
+      "parent_id": null,
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null,
+      "eta": "2026-04-17"
     },
     {
       "id": "pl-0-w16-chapman_plumbing",
@@ -1123,6 +1397,30 @@
       "eta": "1900-04-20"
     },
     {
+      "id": "pl-2026-w16-chapman_plumbing",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "chapman_plumbing",
+      "title": "Week 16 Plan - chapman_plumbing",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-chapman_plumbing",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
       "id": "rs-0-w16-chapman_plumbing-blog_post-01",
       "type": "research_pack",
       "stage": "researcher",
@@ -1145,6 +1443,29 @@
       "qc_date": "1900-04-18",
       "publish_date": "1900-04-19",
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
+    },
+    {
+      "id": "rs-2026-w16-chapman_plumbing-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "chapman_plumbing",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - chapman_plumbing",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-chapman_plumbing",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
     },
     {
       "id": "rs-0-w16-chapman_plumbing-blog_post-02",
@@ -1267,6 +1588,30 @@
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/blog_post/post_01/2026-03-17_chapman-plumbing_common-causes-of-slow-drains_test2_draft.md"
     },
     {
+      "id": "wr-2026-w16-chapman_plumbing-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "chapman_plumbing",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - chapman_plumbing",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-chapman_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/chapman_plumbing/blog_post/post_01/2026-03-23_chapman-plumbing_drain-cleaning-cost-birmingham-al_test3_draft.md"
+    },
+    {
       "id": "wr-0-w16-chapman_plumbing-blog_post-02",
       "type": "draft",
       "stage": "writer",
@@ -1311,7 +1656,8 @@
       "research_date": "1900-04-18",
       "writer_date": "1900-04-19",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_1/article_01/2026-03-18_CHAP_link1-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-chapman_plumbing-link_2-01",
@@ -1334,7 +1680,8 @@
       "research_date": "1900-04-19",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_2/article_01/2026-03-18_CHAP_link2-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-chapman_plumbing-link_3-01",
@@ -1357,7 +1704,8 @@
       "research_date": "1900-04-20",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_3/article_01/2026-03-18_CHAP_link3-article_01_draft.md"
     },
     {
       "id": "qc-0-w16-chapman_plumbing-blog_post-01",
@@ -1380,7 +1728,32 @@
       "research_date": "1900-04-16",
       "writer_date": "1900-04-17",
       "qc_date": "1900-04-18",
-      "publish_date": "1900-04-19"
+      "publish_date": "1900-04-19",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/chapman_plumbing/blog_post/post_01/2026-03-23_chapman-plumbing_drain-cleaning-cost-birmingham-al_test3_qc_v1.md"
+    },
+    {
+      "id": "qc-2026-w16-chapman_plumbing-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "chapman_plumbing",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - chapman_plumbing",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-chapman_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/chapman_plumbing/blog_post/post_01/2026-03-23_chapman-plumbing_drain-cleaning-cost-birmingham-al_test3_qc_v1.md"
     },
     {
       "id": "qc-0-w16-chapman_plumbing-blog_post-02",
@@ -1498,6 +1871,29 @@
       "publish_date": "1900-04-19"
     },
     {
+      "id": "pb-2026-w16-chapman_plumbing-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "chapman_plumbing",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - chapman_plumbing",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-chapman_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
       "id": "pb-0-w16-chapman_plumbing-blog_post-02",
       "type": "publish_bundle",
       "stage": "publisher",
@@ -1590,21 +1986,6 @@
       "publish_date": "1900-04-20"
     },
     {
-      "id": "ho-2026-w16-chapman_plumbing",
-      "type": "human_order",
-      "stage": "publisher",
-      "client_slug": "chapman_plumbing",
-      "week": 16,
-      "parent_id": null,
-      "title": "Week 16 — chapman_plumbing",
-      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-      "status": "done",
-      "research_date": null,
-      "writer_date": null,
-      "qc_date": null,
-      "publish_date": null
-    },
-    {
       "id": "ho-0-w16-heat_tech_bed_bug",
       "type": "human_order",
       "stage": "human-order",
@@ -1624,6 +2005,27 @@
       "qc_date": null,
       "publish_date": null,
       "eta": "1900-04-20"
+    },
+    {
+      "id": "ho-2026-w16-heat_tech_bed_bug",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "heat_tech_bed_bug",
+      "title": "Week 16 - heat_tech_bed_bug",
+      "description": "Human order for heat_tech_bed_bug. Source ranges: Week 16-16",
+      "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
+      "parent_id": null,
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null,
+      "eta": "2026-04-17"
     },
     {
       "id": "pl-0-w16-heat_tech_bed_bug",
@@ -1653,6 +2055,30 @@
       "eta": "1900-04-20"
     },
     {
+      "id": "pl-2026-w16-heat_tech_bed_bug",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "heat_tech_bed_bug",
+      "title": "Week 16 Plan - heat_tech_bed_bug",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-heat_tech_bed_bug",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
       "id": "rs-0-w16-heat_tech_bed_bug-blog_post-01",
       "type": "research_pack",
       "stage": "researcher",
@@ -1675,6 +2101,29 @@
       "qc_date": "1900-04-18",
       "publish_date": "1900-04-19",
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
+    },
+    {
+      "id": "rs-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "heat_tech_bed_bug",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - heat_tech_bed_bug",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-heat_tech_bed_bug",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
     },
     {
       "id": "rs-0-w16-heat_tech_bed_bug-blog_post-02",
@@ -1797,6 +2246,30 @@
       "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/blog_post/post_01/2026-03-18_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test2_draft.md"
     },
     {
+      "id": "wr-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "heat_tech_bed_bug",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - heat_tech_bed_bug",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/heat_tech_bed_bug/blog_post/post_01/2026-03-23_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test3_draft.md"
+    },
+    {
       "id": "wr-0-w16-heat_tech_bed_bug-blog_post-02",
       "type": "draft",
       "stage": "writer",
@@ -1841,7 +2314,8 @@
       "research_date": "1900-04-18",
       "writer_date": "1900-04-19",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_1/article_01/2026-03-18_HEAT_link1-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-heat_tech_bed_bug-link_2-01",
@@ -1864,7 +2338,8 @@
       "research_date": "1900-04-19",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_2/article_01/2026-03-18_HEAT_link2-article_01_draft.md"
     },
     {
       "id": "wr-0-w16-heat_tech_bed_bug-link_3-01",
@@ -1887,7 +2362,8 @@
       "research_date": "1900-04-20",
       "writer_date": "1900-04-20",
       "qc_date": "1900-04-20",
-      "publish_date": "1900-04-20"
+      "publish_date": "1900-04-20",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_3/article_01/2026-03-18_HEAT_link3-article_01_draft.md"
     },
     {
       "id": "qc-0-w16-heat_tech_bed_bug-blog_post-01",
@@ -1910,7 +2386,32 @@
       "research_date": "1900-04-16",
       "writer_date": "1900-04-17",
       "qc_date": "1900-04-18",
-      "publish_date": "1900-04-19"
+      "publish_date": "1900-04-19",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/heat_tech_bed_bug/blog_post/post_01/2026-03-23_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test3_qc_v1.md"
+    },
+    {
+      "id": "qc-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "heat_tech_bed_bug",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - heat_tech_bed_bug",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/heat_tech_bed_bug/blog_post/post_01/2026-03-23_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test3_qc_v1.md"
     },
     {
       "id": "qc-0-w16-heat_tech_bed_bug-blog_post-02",
@@ -2028,6 +2529,29 @@
       "publish_date": "1900-04-19"
     },
     {
+      "id": "pb-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "heat_tech_bed_bug",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - heat_tech_bed_bug",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-heat_tech_bed_bug-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
       "id": "pb-0-w16-heat_tech_bed_bug-blog_post-02",
       "type": "publish_bundle",
       "stage": "publisher",
@@ -2120,22 +2644,285 @@
       "publish_date": "1900-04-20"
     },
     {
-      "id": "ho-2026-w16-heat_tech_bed_bug",
+      "id": "ho-2026-w16-madden_plumbing",
       "type": "human_order",
-      "stage": "publisher",
-      "client_slug": "heat_tech_bed_bug",
+      "stage": "human-order",
+      "client_slug": "madden_plumbing",
+      "title": "Week 16 - madden_plumbing",
+      "description": "Human order for madden_plumbing. Source ranges: Week 16-16",
       "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
       "parent_id": null,
-      "title": "Week 16 — heat_tech_bed_bug",
-      "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-      "status": "done",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
       "research_date": null,
       "writer_date": null,
       "qc_date": null,
-      "publish_date": null
+      "publish_date": null,
+      "eta": "2026-04-17"
+    },
+    {
+      "id": "pl-2026-w16-madden_plumbing",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "madden_plumbing",
+      "title": "Week 16 Plan - madden_plumbing",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-madden_plumbing",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
+      "id": "rs-2026-w16-madden_plumbing-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "madden_plumbing",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - madden_plumbing",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-madden_plumbing",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
+      "id": "wr-2026-w16-madden_plumbing-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "madden_plumbing",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - madden_plumbing",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-madden_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/madden_plumbing/blog_post/post_01/2026-03-23_madden-plumbing_emergency-plumber-birmingham-al-what-to-do_test3_draft.md"
+    },
+    {
+      "id": "qc-2026-w16-madden_plumbing-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "madden_plumbing",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - madden_plumbing",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-madden_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/madden_plumbing/blog_post/post_01/2026-03-23_madden-plumbing_emergency-plumber-birmingham-al-what-to-do_test3_qc_v1.md"
+    },
+    {
+      "id": "pb-2026-w16-madden_plumbing-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "madden_plumbing",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - madden_plumbing",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-madden_plumbing-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
+      "id": "ho-2026-w16-top_bed_bug_pros",
+      "type": "human_order",
+      "stage": "human-order",
+      "client_slug": "top_bed_bug_pros",
+      "title": "Week 16 - top_bed_bug_pros",
+      "description": "Human order for top_bed_bug_pros. Source ranges: Week 16-16",
+      "week": 16,
+      "owner": "human",
+      "status": "planned",
+      "priority": "normal",
+      "parent_id": null,
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "research_date": null,
+      "writer_date": null,
+      "qc_date": null,
+      "publish_date": null,
+      "eta": "2026-04-17"
+    },
+    {
+      "id": "pl-2026-w16-top_bed_bug_pros",
+      "type": "plan_artifact",
+      "stage": "planner",
+      "client_slug": "top_bed_bug_pros",
+      "title": "Week 16 Plan - top_bed_bug_pros",
+      "description": "Planned deliverables -> blog_post: 1",
+      "week": 16,
+      "owner": "planner-agent-1",
+      "status": "planned",
+      "priority": "high",
+      "parent_id": "ho-2026-w16-top_bed_bug_pros",
+      "plan_id": "week16_16_test_3",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "deliverables": {
+        "blog_post": 1
+      },
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-13",
+      "qc_date": "2026-04-17",
+      "publish_date": "2026-04-17",
+      "eta": "2026-04-17"
+    },
+    {
+      "id": "rs-2026-w16-top_bed_bug_pros-blog_post-01",
+      "type": "research_pack",
+      "stage": "researcher",
+      "client_slug": "top_bed_bug_pros",
+      "content_type": "blog_post",
+      "title": "Research Blog Post #1 - top_bed_bug_pros",
+      "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+      "week": 16,
+      "owner": "researcher-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "pl-2026-w16-top_bed_bug_pros",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
+    },
+    {
+      "id": "wr-2026-w16-top_bed_bug_pros-blog_post-01",
+      "type": "draft",
+      "stage": "writer",
+      "client_slug": "top_bed_bug_pros",
+      "content_type": "blog_post",
+      "title": "Write Blog Post #1 - top_bed_bug_pros",
+      "description": "Draft Blog Post #1 after research handoff.",
+      "week": 16,
+      "owner": "writer-agent-2",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "rs-2026-w16-top_bed_bug_pros-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/top_bed_bug_pros/blog_post/post_01/2026-03-23_top-bed-bug-pros_bed-bug-heat-treatment-cost-dallas-tx_test3_draft.md"
+    },
+    {
+      "id": "qc-2026-w16-top_bed_bug_pros-blog_post-01",
+      "type": "qc_report",
+      "stage": "qc",
+      "client_slug": "top_bed_bug_pros",
+      "content_type": "blog_post",
+      "title": "QC Blog Post #1 - top_bed_bug_pros",
+      "description": "Quality review for Blog Post #1.",
+      "week": 16,
+      "owner": "qc-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "wr-2026-w16-top_bed_bug_pros-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16",
+      "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_3/top_bed_bug_pros/blog_post/post_01/2026-03-23_top-bed-bug-pros_bed-bug-heat-treatment-cost-dallas-tx_test3_qc_v1.md"
+    },
+    {
+      "id": "pb-2026-w16-top_bed_bug_pros-blog_post-01",
+      "type": "publish_bundle",
+      "stage": "publisher",
+      "client_slug": "top_bed_bug_pros",
+      "content_type": "blog_post",
+      "title": "Publish Blog Post #1 - top_bed_bug_pros",
+      "description": "Publish-ready bundle for Blog Post #1.",
+      "week": 16,
+      "owner": "publisher-agent-1",
+      "status": "queued",
+      "priority": "normal",
+      "parent_id": "qc-2026-w16-top_bed_bug_pros-blog_post-01",
+      "plan_id": "week16_16_test_3",
+      "deliverable_key": "blog_post-01",
+      "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+      "source_type": "csv",
+      "eta": "2026-04-16",
+      "research_date": "2026-04-13",
+      "writer_date": "2026-04-14",
+      "qc_date": "2026-04-15",
+      "publish_date": "2026-04-16"
     }
   ],
-  "updatedAt": "2026-03-17T15:50:31.302Z",
+  "updatedAt": "2026-03-23T15:37:36.237Z",
   "clients": {
     "bed_bug_bbq": {
       "tasks": [
@@ -2159,6 +2946,27 @@
           "qc_date": null,
           "publish_date": null,
           "eta": "1900-04-20"
+        },
+        {
+          "id": "ho-2026-w16-bed_bug_bbq",
+          "type": "human_order",
+          "stage": "human-order",
+          "client_slug": "bed_bug_bbq",
+          "title": "Week 16 - bed_bug_bbq",
+          "description": "Human order for bed_bug_bbq. Source ranges: Week 16-16",
+          "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
+          "parent_id": null,
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "research_date": null,
+          "writer_date": null,
+          "qc_date": null,
+          "publish_date": null,
+          "eta": "2026-04-17"
         },
         {
           "id": "pl-0-w16-bed_bug_bbq",
@@ -2188,6 +2996,30 @@
           "eta": "1900-04-20"
         },
         {
+          "id": "pl-2026-w16-bed_bug_bbq",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "bed_bug_bbq",
+          "title": "Week 16 Plan - bed_bug_bbq",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-bed_bug_bbq",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
           "id": "rs-0-w16-bed_bug_bbq-blog_post-01",
           "type": "research_pack",
           "stage": "researcher",
@@ -2208,7 +3040,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
+        },
+        {
+          "id": "rs-2026-w16-bed_bug_bbq-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "bed_bug_bbq",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - bed_bug_bbq",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-bed_bug_bbq",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "rs-0-w16-bed_bug_bbq-blog_post-02",
@@ -2231,7 +3087,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bug_bbq-link_1-01",
@@ -2254,7 +3111,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bug_bbq-link_2-01",
@@ -2277,7 +3135,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bug_bbq-link_3-01",
@@ -2300,7 +3159,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
         },
         {
           "id": "wr-0-w16-bed_bug_bbq-blog_post-01",
@@ -2323,7 +3183,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/blog_post/post_01/2026-03-18_bed-bug-to-go_bed-bug-inspection-checklist-cleveland_test2_draft.md"
+        },
+        {
+          "id": "wr-2026-w16-bed_bug_bbq-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "bed_bug_bbq",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - bed_bug_bbq",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-bed_bug_bbq-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "wr-0-w16-bed_bug_bbq-blog_post-02",
@@ -2346,7 +3230,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/blog_post/post_02/2026-03-18_bed-bug-to-go_bed-bug-heat-treatment-prep-what-to-do_test2_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bug_bbq-link_1-01",
@@ -2369,7 +3254,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_1/article_01/2026-03-18_BBBQ_link1-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bug_bbq-link_2-01",
@@ -2392,7 +3278,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_2/article_01/2026-03-18_BBBQ_link2-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bug_bbq-link_3-01",
@@ -2415,7 +3302,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_3/article_01/2026-03-18_BBBQ_link3-article_01_draft.md"
         },
         {
           "id": "qc-0-w16-bed_bug_bbq-blog_post-01",
@@ -2439,6 +3327,29 @@
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
           "publish_date": "1900-04-19"
+        },
+        {
+          "id": "qc-2026-w16-bed_bug_bbq-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "bed_bug_bbq",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - bed_bug_bbq",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-bed_bug_bbq-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "qc-0-w16-bed_bug_bbq-blog_post-02",
@@ -2556,6 +3467,29 @@
           "publish_date": "1900-04-19"
         },
         {
+          "id": "pb-2026-w16-bed_bug_bbq-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "bed_bug_bbq",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - bed_bug_bbq",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-bed_bug_bbq-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
           "id": "pb-0-w16-bed_bug_bbq-blog_post-02",
           "type": "publish_bundle",
           "stage": "publisher",
@@ -2646,21 +3580,6 @@
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
           "publish_date": "1900-04-20"
-        },
-        {
-          "id": "ho-2026-w16-bed_bug_bbq",
-          "type": "human_order",
-          "stage": "publisher",
-          "client_slug": "bed_bug_bbq",
-          "week": 16,
-          "parent_id": null,
-          "title": "Week 16 — bed_bug_bbq",
-          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-          "status": "done",
-          "research_date": null,
-          "writer_date": null,
-          "qc_date": null,
-          "publish_date": null
         }
       ]
     },
@@ -2686,6 +3605,27 @@
           "qc_date": null,
           "publish_date": null,
           "eta": "1900-04-20"
+        },
+        {
+          "id": "ho-2026-w16-bed_bugs_be_gone",
+          "type": "human_order",
+          "stage": "human-order",
+          "client_slug": "bed_bugs_be_gone",
+          "title": "Week 16 - bed_bugs_be_gone",
+          "description": "Human order for bed_bugs_be_gone. Source ranges: Week 16-16",
+          "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
+          "parent_id": null,
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "research_date": null,
+          "writer_date": null,
+          "qc_date": null,
+          "publish_date": null,
+          "eta": "2026-04-17"
         },
         {
           "id": "pl-0-w16-bed_bugs_be_gone",
@@ -2715,6 +3655,30 @@
           "eta": "1900-04-20"
         },
         {
+          "id": "pl-2026-w16-bed_bugs_be_gone",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "bed_bugs_be_gone",
+          "title": "Week 16 Plan - bed_bugs_be_gone",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-bed_bugs_be_gone",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
           "id": "rs-0-w16-bed_bugs_be_gone-blog_post-01",
           "type": "research_pack",
           "stage": "researcher",
@@ -2735,7 +3699,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
+        },
+        {
+          "id": "rs-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "bed_bugs_be_gone",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - bed_bugs_be_gone",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-bed_bugs_be_gone",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "rs-0-w16-bed_bugs_be_gone-blog_post-02",
@@ -2758,7 +3746,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bugs_be_gone-link_1-01",
@@ -2781,7 +3770,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bugs_be_gone-link_2-01",
@@ -2804,7 +3794,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-bed_bugs_be_gone-link_3-01",
@@ -2827,7 +3818,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
         },
         {
           "id": "wr-0-w16-bed_bugs_be_gone-blog_post-01",
@@ -2850,7 +3842,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/blog_post/post_01/2026-03-18_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do-first-chicago_test2_draft.md"
+        },
+        {
+          "id": "wr-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "bed_bugs_be_gone",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - bed_bugs_be_gone",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "wr-0-w16-bed_bugs_be_gone-blog_post-02",
@@ -2873,7 +3889,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/blog_post/post_02/2026-03-18_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-bed-bug-treatment-how-to-choose_test2_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bugs_be_gone-link_1-01",
@@ -2896,7 +3913,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_1/article_01/2026-03-18_BBBGN_link1-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bugs_be_gone-link_2-01",
@@ -2919,7 +3937,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_2/article_01/2026-03-18_BBBGN_link2-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-bed_bugs_be_gone-link_3-01",
@@ -2942,7 +3961,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_3/article_01/2026-03-18_BBBGN_link3-article_01_draft.md"
         },
         {
           "id": "qc-0-w16-bed_bugs_be_gone-blog_post-01",
@@ -2966,6 +3986,29 @@
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
           "publish_date": "1900-04-19"
+        },
+        {
+          "id": "qc-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "bed_bugs_be_gone",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - bed_bugs_be_gone",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "qc-0-w16-bed_bugs_be_gone-blog_post-02",
@@ -3083,6 +4126,29 @@
           "publish_date": "1900-04-19"
         },
         {
+          "id": "pb-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "bed_bugs_be_gone",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - bed_bugs_be_gone",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-bed_bugs_be_gone-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
           "id": "pb-0-w16-bed_bugs_be_gone-blog_post-02",
           "type": "publish_bundle",
           "stage": "publisher",
@@ -3173,21 +4239,6 @@
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
           "publish_date": "1900-04-20"
-        },
-        {
-          "id": "ho-2026-w16-bed_bugs_be_gone",
-          "type": "human_order",
-          "stage": "publisher",
-          "client_slug": "bed_bugs_be_gone",
-          "week": 16,
-          "parent_id": null,
-          "title": "Week 16 — bed_bugs_be_gone",
-          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-          "status": "done",
-          "research_date": null,
-          "writer_date": null,
-          "qc_date": null,
-          "publish_date": null
         }
       ]
     },
@@ -3213,6 +4264,27 @@
           "qc_date": null,
           "publish_date": null,
           "eta": "1900-04-20"
+        },
+        {
+          "id": "ho-2026-w16-chapman_plumbing",
+          "type": "human_order",
+          "stage": "human-order",
+          "client_slug": "chapman_plumbing",
+          "title": "Week 16 - chapman_plumbing",
+          "description": "Human order for chapman_plumbing. Source ranges: Week 16-16",
+          "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
+          "parent_id": null,
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "research_date": null,
+          "writer_date": null,
+          "qc_date": null,
+          "publish_date": null,
+          "eta": "2026-04-17"
         },
         {
           "id": "pl-0-w16-chapman_plumbing",
@@ -3242,6 +4314,30 @@
           "eta": "1900-04-20"
         },
         {
+          "id": "pl-2026-w16-chapman_plumbing",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "chapman_plumbing",
+          "title": "Week 16 Plan - chapman_plumbing",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-chapman_plumbing",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
           "id": "rs-0-w16-chapman_plumbing-blog_post-01",
           "type": "research_pack",
           "stage": "researcher",
@@ -3262,7 +4358,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
+        },
+        {
+          "id": "rs-2026-w16-chapman_plumbing-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "chapman_plumbing",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - chapman_plumbing",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-chapman_plumbing",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "rs-0-w16-chapman_plumbing-blog_post-02",
@@ -3285,7 +4405,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-chapman_plumbing-link_1-01",
@@ -3308,7 +4429,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-chapman_plumbing-link_2-01",
@@ -3331,7 +4453,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-chapman_plumbing-link_3-01",
@@ -3354,7 +4477,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
         },
         {
           "id": "wr-0-w16-chapman_plumbing-blog_post-01",
@@ -3377,7 +4501,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/blog_post/post_01/2026-03-17_chapman-plumbing_common-causes-of-slow-drains_test2_draft.md"
+        },
+        {
+          "id": "wr-2026-w16-chapman_plumbing-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "chapman_plumbing",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - chapman_plumbing",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-chapman_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "wr-0-w16-chapman_plumbing-blog_post-02",
@@ -3400,7 +4548,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/blog_post/post_02/2026-03-17_chapman-plumbing_signs-water-heater-needs-repair_test2_draft.md"
         },
         {
           "id": "wr-0-w16-chapman_plumbing-link_1-01",
@@ -3423,7 +4572,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_1/article_01/2026-03-18_CHAP_link1-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-chapman_plumbing-link_2-01",
@@ -3446,7 +4596,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_2/article_01/2026-03-18_CHAP_link2-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-chapman_plumbing-link_3-01",
@@ -3469,7 +4620,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_3/article_01/2026-03-18_CHAP_link3-article_01_draft.md"
         },
         {
           "id": "qc-0-w16-chapman_plumbing-blog_post-01",
@@ -3493,6 +4645,29 @@
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
           "publish_date": "1900-04-19"
+        },
+        {
+          "id": "qc-2026-w16-chapman_plumbing-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "chapman_plumbing",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - chapman_plumbing",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-chapman_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "qc-0-w16-chapman_plumbing-blog_post-02",
@@ -3610,6 +4785,29 @@
           "publish_date": "1900-04-19"
         },
         {
+          "id": "pb-2026-w16-chapman_plumbing-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "chapman_plumbing",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - chapman_plumbing",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-chapman_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
           "id": "pb-0-w16-chapman_plumbing-blog_post-02",
           "type": "publish_bundle",
           "stage": "publisher",
@@ -3700,21 +4898,6 @@
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
           "publish_date": "1900-04-20"
-        },
-        {
-          "id": "ho-2026-w16-chapman_plumbing",
-          "type": "human_order",
-          "stage": "publisher",
-          "client_slug": "chapman_plumbing",
-          "week": 16,
-          "parent_id": null,
-          "title": "Week 16 — chapman_plumbing",
-          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-          "status": "done",
-          "research_date": null,
-          "writer_date": null,
-          "qc_date": null,
-          "publish_date": null
         }
       ]
     },
@@ -3740,6 +4923,27 @@
           "qc_date": null,
           "publish_date": null,
           "eta": "1900-04-20"
+        },
+        {
+          "id": "ho-2026-w16-heat_tech_bed_bug",
+          "type": "human_order",
+          "stage": "human-order",
+          "client_slug": "heat_tech_bed_bug",
+          "title": "Week 16 - heat_tech_bed_bug",
+          "description": "Human order for heat_tech_bed_bug. Source ranges: Week 16-16",
+          "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
+          "parent_id": null,
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "research_date": null,
+          "writer_date": null,
+          "qc_date": null,
+          "publish_date": null,
+          "eta": "2026-04-17"
         },
         {
           "id": "pl-0-w16-heat_tech_bed_bug",
@@ -3769,6 +4973,30 @@
           "eta": "1900-04-20"
         },
         {
+          "id": "pl-2026-w16-heat_tech_bed_bug",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "heat_tech_bed_bug",
+          "title": "Week 16 Plan - heat_tech_bed_bug",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-heat_tech_bed_bug",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
           "id": "rs-0-w16-heat_tech_bed_bug-blog_post-01",
           "type": "research_pack",
           "stage": "researcher",
@@ -3789,7 +5017,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
+        },
+        {
+          "id": "rs-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "heat_tech_bed_bug",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - heat_tech_bed_bug",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-heat_tech_bed_bug",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "rs-0-w16-heat_tech_bed_bug-blog_post-02",
@@ -3812,7 +5064,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-heat_tech_bed_bug-link_1-01",
@@ -3835,7 +5088,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-heat_tech_bed_bug-link_2-01",
@@ -3858,7 +5112,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
         },
         {
           "id": "rs-0-w16-heat_tech_bed_bug-link_3-01",
@@ -3881,7 +5136,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
         },
         {
           "id": "wr-0-w16-heat_tech_bed_bug-blog_post-01",
@@ -3904,7 +5160,31 @@
           "research_date": "1900-04-16",
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
-          "publish_date": "1900-04-19"
+          "publish_date": "1900-04-19",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/blog_post/post_01/2026-03-18_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test2_draft.md"
+        },
+        {
+          "id": "wr-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "heat_tech_bed_bug",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - heat_tech_bed_bug",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "wr-0-w16-heat_tech_bed_bug-blog_post-02",
@@ -3927,7 +5207,8 @@
           "research_date": "1900-04-17",
           "writer_date": "1900-04-18",
           "qc_date": "1900-04-19",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/blog_post/post_02/2026-03-18_heat-tech_how-long-does-bed-bug-treatment-take-one-day-timeline_test2_draft.md"
         },
         {
           "id": "wr-0-w16-heat_tech_bed_bug-link_1-01",
@@ -3950,7 +5231,8 @@
           "research_date": "1900-04-18",
           "writer_date": "1900-04-19",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_1/article_01/2026-03-18_HEAT_link1-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-heat_tech_bed_bug-link_2-01",
@@ -3973,7 +5255,8 @@
           "research_date": "1900-04-19",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_2/article_01/2026-03-18_HEAT_link2-article_01_draft.md"
         },
         {
           "id": "wr-0-w16-heat_tech_bed_bug-link_3-01",
@@ -3996,7 +5279,8 @@
           "research_date": "1900-04-20",
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
-          "publish_date": "1900-04-20"
+          "publish_date": "1900-04-20",
+          "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_3/article_01/2026-03-18_HEAT_link3-article_01_draft.md"
         },
         {
           "id": "qc-0-w16-heat_tech_bed_bug-blog_post-01",
@@ -4020,6 +5304,29 @@
           "writer_date": "1900-04-17",
           "qc_date": "1900-04-18",
           "publish_date": "1900-04-19"
+        },
+        {
+          "id": "qc-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "heat_tech_bed_bug",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - heat_tech_bed_bug",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         },
         {
           "id": "qc-0-w16-heat_tech_bed_bug-blog_post-02",
@@ -4137,6 +5444,29 @@
           "publish_date": "1900-04-19"
         },
         {
+          "id": "pb-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "heat_tech_bed_bug",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - heat_tech_bed_bug",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-heat_tech_bed_bug-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
           "id": "pb-0-w16-heat_tech_bed_bug-blog_post-02",
           "type": "publish_bundle",
           "stage": "publisher",
@@ -4227,21 +5557,288 @@
           "writer_date": "1900-04-20",
           "qc_date": "1900-04-20",
           "publish_date": "1900-04-20"
-        },
+        }
+      ]
+    },
+    "madden_plumbing": {
+      "tasks": [
         {
-          "id": "ho-2026-w16-heat_tech_bed_bug",
+          "id": "ho-2026-w16-madden_plumbing",
           "type": "human_order",
-          "stage": "publisher",
-          "client_slug": "heat_tech_bed_bug",
+          "stage": "human-order",
+          "client_slug": "madden_plumbing",
+          "title": "Week 16 - madden_plumbing",
+          "description": "Human order for madden_plumbing. Source ranges: Week 16-16",
           "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
           "parent_id": null,
-          "title": "Week 16 — heat_tech_bed_bug",
-          "description": "Human Order item (Week + Client). Planner will expand this into scheduled work.",
-          "status": "done",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
           "research_date": null,
           "writer_date": null,
           "qc_date": null,
-          "publish_date": null
+          "publish_date": null,
+          "eta": "2026-04-17"
+        },
+        {
+          "id": "pl-2026-w16-madden_plumbing",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "madden_plumbing",
+          "title": "Week 16 Plan - madden_plumbing",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-madden_plumbing",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
+          "id": "rs-2026-w16-madden_plumbing-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "madden_plumbing",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - madden_plumbing",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-madden_plumbing",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "wr-2026-w16-madden_plumbing-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "madden_plumbing",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - madden_plumbing",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-madden_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "qc-2026-w16-madden_plumbing-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "madden_plumbing",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - madden_plumbing",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-madden_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "pb-2026-w16-madden_plumbing-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "madden_plumbing",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - madden_plumbing",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-madden_plumbing-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        }
+      ]
+    },
+    "top_bed_bug_pros": {
+      "tasks": [
+        {
+          "id": "ho-2026-w16-top_bed_bug_pros",
+          "type": "human_order",
+          "stage": "human-order",
+          "client_slug": "top_bed_bug_pros",
+          "title": "Week 16 - top_bed_bug_pros",
+          "description": "Human order for top_bed_bug_pros. Source ranges: Week 16-16",
+          "week": 16,
+          "owner": "human",
+          "status": "planned",
+          "priority": "normal",
+          "parent_id": null,
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "research_date": null,
+          "writer_date": null,
+          "qc_date": null,
+          "publish_date": null,
+          "eta": "2026-04-17"
+        },
+        {
+          "id": "pl-2026-w16-top_bed_bug_pros",
+          "type": "plan_artifact",
+          "stage": "planner",
+          "client_slug": "top_bed_bug_pros",
+          "title": "Week 16 Plan - top_bed_bug_pros",
+          "description": "Planned deliverables -> blog_post: 1",
+          "week": 16,
+          "owner": "planner-agent-1",
+          "status": "planned",
+          "priority": "high",
+          "parent_id": "ho-2026-w16-top_bed_bug_pros",
+          "plan_id": "week16_16_test_3",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "deliverables": {
+            "blog_post": 1
+          },
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-13",
+          "qc_date": "2026-04-17",
+          "publish_date": "2026-04-17",
+          "eta": "2026-04-17"
+        },
+        {
+          "id": "rs-2026-w16-top_bed_bug_pros-blog_post-01",
+          "type": "research_pack",
+          "stage": "researcher",
+          "client_slug": "top_bed_bug_pros",
+          "content_type": "blog_post",
+          "title": "Research Blog Post #1 - top_bed_bug_pros",
+          "description": "Research package for Blog Post #1. Planned by planner-agent-1.",
+          "week": 16,
+          "owner": "researcher-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "pl-2026-w16-top_bed_bug_pros",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "wr-2026-w16-top_bed_bug_pros-blog_post-01",
+          "type": "draft",
+          "stage": "writer",
+          "client_slug": "top_bed_bug_pros",
+          "content_type": "blog_post",
+          "title": "Write Blog Post #1 - top_bed_bug_pros",
+          "description": "Draft Blog Post #1 after research handoff.",
+          "week": 16,
+          "owner": "writer-agent-2",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "rs-2026-w16-top_bed_bug_pros-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "qc-2026-w16-top_bed_bug_pros-blog_post-01",
+          "type": "qc_report",
+          "stage": "qc",
+          "client_slug": "top_bed_bug_pros",
+          "content_type": "blog_post",
+          "title": "QC Blog Post #1 - top_bed_bug_pros",
+          "description": "Quality review for Blog Post #1.",
+          "week": 16,
+          "owner": "qc-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "wr-2026-w16-top_bed_bug_pros-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
+        },
+        {
+          "id": "pb-2026-w16-top_bed_bug_pros-blog_post-01",
+          "type": "publish_bundle",
+          "stage": "publisher",
+          "client_slug": "top_bed_bug_pros",
+          "content_type": "blog_post",
+          "title": "Publish Blog Post #1 - top_bed_bug_pros",
+          "description": "Publish-ready bundle for Blog Post #1.",
+          "week": 16,
+          "owner": "publisher-agent-1",
+          "status": "queued",
+          "priority": "normal",
+          "parent_id": "qc-2026-w16-top_bed_bug_pros-blog_post-01",
+          "plan_id": "week16_16_test_3",
+          "deliverable_key": "blog_post-01",
+          "source_input": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-16_test_3.csv",
+          "source_type": "csv",
+          "eta": "2026-04-16",
+          "research_date": "2026-04-13",
+          "writer_date": "2026-04-14",
+          "qc_date": "2026-04-15",
+          "publish_date": "2026-04-16"
         }
       ]
     }
@@ -4257,6 +5854,14 @@
         "owner": "human"
       },
       "1": {
+        "id": "ho-2026-w16-bed_bug_bbq",
+        "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - bed_bug_bbq",
+        "owner": "human"
+      },
+      "2": {
         "id": "pl-0-w16-bed_bug_bbq",
         "type": "plan_artifact",
         "stage": "planner",
@@ -4264,87 +5869,121 @@
         "title": "Week 16 Plan - bed_bug_bbq",
         "owner": "planner-agent-1"
       },
-      "2": {
+      "3": {
+        "id": "pl-2026-w16-bed_bug_bbq",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - bed_bug_bbq",
+        "owner": "planner-agent-1"
+      },
+      "4": {
         "id": "rs-0-w16-bed_bug_bbq-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - bed_bug_bbq",
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
+      },
+      "5": {
+        "id": "rs-2026-w16-bed_bug_bbq-blog_post-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #1 - bed_bug_bbq",
         "owner": "researcher-agent-1"
       },
-      "3": {
+      "6": {
         "id": "rs-0-w16-bed_bug_bbq-blog_post-02",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #2 - bed_bug_bbq",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
       },
-      "4": {
+      "7": {
         "id": "rs-0-w16-bed_bug_bbq-link_1-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 1 #1 - bed_bug_bbq",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
       },
-      "5": {
+      "8": {
         "id": "rs-0-w16-bed_bug_bbq-link_2-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 2 #1 - bed_bug_bbq",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
       },
-      "6": {
+      "9": {
         "id": "rs-0-w16-bed_bug_bbq-link_3-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 3 #1 - bed_bug_bbq",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/research/pack_01/2026-03-17_bed-bug-to-go_research-pack_test2_week16.md"
       },
-      "7": {
+      "10": {
         "id": "wr-0-w16-bed_bug_bbq-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - bed_bug_bbq",
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/blog_post/post_01/2026-03-18_bed-bug-to-go_bed-bug-inspection-checklist-cleveland_test2_draft.md"
+      },
+      "11": {
+        "id": "wr-2026-w16-bed_bug_bbq-blog_post-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #1 - bed_bug_bbq",
         "owner": "writer-agent-1"
       },
-      "8": {
+      "12": {
         "id": "wr-0-w16-bed_bug_bbq-blog_post-02",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #2 - bed_bug_bbq",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/blog_post/post_02/2026-03-18_bed-bug-to-go_bed-bug-heat-treatment-prep-what-to-do_test2_draft.md"
       },
-      "9": {
+      "13": {
         "id": "wr-0-w16-bed_bug_bbq-link_1-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 1 #1 - bed_bug_bbq",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_1/article_01/2026-03-18_BBBQ_link1-article_01_draft.md"
       },
-      "10": {
+      "14": {
         "id": "wr-0-w16-bed_bug_bbq-link_2-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 2 #1 - bed_bug_bbq",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_2/article_01/2026-03-18_BBBQ_link2-article_01_draft.md"
       },
-      "11": {
+      "15": {
         "id": "wr-0-w16-bed_bug_bbq-link_3-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 3 #1 - bed_bug_bbq",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bug_bbq/link_3/article_01/2026-03-18_BBBQ_link3-article_01_draft.md"
       },
-      "12": {
+      "16": {
         "id": "qc-0-w16-bed_bug_bbq-blog_post-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4352,7 +5991,15 @@
         "title": "QC Blog Post #1 - bed_bug_bbq",
         "owner": "qc-agent-1"
       },
-      "13": {
+      "17": {
+        "id": "qc-2026-w16-bed_bug_bbq-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - bed_bug_bbq",
+        "owner": "qc-agent-1"
+      },
+      "18": {
         "id": "qc-0-w16-bed_bug_bbq-blog_post-02",
         "type": "qc_report",
         "stage": "qc",
@@ -4360,7 +6007,7 @@
         "title": "QC Blog Post #2 - bed_bug_bbq",
         "owner": "qc-agent-1"
       },
-      "14": {
+      "19": {
         "id": "qc-0-w16-bed_bug_bbq-link_1-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4368,7 +6015,7 @@
         "title": "QC Link 1 #1 - bed_bug_bbq",
         "owner": "qc-agent-1"
       },
-      "15": {
+      "20": {
         "id": "qc-0-w16-bed_bug_bbq-link_2-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4376,7 +6023,7 @@
         "title": "QC Link 2 #1 - bed_bug_bbq",
         "owner": "qc-agent-1"
       },
-      "16": {
+      "21": {
         "id": "qc-0-w16-bed_bug_bbq-link_3-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4384,7 +6031,7 @@
         "title": "QC Link 3 #1 - bed_bug_bbq",
         "owner": "qc-agent-1"
       },
-      "17": {
+      "22": {
         "id": "pb-0-w16-bed_bug_bbq-blog_post-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4392,7 +6039,15 @@
         "title": "Publish Blog Post #1 - bed_bug_bbq",
         "owner": "publisher-agent-1"
       },
-      "18": {
+      "23": {
+        "id": "pb-2026-w16-bed_bug_bbq-blog_post-01",
+        "type": "publish_bundle",
+        "stage": "publisher",
+        "status": "queued",
+        "title": "Publish Blog Post #1 - bed_bug_bbq",
+        "owner": "publisher-agent-1"
+      },
+      "24": {
         "id": "pb-0-w16-bed_bug_bbq-blog_post-02",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4400,7 +6055,7 @@
         "title": "Publish Blog Post #2 - bed_bug_bbq",
         "owner": "publisher-agent-1"
       },
-      "19": {
+      "25": {
         "id": "pb-0-w16-bed_bug_bbq-link_1-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4408,7 +6063,7 @@
         "title": "Publish Link 1 #1 - bed_bug_bbq",
         "owner": "publisher-agent-1"
       },
-      "20": {
+      "26": {
         "id": "pb-0-w16-bed_bug_bbq-link_2-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4416,7 +6071,7 @@
         "title": "Publish Link 2 #1 - bed_bug_bbq",
         "owner": "publisher-agent-1"
       },
-      "21": {
+      "27": {
         "id": "pb-0-w16-bed_bug_bbq-link_3-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4424,14 +6079,7 @@
         "title": "Publish Link 3 #1 - bed_bug_bbq",
         "owner": "publisher-agent-1"
       },
-      "22": {
-        "id": "ho-2026-w16-bed_bug_bbq",
-        "type": "human_order",
-        "stage": "publisher",
-        "status": "done",
-        "title": "Week 16 — bed_bug_bbq"
-      },
-      "23": {
+      "28": {
         "id": "ho-0-w16-bed_bugs_be_gone",
         "type": "human_order",
         "stage": "human-order",
@@ -4439,7 +6087,15 @@
         "title": "Week 16 - bed_bugs_be_gone",
         "owner": "human"
       },
-      "24": {
+      "29": {
+        "id": "ho-2026-w16-bed_bugs_be_gone",
+        "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - bed_bugs_be_gone",
+        "owner": "human"
+      },
+      "30": {
         "id": "pl-0-w16-bed_bugs_be_gone",
         "type": "plan_artifact",
         "stage": "planner",
@@ -4447,87 +6103,121 @@
         "title": "Week 16 Plan - bed_bugs_be_gone",
         "owner": "planner-agent-1"
       },
-      "25": {
+      "31": {
+        "id": "pl-2026-w16-bed_bugs_be_gone",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - bed_bugs_be_gone",
+        "owner": "planner-agent-1"
+      },
+      "32": {
         "id": "rs-0-w16-bed_bugs_be_gone-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - bed_bugs_be_gone",
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
+      },
+      "33": {
+        "id": "rs-2026-w16-bed_bugs_be_gone-blog_post-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #1 - bed_bugs_be_gone",
         "owner": "researcher-agent-2"
       },
-      "26": {
+      "34": {
         "id": "rs-0-w16-bed_bugs_be_gone-blog_post-02",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #2 - bed_bugs_be_gone",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
       },
-      "27": {
+      "35": {
         "id": "rs-0-w16-bed_bugs_be_gone-link_1-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 1 #1 - bed_bugs_be_gone",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
       },
-      "28": {
+      "36": {
         "id": "rs-0-w16-bed_bugs_be_gone-link_2-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 2 #1 - bed_bugs_be_gone",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
       },
-      "29": {
+      "37": {
         "id": "rs-0-w16-bed_bugs_be_gone-link_3-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 3 #1 - bed_bugs_be_gone",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/research/pack_01/2026-03-17_bed-bugs-be-gone-now_research-pack_test2_week16.md"
       },
-      "30": {
+      "38": {
         "id": "wr-0-w16-bed_bugs_be_gone-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - bed_bugs_be_gone",
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/blog_post/post_01/2026-03-18_bed-bugs-be-gone-now_bed-bugs-in-apartments-what-to-do-first-chicago_test2_draft.md"
+      },
+      "39": {
+        "id": "wr-2026-w16-bed_bugs_be_gone-blog_post-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #1 - bed_bugs_be_gone",
         "owner": "writer-agent-2"
       },
-      "31": {
+      "40": {
         "id": "wr-0-w16-bed_bugs_be_gone-blog_post-02",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #2 - bed_bugs_be_gone",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/blog_post/post_02/2026-03-18_bed-bugs-be-gone-now_heat-vs-aprehend-vs-chemical-bed-bug-treatment-how-to-choose_test2_draft.md"
       },
-      "32": {
+      "41": {
         "id": "wr-0-w16-bed_bugs_be_gone-link_1-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 1 #1 - bed_bugs_be_gone",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_1/article_01/2026-03-18_BBBGN_link1-article_01_draft.md"
       },
-      "33": {
+      "42": {
         "id": "wr-0-w16-bed_bugs_be_gone-link_2-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 2 #1 - bed_bugs_be_gone",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_2/article_01/2026-03-18_BBBGN_link2-article_01_draft.md"
       },
-      "34": {
+      "43": {
         "id": "wr-0-w16-bed_bugs_be_gone-link_3-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 3 #1 - bed_bugs_be_gone",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/bed_bugs_be_gone/link_3/article_01/2026-03-18_BBBGN_link3-article_01_draft.md"
       },
-      "35": {
+      "44": {
         "id": "qc-0-w16-bed_bugs_be_gone-blog_post-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4535,7 +6225,15 @@
         "title": "QC Blog Post #1 - bed_bugs_be_gone",
         "owner": "qc-agent-1"
       },
-      "36": {
+      "45": {
+        "id": "qc-2026-w16-bed_bugs_be_gone-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - bed_bugs_be_gone",
+        "owner": "qc-agent-1"
+      },
+      "46": {
         "id": "qc-0-w16-bed_bugs_be_gone-blog_post-02",
         "type": "qc_report",
         "stage": "qc",
@@ -4543,7 +6241,7 @@
         "title": "QC Blog Post #2 - bed_bugs_be_gone",
         "owner": "qc-agent-1"
       },
-      "37": {
+      "47": {
         "id": "qc-0-w16-bed_bugs_be_gone-link_1-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4551,7 +6249,7 @@
         "title": "QC Link 1 #1 - bed_bugs_be_gone",
         "owner": "qc-agent-1"
       },
-      "38": {
+      "48": {
         "id": "qc-0-w16-bed_bugs_be_gone-link_2-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4559,7 +6257,7 @@
         "title": "QC Link 2 #1 - bed_bugs_be_gone",
         "owner": "qc-agent-1"
       },
-      "39": {
+      "49": {
         "id": "qc-0-w16-bed_bugs_be_gone-link_3-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4567,7 +6265,7 @@
         "title": "QC Link 3 #1 - bed_bugs_be_gone",
         "owner": "qc-agent-1"
       },
-      "40": {
+      "50": {
         "id": "pb-0-w16-bed_bugs_be_gone-blog_post-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4575,7 +6273,15 @@
         "title": "Publish Blog Post #1 - bed_bugs_be_gone",
         "owner": "publisher-agent-1"
       },
-      "41": {
+      "51": {
+        "id": "pb-2026-w16-bed_bugs_be_gone-blog_post-01",
+        "type": "publish_bundle",
+        "stage": "publisher",
+        "status": "queued",
+        "title": "Publish Blog Post #1 - bed_bugs_be_gone",
+        "owner": "publisher-agent-1"
+      },
+      "52": {
         "id": "pb-0-w16-bed_bugs_be_gone-blog_post-02",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4583,7 +6289,7 @@
         "title": "Publish Blog Post #2 - bed_bugs_be_gone",
         "owner": "publisher-agent-1"
       },
-      "42": {
+      "53": {
         "id": "pb-0-w16-bed_bugs_be_gone-link_1-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4591,7 +6297,7 @@
         "title": "Publish Link 1 #1 - bed_bugs_be_gone",
         "owner": "publisher-agent-1"
       },
-      "43": {
+      "54": {
         "id": "pb-0-w16-bed_bugs_be_gone-link_2-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4599,7 +6305,7 @@
         "title": "Publish Link 2 #1 - bed_bugs_be_gone",
         "owner": "publisher-agent-1"
       },
-      "44": {
+      "55": {
         "id": "pb-0-w16-bed_bugs_be_gone-link_3-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4607,14 +6313,7 @@
         "title": "Publish Link 3 #1 - bed_bugs_be_gone",
         "owner": "publisher-agent-1"
       },
-      "45": {
-        "id": "ho-2026-w16-bed_bugs_be_gone",
-        "type": "human_order",
-        "stage": "publisher",
-        "status": "done",
-        "title": "Week 16 — bed_bugs_be_gone"
-      },
-      "46": {
+      "56": {
         "id": "ho-0-w16-chapman_plumbing",
         "type": "human_order",
         "stage": "human-order",
@@ -4622,7 +6321,15 @@
         "title": "Week 16 - chapman_plumbing",
         "owner": "human"
       },
-      "47": {
+      "57": {
+        "id": "ho-2026-w16-chapman_plumbing",
+        "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - chapman_plumbing",
+        "owner": "human"
+      },
+      "58": {
         "id": "pl-0-w16-chapman_plumbing",
         "type": "plan_artifact",
         "stage": "planner",
@@ -4630,87 +6337,121 @@
         "title": "Week 16 Plan - chapman_plumbing",
         "owner": "planner-agent-1"
       },
-      "48": {
+      "59": {
+        "id": "pl-2026-w16-chapman_plumbing",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - chapman_plumbing",
+        "owner": "planner-agent-1"
+      },
+      "60": {
         "id": "rs-0-w16-chapman_plumbing-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - chapman_plumbing",
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
+      },
+      "61": {
+        "id": "rs-2026-w16-chapman_plumbing-blog_post-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #1 - chapman_plumbing",
         "owner": "researcher-agent-1"
       },
-      "49": {
+      "62": {
         "id": "rs-0-w16-chapman_plumbing-blog_post-02",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #2 - chapman_plumbing",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
       },
-      "50": {
+      "63": {
         "id": "rs-0-w16-chapman_plumbing-link_1-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 1 #1 - chapman_plumbing",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
       },
-      "51": {
+      "64": {
         "id": "rs-0-w16-chapman_plumbing-link_2-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 2 #1 - chapman_plumbing",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
       },
-      "52": {
+      "65": {
         "id": "rs-0-w16-chapman_plumbing-link_3-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 3 #1 - chapman_plumbing",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/research/pack_01/2026-03-17_chapman-plumbing_research-pack_test2_week16.md"
       },
-      "53": {
+      "66": {
         "id": "wr-0-w16-chapman_plumbing-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - chapman_plumbing",
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/blog_post/post_01/2026-03-17_chapman-plumbing_common-causes-of-slow-drains_test2_draft.md"
+      },
+      "67": {
+        "id": "wr-2026-w16-chapman_plumbing-blog_post-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #1 - chapman_plumbing",
         "owner": "writer-agent-1"
       },
-      "54": {
+      "68": {
         "id": "wr-0-w16-chapman_plumbing-blog_post-02",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #2 - chapman_plumbing",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/blog_post/post_02/2026-03-17_chapman-plumbing_signs-water-heater-needs-repair_test2_draft.md"
       },
-      "55": {
+      "69": {
         "id": "wr-0-w16-chapman_plumbing-link_1-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 1 #1 - chapman_plumbing",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_1/article_01/2026-03-18_CHAP_link1-article_01_draft.md"
       },
-      "56": {
+      "70": {
         "id": "wr-0-w16-chapman_plumbing-link_2-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 2 #1 - chapman_plumbing",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_2/article_01/2026-03-18_CHAP_link2-article_01_draft.md"
       },
-      "57": {
+      "71": {
         "id": "wr-0-w16-chapman_plumbing-link_3-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 3 #1 - chapman_plumbing",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/chapman_plumbing/link_3/article_01/2026-03-18_CHAP_link3-article_01_draft.md"
       },
-      "58": {
+      "72": {
         "id": "qc-0-w16-chapman_plumbing-blog_post-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4718,7 +6459,15 @@
         "title": "QC Blog Post #1 - chapman_plumbing",
         "owner": "qc-agent-1"
       },
-      "59": {
+      "73": {
+        "id": "qc-2026-w16-chapman_plumbing-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - chapman_plumbing",
+        "owner": "qc-agent-1"
+      },
+      "74": {
         "id": "qc-0-w16-chapman_plumbing-blog_post-02",
         "type": "qc_report",
         "stage": "qc",
@@ -4726,7 +6475,7 @@
         "title": "QC Blog Post #2 - chapman_plumbing",
         "owner": "qc-agent-1"
       },
-      "60": {
+      "75": {
         "id": "qc-0-w16-chapman_plumbing-link_1-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4734,7 +6483,7 @@
         "title": "QC Link 1 #1 - chapman_plumbing",
         "owner": "qc-agent-1"
       },
-      "61": {
+      "76": {
         "id": "qc-0-w16-chapman_plumbing-link_2-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4742,7 +6491,7 @@
         "title": "QC Link 2 #1 - chapman_plumbing",
         "owner": "qc-agent-1"
       },
-      "62": {
+      "77": {
         "id": "qc-0-w16-chapman_plumbing-link_3-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4750,7 +6499,7 @@
         "title": "QC Link 3 #1 - chapman_plumbing",
         "owner": "qc-agent-1"
       },
-      "63": {
+      "78": {
         "id": "pb-0-w16-chapman_plumbing-blog_post-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4758,7 +6507,15 @@
         "title": "Publish Blog Post #1 - chapman_plumbing",
         "owner": "publisher-agent-1"
       },
-      "64": {
+      "79": {
+        "id": "pb-2026-w16-chapman_plumbing-blog_post-01",
+        "type": "publish_bundle",
+        "stage": "publisher",
+        "status": "queued",
+        "title": "Publish Blog Post #1 - chapman_plumbing",
+        "owner": "publisher-agent-1"
+      },
+      "80": {
         "id": "pb-0-w16-chapman_plumbing-blog_post-02",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4766,7 +6523,7 @@
         "title": "Publish Blog Post #2 - chapman_plumbing",
         "owner": "publisher-agent-1"
       },
-      "65": {
+      "81": {
         "id": "pb-0-w16-chapman_plumbing-link_1-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4774,7 +6531,7 @@
         "title": "Publish Link 1 #1 - chapman_plumbing",
         "owner": "publisher-agent-1"
       },
-      "66": {
+      "82": {
         "id": "pb-0-w16-chapman_plumbing-link_2-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4782,7 +6539,7 @@
         "title": "Publish Link 2 #1 - chapman_plumbing",
         "owner": "publisher-agent-1"
       },
-      "67": {
+      "83": {
         "id": "pb-0-w16-chapman_plumbing-link_3-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4790,14 +6547,7 @@
         "title": "Publish Link 3 #1 - chapman_plumbing",
         "owner": "publisher-agent-1"
       },
-      "68": {
-        "id": "ho-2026-w16-chapman_plumbing",
-        "type": "human_order",
-        "stage": "publisher",
-        "status": "done",
-        "title": "Week 16 — chapman_plumbing"
-      },
-      "69": {
+      "84": {
         "id": "ho-0-w16-heat_tech_bed_bug",
         "type": "human_order",
         "stage": "human-order",
@@ -4805,7 +6555,15 @@
         "title": "Week 16 - heat_tech_bed_bug",
         "owner": "human"
       },
-      "70": {
+      "85": {
+        "id": "ho-2026-w16-heat_tech_bed_bug",
+        "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - heat_tech_bed_bug",
+        "owner": "human"
+      },
+      "86": {
         "id": "pl-0-w16-heat_tech_bed_bug",
         "type": "plan_artifact",
         "stage": "planner",
@@ -4813,87 +6571,121 @@
         "title": "Week 16 Plan - heat_tech_bed_bug",
         "owner": "planner-agent-1"
       },
-      "71": {
+      "87": {
+        "id": "pl-2026-w16-heat_tech_bed_bug",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - heat_tech_bed_bug",
+        "owner": "planner-agent-1"
+      },
+      "88": {
         "id": "rs-0-w16-heat_tech_bed_bug-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - heat_tech_bed_bug",
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
+      },
+      "89": {
+        "id": "rs-2026-w16-heat_tech_bed_bug-blog_post-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #1 - heat_tech_bed_bug",
         "owner": "researcher-agent-2"
       },
-      "72": {
+      "90": {
         "id": "rs-0-w16-heat_tech_bed_bug-blog_post-02",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Blog Post #2 - heat_tech_bed_bug",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
       },
-      "73": {
+      "91": {
         "id": "rs-0-w16-heat_tech_bed_bug-link_1-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 1 #1 - heat_tech_bed_bug",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
       },
-      "74": {
+      "92": {
         "id": "rs-0-w16-heat_tech_bed_bug-link_2-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 2 #1 - heat_tech_bed_bug",
-        "owner": "researcher-agent-1"
+        "owner": "researcher-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
       },
-      "75": {
+      "93": {
         "id": "rs-0-w16-heat_tech_bed_bug-link_3-01",
         "type": "research_pack",
         "stage": "researcher",
         "status": "queued",
         "title": "Research Link 3 #1 - heat_tech_bed_bug",
-        "owner": "researcher-agent-2"
+        "owner": "researcher-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/research/pack_01/2026-03-17_heat-tech_research-pack_test2_week16.md"
       },
-      "76": {
+      "94": {
         "id": "wr-0-w16-heat_tech_bed_bug-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - heat_tech_bed_bug",
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/blog_post/post_01/2026-03-18_heat-tech_prepare-for-bed-bug-heat-treatment-tulsa-checklist_test2_draft.md"
+      },
+      "95": {
+        "id": "wr-2026-w16-heat_tech_bed_bug-blog_post-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #1 - heat_tech_bed_bug",
         "owner": "writer-agent-2"
       },
-      "77": {
+      "96": {
         "id": "wr-0-w16-heat_tech_bed_bug-blog_post-02",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Blog Post #2 - heat_tech_bed_bug",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/blog_post/post_02/2026-03-18_heat-tech_how-long-does-bed-bug-treatment-take-one-day-timeline_test2_draft.md"
       },
-      "78": {
+      "97": {
         "id": "wr-0-w16-heat_tech_bed_bug-link_1-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 1 #1 - heat_tech_bed_bug",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_1/article_01/2026-03-18_HEAT_link1-article_01_draft.md"
       },
-      "79": {
+      "98": {
         "id": "wr-0-w16-heat_tech_bed_bug-link_2-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 2 #1 - heat_tech_bed_bug",
-        "owner": "writer-agent-1"
+        "owner": "writer-agent-1",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_2/article_01/2026-03-18_HEAT_link2-article_01_draft.md"
       },
-      "80": {
+      "99": {
         "id": "wr-0-w16-heat_tech_bed_bug-link_3-01",
         "type": "draft",
         "stage": "writer",
         "status": "queued",
         "title": "Write Link 3 #1 - heat_tech_bed_bug",
-        "owner": "writer-agent-2"
+        "owner": "writer-agent-2",
+        "artifact_path": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-16-test_2/heat_tech_bed_bug/link_3/article_01/2026-03-18_HEAT_link3-article_01_draft.md"
       },
-      "81": {
+      "100": {
         "id": "qc-0-w16-heat_tech_bed_bug-blog_post-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4901,7 +6693,15 @@
         "title": "QC Blog Post #1 - heat_tech_bed_bug",
         "owner": "qc-agent-1"
       },
-      "82": {
+      "101": {
+        "id": "qc-2026-w16-heat_tech_bed_bug-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - heat_tech_bed_bug",
+        "owner": "qc-agent-1"
+      },
+      "102": {
         "id": "qc-0-w16-heat_tech_bed_bug-blog_post-02",
         "type": "qc_report",
         "stage": "qc",
@@ -4909,7 +6709,7 @@
         "title": "QC Blog Post #2 - heat_tech_bed_bug",
         "owner": "qc-agent-1"
       },
-      "83": {
+      "103": {
         "id": "qc-0-w16-heat_tech_bed_bug-link_1-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4917,7 +6717,7 @@
         "title": "QC Link 1 #1 - heat_tech_bed_bug",
         "owner": "qc-agent-1"
       },
-      "84": {
+      "104": {
         "id": "qc-0-w16-heat_tech_bed_bug-link_2-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4925,7 +6725,7 @@
         "title": "QC Link 2 #1 - heat_tech_bed_bug",
         "owner": "qc-agent-1"
       },
-      "85": {
+      "105": {
         "id": "qc-0-w16-heat_tech_bed_bug-link_3-01",
         "type": "qc_report",
         "stage": "qc",
@@ -4933,7 +6733,7 @@
         "title": "QC Link 3 #1 - heat_tech_bed_bug",
         "owner": "qc-agent-1"
       },
-      "86": {
+      "106": {
         "id": "pb-0-w16-heat_tech_bed_bug-blog_post-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4941,7 +6741,15 @@
         "title": "Publish Blog Post #1 - heat_tech_bed_bug",
         "owner": "publisher-agent-1"
       },
-      "87": {
+      "107": {
+        "id": "pb-2026-w16-heat_tech_bed_bug-blog_post-01",
+        "type": "publish_bundle",
+        "stage": "publisher",
+        "status": "queued",
+        "title": "Publish Blog Post #1 - heat_tech_bed_bug",
+        "owner": "publisher-agent-1"
+      },
+      "108": {
         "id": "pb-0-w16-heat_tech_bed_bug-blog_post-02",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4949,7 +6757,7 @@
         "title": "Publish Blog Post #2 - heat_tech_bed_bug",
         "owner": "publisher-agent-1"
       },
-      "88": {
+      "109": {
         "id": "pb-0-w16-heat_tech_bed_bug-link_1-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4957,7 +6765,7 @@
         "title": "Publish Link 1 #1 - heat_tech_bed_bug",
         "owner": "publisher-agent-1"
       },
-      "89": {
+      "110": {
         "id": "pb-0-w16-heat_tech_bed_bug-link_2-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4965,7 +6773,7 @@
         "title": "Publish Link 2 #1 - heat_tech_bed_bug",
         "owner": "publisher-agent-1"
       },
-      "90": {
+      "111": {
         "id": "pb-0-w16-heat_tech_bed_bug-link_3-01",
         "type": "publish_bundle",
         "stage": "publisher",
@@ -4973,12 +6781,101 @@
         "title": "Publish Link 3 #1 - heat_tech_bed_bug",
         "owner": "publisher-agent-1"
       },
-      "91": {
-        "id": "ho-2026-w16-heat_tech_bed_bug",
+      "112": {
+        "id": "ho-2026-w16-madden_plumbing",
         "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - madden_plumbing",
+        "owner": "human"
+      },
+      "113": {
+        "id": "pl-2026-w16-madden_plumbing",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - madden_plumbing",
+        "owner": "planner-agent-1"
+      },
+      "114": {
+        "id": "rs-2026-w16-madden_plumbing-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - madden_plumbing",
+        "owner": "researcher-agent-1"
+      },
+      "115": {
+        "id": "wr-2026-w16-madden_plumbing-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - madden_plumbing",
+        "owner": "writer-agent-1"
+      },
+      "116": {
+        "id": "qc-2026-w16-madden_plumbing-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - madden_plumbing",
+        "owner": "qc-agent-1"
+      },
+      "117": {
+        "id": "pb-2026-w16-madden_plumbing-blog_post-01",
+        "type": "publish_bundle",
         "stage": "publisher",
-        "status": "done",
-        "title": "Week 16 — heat_tech_bed_bug"
+        "status": "queued",
+        "title": "Publish Blog Post #1 - madden_plumbing",
+        "owner": "publisher-agent-1"
+      },
+      "118": {
+        "id": "ho-2026-w16-top_bed_bug_pros",
+        "type": "human_order",
+        "stage": "human-order",
+        "status": "planned",
+        "title": "Week 16 - top_bed_bug_pros",
+        "owner": "human"
+      },
+      "119": {
+        "id": "pl-2026-w16-top_bed_bug_pros",
+        "type": "plan_artifact",
+        "stage": "planner",
+        "status": "planned",
+        "title": "Week 16 Plan - top_bed_bug_pros",
+        "owner": "planner-agent-1"
+      },
+      "120": {
+        "id": "rs-2026-w16-top_bed_bug_pros-blog_post-01",
+        "type": "research_pack",
+        "stage": "researcher",
+        "status": "queued",
+        "title": "Research Blog Post #1 - top_bed_bug_pros",
+        "owner": "researcher-agent-2"
+      },
+      "121": {
+        "id": "wr-2026-w16-top_bed_bug_pros-blog_post-01",
+        "type": "draft",
+        "stage": "writer",
+        "status": "queued",
+        "title": "Write Blog Post #1 - top_bed_bug_pros",
+        "owner": "writer-agent-2"
+      },
+      "122": {
+        "id": "qc-2026-w16-top_bed_bug_pros-blog_post-01",
+        "type": "qc_report",
+        "stage": "qc",
+        "status": "queued",
+        "title": "QC Blog Post #1 - top_bed_bug_pros",
+        "owner": "qc-agent-1"
+      },
+      "123": {
+        "id": "pb-2026-w16-top_bed_bug_pros-blog_post-01",
+        "type": "publish_bundle",
+        "stage": "publisher",
+        "status": "queued",
+        "title": "Publish Blog Post #1 - top_bed_bug_pros",
+        "owner": "publisher-agent-1"
       }
     }
   }
