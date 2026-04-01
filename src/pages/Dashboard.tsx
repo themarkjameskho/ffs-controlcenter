@@ -4,6 +4,7 @@ import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/delive
 import { formatArtifactType, formatWorkflow } from '../lib/deliverables'
 import { isoWeekStartDate } from '../lib/date'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
+import ArtifactMetricsSummary from '../components/ArtifactMetricsSummary'
 import { evaluateContentReadiness } from '../lib/contentReadiness'
 import type { LiveState, Stage, Task, WeekState } from '../lib/types'
 import { extractTasksFromWeekState } from '../lib/weekState'
@@ -85,6 +86,7 @@ type ContentUnitQuality = {
   h2Count: number | null
   featuredImagePresent: boolean | null
   imageAssetCount: number | null
+  imageRevisionCount: number | null
   qcFailCountBeforePass: number | null
   readinessStatus: 'ready' | 'review' | 'blocked'
   readinessLabel: string
@@ -117,6 +119,16 @@ type StageRadarRow = {
   missed: number
   today: number
   tomorrow: number
+}
+
+type TrendPoint = {
+  label: string
+  qcPassRate: number | null
+  avgQcScore: number | null
+  avgBlogWords: number | null
+  avgLinkWords: number | null
+  avgContentRevisions: number | null
+  avgImageRevisions: number | null
 }
 
 const DEFAULT_ACTIVE_ORDER: OrderWindow = {
@@ -193,6 +205,124 @@ function averageOrNull(values: number[]) {
 function averageDecimalOrNull(values: number[]) {
   if (values.length === 0) return null
   return Math.round((values.reduce((sum, v) => sum + v, 0) / values.length) * 10) / 10
+}
+
+function percentOrNull(numerator: number, denominator: number) {
+  if (denominator <= 0) return null
+  return Math.round((numerator / denominator) * 100)
+}
+
+function averageForKey<T>(items: T[], getter: (item: T) => number | null | undefined) {
+  const values = items.map(getter).filter((value): value is number => typeof value === 'number' && Number.isFinite(value))
+  return averageDecimalOrNull(values)
+}
+
+function primaryWeekForArtifact(artifact: DeliverablesArtifact, selectedWeeks: Set<number>) {
+  const match = artifact.weekNumbers.filter((week) => selectedWeeks.has(week)).sort((a, b) => a - b)
+  return match[0] ?? artifact.weekNumbers[0] ?? null
+}
+
+function isLinkCategory(category: DeliverablesArtifact['contentCategory']) {
+  return category === 'l1' || category === 'l2' || category === 'l3'
+}
+
+function wordCountBaselineRange(category: DeliverablesArtifact['contentCategory']) {
+  if (category === 'blog') return { min: 700, max: null as number | null }
+  if (isLinkCategory(category)) return { min: 400, max: null as number | null }
+  if (category === 'gmb') return { min: 80, max: null as number | null }
+  return null
+}
+
+function isWordCountCompliant(category: DeliverablesArtifact['contentCategory'], wordCount: number | null) {
+  if (typeof wordCount !== 'number') return null
+  const baseline = wordCountBaselineRange(category)
+  if (!baseline) return null
+  if (wordCount < baseline.min) return false
+  if (typeof baseline.max === 'number' && wordCount > baseline.max) return false
+  return true
+}
+
+function formatMetricValue(value: number | null, suffix = '') {
+  if (typeof value !== 'number' || Number.isNaN(value)) return '—'
+  return `${value}${suffix}`
+}
+
+function buildTrendPath(values: Array<number | null>, width: number, height: number, padding = 16) {
+  const validValues = values.filter((value): value is number => typeof value === 'number' && Number.isFinite(value))
+  if (validValues.length === 0) return ''
+  const min = Math.min(...validValues)
+  const max = Math.max(...validValues)
+  const spread = max - min || 1
+  const innerWidth = Math.max(1, width - padding * 2)
+  const innerHeight = Math.max(1, height - padding * 2)
+
+  let hasStarted = false
+  return values
+    .map((value, index) => {
+      const x = padding + (values.length === 1 ? innerWidth / 2 : (index / (values.length - 1)) * innerWidth)
+      const normalized = typeof value === 'number' ? (value - min) / spread : null
+      const y = normalized === null ? null : padding + (1 - normalized) * innerHeight
+      if (y === null) {
+        hasStarted = false
+        return null
+      }
+      const command = hasStarted ? 'L' : 'M'
+      hasStarted = true
+      return `${command} ${x} ${y}`
+    })
+    .filter(Boolean)
+    .join(' ')
+}
+
+function TrendChart({
+  title,
+  subtitle,
+  points,
+  series
+}: {
+  title: string
+  subtitle: string
+  points: TrendPoint[]
+  series: Array<{ key: keyof TrendPoint; label: string }>
+}) {
+  const width = 360
+  const height = 140
+  const colors = ['var(--accent, #7c5cff)', 'var(--accent-2, #22c55e)']
+  return (
+    <article className="panel-card">
+      <header className="panel-card-head">
+        <h3>{title}</h3>
+        <span>{subtitle}</span>
+      </header>
+      {points.length === 0 ? (
+        <p className="subhead">No trend data yet.</p>
+      ) : (
+        <>
+          <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="140" aria-label={title}>
+            <line x1="16" y1="124" x2="344" y2="124" stroke="currentColor" opacity="0.12" />
+            {series.map((entry, index) => {
+              const path = buildTrendPath(
+                points.map((point) => {
+                  const value = point[entry.key]
+                  return typeof value === 'number' ? value : null
+                }),
+                width,
+                height,
+              )
+              if (!path) return null
+              return <path key={entry.label} d={path} fill="none" stroke={colors[index % colors.length]} strokeWidth="2.5" />
+            })}
+          </svg>
+          <p className="subhead" style={{ marginTop: 8 }}>
+            {points.map((point) => point.label).join(' · ')}
+          </p>
+          <p className="subhead">
+            {series.map((entry) => `${entry.label} ${formatMetricValue(points[points.length - 1]?.[entry.key] as number | null)}`).join(' · ')}
+          </p>
+        </>
+      )}
+    </article>
+  )
 }
 
 function weekNumbersFor(window: OrderWindow) {
@@ -284,6 +414,10 @@ async function fetchOrderRegistry() {
   return await fetchJson<OrderRegistryPayload>(`/api/order-registry?t=${Date.now()}`)
 }
 
+function isTestRegistrySource(sourceCsv: string) {
+  return /(?:^|[_/-])test(?:[_/-]|\d|$)/i.test(sourceCsv)
+}
+
 function applyLivePatches(tasks: Task[], live: LiveState | null) {
   if (!live?.tasks?.length) return tasks
   const patchById = new Map(live.tasks.map((patch) => [patch.id, patch]))
@@ -327,12 +461,16 @@ function formatOrderRange(window: OrderWindow) {
   return `${window.label} · ${formatDate(start.toISOString())} - ${formatDate(end.toISOString())}`
 }
 
+function formatOrderWindowLabel(startWeek: number, endWeek: number) {
+  return `Week ${startWeek}-${endWeek}`
+}
+
 function toOrderWindow(entry: OrderRegistryEntry): OrderWindow {
   return {
     year: entry.year,
     startWeek: entry.startWeek,
     endWeek: entry.endWeek,
-    label: entry.label
+    label: formatOrderWindowLabel(entry.startWeek, entry.endWeek)
   }
 }
 
@@ -417,15 +555,16 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     sourceCsv: '',
     lastSync: ''
   })
-  const [selectedOrderView, setSelectedOrderView] = useState(orderKey(DEFAULT_ACTIVE_ORDER))
+  const [selectedOrderView, setSelectedOrderView] = useState(ALL_ORDERS_KEY)
 
   const orderWindows = useMemo(() => {
-    const windows = orderRegistryState.orders
+    const registryOrders = isTestRegistrySource(orderRegistryState.sourceCsv) ? [] : orderRegistryState.orders
+    const windows = registryOrders
       .map(toOrderWindow)
       .sort((a, b) => (a.year !== b.year ? a.year - b.year : a.startWeek - b.startWeek))
     if (windows.length > 0) return windows
     return [DEFAULT_ACTIVE_ORDER, DEFAULT_NEXT_ORDER]
-  }, [orderRegistryState.orders])
+  }, [orderRegistryState.orders, orderRegistryState.sourceCsv])
 
   useEffect(() => {
     setSelectedOrderView((prev) => {
@@ -462,9 +601,10 @@ export default function Dashboard({ deliverables }: DashboardProps) {
   }, [selectedWindows])
 
   const selectedRegistryOrders = useMemo(() => {
+    if (isTestRegistrySource(orderRegistryState.sourceCsv)) return []
     if (selectedOrderView === ALL_ORDERS_KEY) return orderRegistryState.orders
     return orderRegistryState.orders.filter((order) => orderKey(toOrderWindow(order)) === selectedOrderView)
-  }, [orderRegistryState.orders, selectedOrderView])
+  }, [orderRegistryState.orders, orderRegistryState.sourceCsv, selectedOrderView])
 
   useEffect(() => {
     let cancelled = false
@@ -725,6 +865,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         h2Count: readiness.h2Count,
         featuredImagePresent: readiness.featuredImagePresent,
         imageAssetCount: readiness.imageAssetCount,
+        imageRevisionCount:
+          typeof draftArtifact.metrics?.image_revision_count === 'number'
+            ? draftArtifact.metrics.image_revision_count
+            : typeof qcArtifact?.metrics?.image_revision_count === 'number'
+              ? qcArtifact.metrics.image_revision_count
+              : null,
         qcFailCountBeforePass: readiness.qcFailCountBeforePass,
         readinessStatus: readiness.status,
         readinessLabel: readiness.statusLabel,
@@ -966,6 +1112,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
     const overallQcScore = averageDecimalOrNull(unitQuality.map((u) => u.qcScore).filter((v): v is number => typeof v === 'number'))
     const overallWordCount = averageOrNull(unitQuality.map((u) => u.wordCount).filter((v): v is number => typeof v === 'number'))
+    const overallRevisionCount = averageForKey(unitQuality, (u) => u.revisionCount)
     const overallCycleValues = unitQuality.map((u) => u.cycleHours).filter((v): v is number => typeof v === 'number')
     const overallCycleHours =
       overallCycleValues.length > 0
@@ -977,6 +1124,70 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     const needsQcCount = unitQuality.filter((u) => u.issues.includes('Needs QC pass')).length
     const missingFeaturedImageCount = unitQuality.filter((u) => u.issues.includes('Missing featured image')).length
     const highReworkCount = unitQuality.filter((u) => u.issues.includes('High revisions') || u.issues.includes('QC rework')).length
+    const blogUnits = unitQuality.filter((u) => u.draftArtifact?.contentCategory === 'blog')
+    const linkUnits = unitQuality.filter((u) => isLinkCategory(u.draftArtifact?.contentCategory ?? 'other'))
+    const qcPassCount = unitQuality.filter((u) => String(u.qcStatus ?? '').toLowerCase() === 'pass').length
+    const wordComplianceKnown = unitQuality
+      .map((u) => isWordCountCompliant(u.draftArtifact?.contentCategory ?? 'other', u.wordCount))
+      .filter((value): value is boolean => typeof value === 'boolean')
+    const wordComplianceRate = percentOrNull(
+      wordComplianceKnown.filter(Boolean).length,
+      wordComplianceKnown.length,
+    )
+    const imageCompletenessKnown = unitQuality
+      .map((u) => {
+        const category = u.draftArtifact?.contentCategory ?? 'other'
+        if (category === 'blog' || isLinkCategory(category)) {
+          if (u.featuredImagePresent === null) return null
+          return u.featuredImagePresent === true
+        }
+        return null
+      })
+      .filter((value): value is boolean => typeof value === 'boolean')
+    const imageCompletenessRate = percentOrNull(
+      imageCompletenessKnown.filter(Boolean).length,
+      imageCompletenessKnown.length,
+    )
+    const avgInlineImages = averageForKey(unitQuality, (u) =>
+      typeof u.imageAssetCount === 'number'
+        ? Math.max(0, u.imageAssetCount - (u.featuredImagePresent ? 1 : 0) - (u.draftArtifact?.metrics?.infographic_count ?? 0))
+        : null,
+    )
+    const infographicUsageRate = percentOrNull(
+      unitQuality.filter((u) => (u.draftArtifact?.metrics?.infographic_count ?? 0) > 0).length,
+      unitQuality.length,
+    )
+    const avgImageRevisions = averageForKey(unitQuality, (u) => u.imageRevisionCount)
+    const avgQcFailBeforePass = averageForKey(unitQuality, (u) => u.qcFailCountBeforePass)
+
+    const trendMap = new Map<number, ContentUnitQuality[]>()
+    for (const unit of unitQuality) {
+      const artifact = unit.draftArtifact
+      if (!artifact) continue
+      const week = primaryWeekForArtifact(artifact, selectedWeeks)
+      if (typeof week !== 'number') continue
+      const list = trendMap.get(week) ?? []
+      list.push(unit)
+      trendMap.set(week, list)
+    }
+    const trendPoints: TrendPoint[] = Array.from(trendMap.entries())
+      .sort((a, b) => a[0] - b[0])
+      .map(([week, units]) => {
+        const qcKnown = units.filter((u) => u.qcStatus !== null)
+        const qcPassed = qcKnown.filter((u) => String(u.qcStatus ?? '').toLowerCase() === 'pass').length
+        const blogWeekUnits = units.filter((u) => u.draftArtifact?.contentCategory === 'blog')
+        const linkWeekUnits = units.filter((u) => isLinkCategory(u.draftArtifact?.contentCategory ?? 'other'))
+
+        return {
+          label: `W${week}`,
+          qcPassRate: percentOrNull(qcPassed, qcKnown.length),
+          avgQcScore: averageForKey(units, (u) => u.qcScore),
+          avgBlogWords: averageForKey(blogWeekUnits, (u) => u.wordCount),
+          avgLinkWords: averageForKey(linkWeekUnits, (u) => u.wordCount),
+          avgContentRevisions: averageForKey(units, (u) => u.revisionCount),
+          avgImageRevisions: averageForKey(units, (u) => u.imageRevisionCount)
+        }
+      })
     const actionUnits = [...unitQuality]
       .filter((u) => u.issues.length > 0)
       .sort((a, b) => {
@@ -1026,15 +1237,30 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         unitCount: unitQuality.length,
         overallQcScore,
         overallWordCount,
+        overallRevisionCount,
         overallCycleHours,
         readyCount,
         reviewCount,
         blockedCount,
         needsQcCount,
         missingFeaturedImageCount,
-        highReworkCount
+        highReworkCount,
+        totalItems: unitQuality.length,
+        blogCount: blogUnits.length,
+        linkCount: linkUnits.length,
+        qcPassCount,
+        qcPassRate: percentOrNull(qcPassCount, unitQuality.filter((u) => u.qcStatus !== null).length),
+        avgBlogWords: averageForKey(blogUnits, (u) => u.wordCount),
+        avgLinkWords: averageForKey(linkUnits, (u) => u.wordCount),
+        wordComplianceRate,
+        imageCompletenessRate,
+        avgInlineImages,
+        infographicUsageRate,
+        avgImageRevisions,
+        avgQcFailBeforePass
       },
-      actionUnits
+      actionUnits,
+      trendPoints
     }
   }, [
     deliverables.artifacts,
@@ -1052,6 +1278,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     return deliverables.artifacts.slice(0, 14)
   }, [deliverables.artifacts])
 
+  const usingTestOrderRegistry = isTestRegistrySource(orderRegistryState.sourceCsv)
   const selectedOrderLabel = selectedOrderView === ALL_ORDERS_KEY ? 'All Orders' : selectedWindow?.label ?? DEFAULT_ACTIVE_ORDER.label
   const sourceCsvName = orderRegistryState.sourceCsv.split('/').pop() || orderRegistryState.sourceCsv
   const selectedOrderRangeText = useMemo(() => {
@@ -1097,7 +1324,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       {deliverables.error ? <p className="subhead">{deliverables.error}</p> : null}
       {weekTaskState.error ? <p className="subhead">{weekTaskState.error}</p> : null}
       {orderRegistryState.error ? <p className="subhead">{orderRegistryState.error}</p> : null}
-      {orderRegistryState.sourceCsv ? <p className="subhead">Plan source: {sourceCsvName}</p> : null}
+      {orderRegistryState.sourceCsv ? (
+        <p className="subhead">
+          Plan source: {sourceCsvName}
+          {usingTestOrderRegistry ? ' · test registry ignored, using Week 11-15 / Week 16-19 windows' : ''}
+        </p>
+      ) : null}
 
       <section className="summary-row">
         <article>
@@ -1146,6 +1378,81 @@ export default function Dashboard({ deliverables }: DashboardProps) {
             </p>
           </article>
         ) : null}
+      </section>
+
+      <section className="summary-row">
+        <article>
+          <p>Volume / Throughput</p>
+          <h2>{toNumberString(taskModel.qualitySnapshot.totalItems)}</h2>
+          <p style={{ marginTop: 6 }}>
+            Blogs {toNumberString(taskModel.qualitySnapshot.blogCount)} · Links {toNumberString(taskModel.qualitySnapshot.linkCount)} · QC pass {toNumberString(taskModel.qualitySnapshot.qcPassCount)}
+          </p>
+        </article>
+        <article>
+          <p>Quality</p>
+          <h2>{taskModel.qualitySnapshot.qcPassRate ?? '—'}%</h2>
+          <p style={{ marginTop: 6 }}>
+            QC pass rate · Avg QC {taskModel.qualitySnapshot.overallQcScore ?? '—'} / 10
+          </p>
+        </article>
+        <article>
+          <p>Content Strength</p>
+          <h2>{taskModel.qualitySnapshot.wordComplianceRate ?? '—'}%</h2>
+          <p style={{ marginTop: 6 }}>
+            Baseline compliance · Blogs {taskModel.qualitySnapshot.avgBlogWords ?? '—'}w · Links {taskModel.qualitySnapshot.avgLinkWords ?? '—'}w
+          </p>
+        </article>
+        <article>
+          <p>Images</p>
+          <h2>{taskModel.qualitySnapshot.imageCompletenessRate ?? '—'}%</h2>
+          <p style={{ marginTop: 6 }}>
+            Completeness · Avg inline {taskModel.qualitySnapshot.avgInlineImages ?? '—'} · Infographic usage {taskModel.qualitySnapshot.infographicUsageRate ?? '—'}%
+          </p>
+        </article>
+        <article>
+          <p>Efficiency / Rework</p>
+          <h2>{taskModel.qualitySnapshot.overallCycleHours ?? '—'}h</h2>
+          <p style={{ marginTop: 6 }}>
+            Avg cycle · Content revs {taskModel.qualitySnapshot.overallRevisionCount ?? '—'} · Image revs {taskModel.qualitySnapshot.avgImageRevisions ?? '—'}
+          </p>
+          <p style={{ marginTop: 4 }}>QC fails before pass {taskModel.qualitySnapshot.avgQcFailBeforePass ?? '—'} · High rework {taskModel.qualitySnapshot.highReworkCount}</p>
+        </article>
+      </section>
+
+      <section className="dashboard-main-grid">
+        <TrendChart
+          title="QC Pass Rate Trend"
+          subtitle="Weekly pass rate for the selected scope"
+          points={taskModel.trendPoints}
+          series={[{ key: 'qcPassRate', label: 'Pass rate' }]}
+        />
+        <TrendChart
+          title="Avg QC Score Trend"
+          subtitle="Weekly average QC score"
+          points={taskModel.trendPoints}
+          series={[{ key: 'avgQcScore', label: 'Avg QC' }]}
+        />
+      </section>
+
+      <section className="dashboard-main-grid">
+        <TrendChart
+          title="Publishable Word Count Trend"
+          subtitle="Blogs vs links by week"
+          points={taskModel.trendPoints}
+          series={[
+            { key: 'avgBlogWords', label: 'Blogs' },
+            { key: 'avgLinkWords', label: 'Links' }
+          ]}
+        />
+        <TrendChart
+          title="Rework Trend"
+          subtitle="Content revisions and image revisions by week"
+          points={taskModel.trendPoints}
+          series={[
+            { key: 'avgContentRevisions', label: 'Content revs' },
+            { key: 'avgImageRevisions', label: 'Image revs' }
+          ]}
+        />
       </section>
 
       <section className="dashboard-main-grid">
@@ -1200,8 +1507,8 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
         <article className="panel-card">
           <header className="panel-card-head">
-            <h3>Production Friction</h3>
-            <span>Where the team is losing time or publish readiness</span>
+            <h3>Maintain / Improve</h3>
+            <span>Keep what is working, fix what is slowing publish</span>
           </header>
           {taskModel.clientQualityRows.length === 0 ? (
             <p className="subhead">No evaluated content yet.</p>
@@ -1220,7 +1527,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                     <div>
                       <strong>{row.name}</strong>
                       <p>
-                        Friction {frictionCount} · Missing image {row.missingFeaturedImageCount} · Thin {row.thinContentCount} · Needs QC {row.needsQcCount}
+                        {frictionCount === 0 ? 'Maintain' : 'Improve'} · Friction {frictionCount} · Missing image {row.missingFeaturedImageCount} · Thin {row.thinContentCount} · Needs QC {row.needsQcCount}
                       </p>
                       <p>
                         Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC rework {row.avgQcFailBeforePass ?? '—'} · QC pass {row.qcPassPct ?? '—'}%
@@ -1345,34 +1652,13 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                     Close
                   </button>
                 </header>
-                <p className="subhead" style={{ marginTop: 0 }}>
-                  {selectedArtifact.relativePath}
-                </p>
                 <p className="subhead">
                   {selectedArtifact.level} · {formatWorkflow(selectedArtifact.workflow)} · {formatArtifactType(selectedArtifact.artifactType)}
                 </p>
-                {selectedArtifactReadiness ? (
-                  <p className="subhead">
-                    Status {selectedArtifactReadiness.statusLabel} · {selectedArtifactReadiness.issues.length > 0 ? selectedArtifactReadiness.issues.join(' · ') : 'Ready for publish handoff'}
-                  </p>
-                ) : null}
-                {selectedArtifactReadiness ? (
-                  <p className="subhead">
-                    QC {selectedArtifactReadiness.qcScore ?? '—'} / 10 · QC status {selectedArtifactReadiness.qcStatus ?? '—'} · Words {selectedArtifactReadiness.wordCount ?? '—'} · H2s{' '}
-                    {selectedArtifactReadiness.h2Count ?? '—'} · Internal links {selectedArtifactReadiness.internalLinksCount ?? '—'} · Sources {selectedArtifactReadiness.externalSourcesCount ?? '—'}
-                  </p>
-                ) : null}
-                {selectedArtifactReadiness ? (
-                  <p className="subhead">
-                    Revisions {selectedArtifactReadiness.revisionCount ?? '—'} · QC rework {selectedArtifactReadiness.qcFailCountBeforePass ?? '—'} · Cycle{' '}
-                    {selectedArtifactReadiness.cycleHours ?? '—'}h · Featured image{' '}
-                    {selectedArtifactReadiness.featuredImagePresent === null ? '—' : selectedArtifactReadiness.featuredImagePresent ? 'Yes' : 'No'} · Uploaded assets{' '}
-                    {selectedArtifactReadiness.imageAssetCount ?? '—'}
-                  </p>
-                ) : null}
+                {selectedArtifactReadiness ? <ArtifactMetricsSummary readiness={selectedArtifactReadiness} /> : null}
                 {(preview.images && preview.images.length > 0) || bodyImageRefs.length > 0 ? (
-                  <section style={{ marginTop: 12 }}>
-                    <h4 style={{ margin: '8px 0' }}>Images</h4>
+                  <section className="artifact-section-card">
+                    <h4>Images</h4>
 
                     {preview.images && preview.images.length > 0 ? (
                       <>
@@ -1414,7 +1700,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                   </section>
                 ) : null}
 
-                <div className="preview-actions">
+                <div className="preview-actions artifact-modal-actions">
                   <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
                     Download
                   </a>
@@ -1450,7 +1736,12 @@ export default function Dashboard({ deliverables }: DashboardProps) {
                 </div>
                 {preview.status === 'loading' ? <p className="subhead">Loading artifact…</p> : null}
                 {preview.status === 'error' ? <pre className="artifact-preview">{preview.content}</pre> : null}
-                {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? (
+                  <section className="artifact-section-card">
+                    <h4>Content Preview</h4>
+                    <pre className="artifact-preview">{preview.content}</pre>
+                  </section>
+                ) : null}
                 {preview.status === 'ready' && selectedArtifact.contentCategory === 'qc' ? (
                   <p className="subhead">QC file is available via download. Metrics above are the primary summary.</p>
                 ) : null}

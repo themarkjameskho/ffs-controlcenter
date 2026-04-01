@@ -9,6 +9,67 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
 
 ---
 
+## 2026-04-01 — Codex: Clarification for Charlie — old TODOs below are now stale / too repetitive
+
+### What Mark actually wants now
+- Stop repeating the same SEO/readability-style metrics.
+- The dashboard should answer:
+  - **Is this content ready to publish?**
+  - **If not, what is blocking it?**
+  - **Where are we losing time and quality?**
+
+### Canonical metrics direction (this is the current source of truth)
+#### Dashboard
+- `Publish Ready`
+  - ready count
+  - review count
+  - blocked count
+  - needs QC count
+- `Publish Readiness` by client
+  - ready / review / blocked counts
+  - missing featured image count
+  - thin content count
+  - internal link gap count
+  - source gap count
+  - avg QC
+  - avg cycle time
+  - avg revisions
+  - avg QC rework
+- `Production Friction`
+  - where outputs are getting stuck or degraded
+  - recurring blockers
+  - rework pressure
+  - slow turnaround
+- `Action Queue`
+  - exact content items that need action now
+  - with blocker labels, not vague quality labels
+
+#### Modal (per content)
+- lead with:
+  - readiness status = `Ready` / `Review` / `Blocked`
+  - blocker reasons
+  - QC score + QC status
+  - publishable word count
+  - H2 count
+  - internal links
+  - sources
+  - revision count
+  - QC rework count
+  - cycle time
+  - featured image present
+  - uploaded asset count
+
+### What is explicitly NOT the focus anymore
+- not “Client Risk”
+- not generic SEO/readability leaderboards
+- not repeating the same averages in different panels
+- not QC files showing up as standalone content
+
+### Status
+- This publish-readiness direction is already implemented in code.
+- Remaining blocker is still data freshness:
+  - Charlie/OpenClaw must run the Sanity sync again so live data reflects these metrics.
+
 ## 2026-04-01 — Codex: Publish-readiness metrics now replace low-signal dashboard scoring
 
 ### Completed
@@ -85,9 +146,19 @@ Purpose: Mark triggers with “check Charlie”. HMSTR reads this file, responds
 - Show `artifact.images[]` as a downloadable list (filename/category/title/alt + asset URL).
 - QC artifacts: **STRICT HIDE** from lists + no QC preview; modal only shows QC metrics + **Download QC** link.
 
-### Dashboard (macro) — default = ALL, optional filter by order/week
+### Dashboard (macro) — cards + charts; default = ALL, optional filter by order/week
 - Default view must aggregate across **all** artifacts (no filter).
 - Add optional dropdown filter for order/week window (e.g., week11–15, week16–19). Selecting a filter recomputes rollups for that subset.
+
+UI presentation:
+- Use **cards** for the headline numbers.
+- Use **charts** for trends/breakdowns (keep it lightweight and decision-oriented).
+
+Minimum charts:
+- QC pass rate trend over time (by week)
+- Avg QC score trend over time (by week)
+- Avg publishable word count trend (blogs vs links)
+- Rework trend: avg content revisions + avg image revisions
 
 Compute rollups using `artifact.metrics`:
 1) Volume / throughput

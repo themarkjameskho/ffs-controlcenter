@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useParams } from 'react-router-dom'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
+import ArtifactMetricsSummary from '../components/ArtifactMetricsSummary'
 import { evaluateContentReadiness } from '../lib/contentReadiness'
 import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/deliverables'
 import { formatContentCategory, humanizeClientSlug } from '../lib/deliverables'
@@ -339,36 +340,13 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                         Close
                       </button>
                     </header>
-                    <p className="subhead" style={{ marginTop: 0 }}>
-                      {selectedArtifact.relativePath}
-                    </p>
                     <p className="subhead">
                       {formatContentCategory(selectedArtifact.contentCategory)} · {selectedArtifact.weekBucket}
                     </p>
-                    {selectedArtifactReadiness ? (
-                      <p className="subhead">
-                        Status {selectedArtifactReadiness.statusLabel} ·{' '}
-                        {selectedArtifactReadiness.issues.length > 0 ? selectedArtifactReadiness.issues.join(' · ') : 'Ready for publish handoff'}
-                      </p>
-                    ) : null}
-                    {selectedArtifactReadiness ? (
-                      <p className="subhead">
-                        QC {selectedArtifactReadiness.qcScore ?? '—'} / 10 · QC status {selectedArtifactReadiness.qcStatus ?? '—'} · Words {selectedArtifactReadiness.wordCount ?? '—'} · H2s{' '}
-                        {selectedArtifactReadiness.h2Count ?? '—'} · Internal links {selectedArtifactReadiness.internalLinksCount ?? '—'} · Sources{' '}
-                        {selectedArtifactReadiness.externalSourcesCount ?? '—'}
-                      </p>
-                    ) : null}
-                    {selectedArtifactReadiness ? (
-                      <p className="subhead">
-                        Revisions {selectedArtifactReadiness.revisionCount ?? '—'} · QC rework {selectedArtifactReadiness.qcFailCountBeforePass ?? '—'} · Cycle{' '}
-                        {selectedArtifactReadiness.cycleHours ?? '—'}h · Featured image{' '}
-                        {selectedArtifactReadiness.featuredImagePresent === null ? '—' : selectedArtifactReadiness.featuredImagePresent ? 'Yes' : 'No'} · Uploaded assets{' '}
-                        {selectedArtifactReadiness.imageAssetCount ?? '—'}
-                      </p>
-                    ) : null}
+                    {selectedArtifactReadiness ? <ArtifactMetricsSummary readiness={selectedArtifactReadiness} /> : null}
                     {preview.images && preview.images.length > 0 ? (
-                      <section style={{ marginTop: 12 }}>
-                        <h4 style={{ margin: '8px 0' }}>Images</h4>
+                      <section className="artifact-section-card">
+                        <h4>Images</h4>
                         <ul className="plain-list">
                           {preview.images.map((img, idx) => (
                             <li key={`${img.url ?? img.filename ?? idx}`}>
@@ -388,7 +366,7 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                       </section>
                     ) : null}
 
-                <div className="preview-actions">
+                <div className="preview-actions artifact-modal-actions">
                   <a className="action-btn" href={artifactDownloadUrl(previewKey ?? selectedArtifact.relativePath)}>
                     Download
                   </a>
@@ -424,7 +402,12 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
                     </div>
                     {preview.status === 'loading' ? <p className="subhead">Loading artifact…</p> : null}
                     {preview.status === 'error' ? <pre className="artifact-preview">{preview.content}</pre> : null}
-                    {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? <pre className="artifact-preview">{preview.content}</pre> : null}
+                    {preview.status === 'ready' && selectedArtifact.contentCategory !== 'qc' ? (
+                      <section className="artifact-section-card">
+                        <h4>Content Preview</h4>
+                        <pre className="artifact-preview">{preview.content}</pre>
+                      </section>
+                    ) : null}
                     {preview.status === 'ready' && selectedArtifact.contentCategory === 'qc' ? (
                       <p className="subhead">QC file is available via download. Metrics above are the primary summary.</p>
                     ) : null}

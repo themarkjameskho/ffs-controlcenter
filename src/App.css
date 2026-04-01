@@ -1016,6 +1016,111 @@ body {
   padding: 1rem 1rem 1.1rem;
 }
 
+.artifact-modal-stack {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.artifact-status-banner {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.65rem 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.artifact-status-banner h4 {
+  margin: 0.2rem 0 0;
+  font-size: 0.96rem;
+}
+
+.artifact-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.artifact-metric-card,
+.artifact-section-card {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 0.62rem 0.7rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.artifact-metric-card span {
+  display: block;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.artifact-metric-card strong {
+  display: block;
+  margin-top: 0.18rem;
+  font-size: 0.95rem;
+  color: var(--ff-white);
+}
+
+.artifact-metric-card p {
+  margin: 0.18rem 0 0;
+  font-size: 0.76rem;
+  color: var(--ff-gray-300);
+  line-height: 1.25;
+}
+
+.artifact-section-card h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.92rem;
+}
+
+.artifact-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.38rem 0.8rem;
+}
+
+.artifact-checklist li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
+}
+
+.artifact-checklist li span {
+  color: var(--ff-gray-300);
+}
+
+.artifact-checklist li strong {
+  color: var(--ff-white);
+}
+
+.artifact-modal-actions {
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.artifact-section-card-compact {
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+@media (max-width: 720px) {
+  .artifact-metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .artifact-checklist {
+    grid-template-columns: 1fr;
+  }
+}
+
 .item-modal-head {
   display: flex;
   justify-content: space-between;
