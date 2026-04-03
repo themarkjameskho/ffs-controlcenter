@@ -1,0 +1,187 @@
+{
+  "ok": true,
+  "generatedAt": "2026-04-03T11:58:00.421Z",
+  "ordersGeneratedAt": "2026-04-01T18:33:05.591Z",
+  "activeOrderLabels": [
+    "Week 16-19"
+  ],
+  "liveUpdatedAt": "",
+  "livePatchCount": 0,
+  "weeks": [
+    {
+      "week": 11,
+      "file": "week11.json",
+      "taskCount": 68,
+      "realTaskCount": 68,
+      "ignoredTestTaskCount": 0,
+      "mixedPlans": false,
+      "planIds": [],
+      "realPlanIds": [],
+      "testPlanIds": []
+    },
+    {
+      "week": 16,
+      "file": "week16.json",
+      "taskCount": 436,
+      "realTaskCount": 348,
+      "ignoredTestTaskCount": 88,
+      "mixedPlans": true,
+      "planIds": [
+        "week16_16_test_2",
+        "week16_19"
+      ],
+      "realPlanIds": [
+        "week16_19"
+      ],
+      "testPlanIds": [
+        "week16_16_test_2"
+      ]
+    },
+    {
+      "week": 17,
+      "file": "week17.json",
+      "taskCount": 348,
+      "realTaskCount": 348,
+      "ignoredTestTaskCount": 0,
+      "mixedPlans": false,
+      "planIds": [
+        "week16_19"
+      ],
+      "realPlanIds": [
+        "week16_19"
+      ],
+      "testPlanIds": []
+    },
+    {
+      "week": 18,
+      "file": "week18.json",
+      "taskCount": 348,
+      "realTaskCount": 348,
+      "ignoredTestTaskCount": 0,
+      "mixedPlans": false,
+      "planIds": [
+        "week16_19"
+      ],
+      "realPlanIds": [
+        "week16_19"
+      ],
+      "testPlanIds": []
+    },
+    {
+      "week": 19,
+      "file": "week19.json",
+      "taskCount": 348,
+      "realTaskCount": 348,
+      "ignoredTestTaskCount": 0,
+      "mixedPlans": false,
+      "planIds": [
+        "week16_19"
+      ],
+      "realPlanIds": [
+        "week16_19"
+      ],
+      "testPlanIds": []
+    }
+  ],
+  "entries": [
+    {
+      "id": "audit-live-empty",
+      "kind": "audit",
+      "severity": "info",
+      "timestamp": "2026-04-03T11:58:00.394Z",
+      "title": "Live patch feed is empty",
+      "summary": "The dashboard refreshes on schedule, but no live task patches are being written into live.json yet.",
+      "detail": "Board updates are currently coming from the week JSON snapshots only."
+    },
+    {
+      "id": "audit-mixed-week-16",
+      "kind": "audit",
+      "severity": "warning",
+      "timestamp": "2026-04-03T11:58:00.393Z",
+      "title": "Week 16 still has test rows mixed in",
+      "summary": "88 test tasks are being ignored so the dashboard follows the real plan.",
+      "detail": "Real plan IDs: week16_19 · Test plan IDs: week16_16_test_2"
+    },
+    {
+      "id": "audit-orders-active",
+      "kind": "audit",
+      "severity": "success",
+      "timestamp": "2026-04-01T18:33:05.591Z",
+      "title": "Active order windows detected",
+      "summary": "Week 16-19",
+      "detail": "Order registry refreshed 2026-04-01T18:33:05.591Z."
+    },
+    {
+      "id": "commit-5230815",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-01T13:03:14-05:00",
+      "title": "Refine dashboard filters and modal metrics layout",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 5230815"
+    },
+    {
+      "id": "commit-251265c",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-01T07:54:48-05:00",
+      "title": "Improve publish readiness metrics and QC handling",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 251265c"
+    },
+    {
+      "id": "commit-8fe3258",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-01T06:54:00-05:00",
+      "title": "Add artifact metrics and official FFS icon",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 8fe3258"
+    },
+    {
+      "id": "commit-6c991f1",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-01T06:05:21-05:00",
+      "title": "Add content quality dashboard and deployment docs",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 6c991f1"
+    },
+    {
+      "id": "commit-456336d",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-03-18T07:58:39-05:00",
+      "title": "Add Sanity auto-sync watch script",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 456336d"
+    },
+    {
+      "id": "commit-3432e05",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-03-18T07:43:30-05:00",
+      "title": "Fix year=0 for orders and Sanity sync",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 3432e05"
+    },
+    {
+      "id": "commit-479b28c",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-03-18T07:33:20-05:00",
+      "title": "Support .env.local for Sanity sync",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 479b28c"
+    },
+    {
+      "id": "commit-7e6beae",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-03-18T07:31:04-05:00",
+      "title": "Auto-load .env for sanity sync",
+      "summary": "Control Center update applied to the dashboard/codebase.",
+      "detail": "Commit 7e6beae"
+    }
+  ]
+}

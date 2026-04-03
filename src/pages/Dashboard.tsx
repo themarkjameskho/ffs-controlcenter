@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/deliverables'
 import { formatArtifactType, formatWorkflow } from '../lib/deliverables'
 import { isoWeekStartDate } from '../lib/date'
+import { useDashboardUpdates } from '../lib/dashboardUpdates'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
 import ArtifactMetricsSummary from '../components/ArtifactMetricsSummary'
 import { evaluateContentReadiness } from '../lib/contentReadiness'
@@ -418,6 +419,10 @@ function isTestRegistrySource(sourceCsv: string) {
   return /(?:^|[_/-])test(?:[_/-]|\d|$)/i.test(sourceCsv)
 }
 
+function isTestTask(task: Task) {
+  return isTestRegistrySource(task.plan_id ?? '') || isTestRegistrySource(task.source_input ?? '')
+}
+
 function applyLivePatches(tasks: Task[], live: LiveState | null) {
   if (!live?.tasks?.length) return tasks
   const patchById = new Map(live.tasks.map((patch) => [patch.id, patch]))
@@ -518,6 +523,7 @@ function extractBodyImageRefs(markdown: string): Array<{ alt: string; src: strin
 }
 
 export default function Dashboard({ deliverables }: DashboardProps) {
+  const dashboardUpdates = useDashboardUpdates()
   const [selectedArtifact, setSelectedArtifact] = useState<DeliverablesArtifact | null>(null)
   const [locateMessage, setLocateMessage] = useState('')
   const [locating, setLocating] = useState(false)
@@ -721,7 +727,10 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     tomorrow.setDate(tomorrow.getDate() + 1)
     const tomorrowYmd = localYmd(tomorrow)
 
-    const activeTasks = weekTaskState.tasks.filter((task) => (task.week ? selectedWeeks.has(task.week) : false))
+    const scopedTasks = isTestRegistrySource(orderRegistryState.sourceCsv)
+      ? weekTaskState.tasks
+      : weekTaskState.tasks.filter((task) => !isTestTask(task))
+    const activeTasks = scopedTasks.filter((task) => (task.week ? selectedWeeks.has(task.week) : false))
 
     const orderedWindows = [...orderWindows].sort((a, b) => (a.year !== b.year ? a.year - b.year : a.startWeek - b.startWeek))
     const selectedWindowIndex =
@@ -729,7 +738,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         ? -1
         : orderedWindows.findIndex((window) => orderKey(window) === orderKey(selectedWindow))
     const nextWindow = selectedWindowIndex >= 0 ? orderedWindows[selectedWindowIndex + 1] ?? null : null
-    const nextTasks = nextWindow ? weekTaskState.tasks.filter((task) => isInWindow(task.week, nextWindow)) : []
+    const nextTasks = nextWindow ? scopedTasks.filter((task) => isInWindow(task.week, nextWindow)) : []
 
     const csvPlannedByClient = new Map<string, number>()
     let csvPlannedTotal = 0
@@ -1266,6 +1275,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     deliverables.artifacts,
     deliverables.clients,
     weekTaskState.tasks,
+    orderRegistryState.sourceCsv,
     selectedWeeks,
     selectedRegistryOrders,
     orderWindows,
@@ -1273,10 +1283,6 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     selectedWindow,
     selectedWindows
   ])
-
-  const recentArtifacts = useMemo(() => {
-    return deliverables.artifacts.slice(0, 14)
-  }, [deliverables.artifacts])
 
   const usingTestOrderRegistry = isTestRegistrySource(orderRegistryState.sourceCsv)
   const selectedOrderLabel = selectedOrderView === ALL_ORDERS_KEY ? 'All Orders' : selectedWindow?.label ?? DEFAULT_ACTIVE_ORDER.label
@@ -1324,6 +1330,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       {deliverables.error ? <p className="subhead">{deliverables.error}</p> : null}
       {weekTaskState.error ? <p className="subhead">{weekTaskState.error}</p> : null}
       {orderRegistryState.error ? <p className="subhead">{orderRegistryState.error}</p> : null}
+      {dashboardUpdates.error ? <p className="subhead">{dashboardUpdates.error}</p> : null}
       {orderRegistryState.sourceCsv ? (
         <p className="subhead">
           Plan source: {sourceCsvName}
@@ -1456,174 +1463,53 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       </section>
 
       <section className="dashboard-main-grid">
-        <article className="panel-card">
+        <article className="panel-card update-log-card">
           <header className="panel-card-head">
-            <h3>Publish Readiness</h3>
-            <span>
-              Units {toNumberString(taskModel.qualitySnapshot.unitCount)} · Ready {toNumberString(taskModel.qualitySnapshot.readyCount)} · Review{' '}
-              {toNumberString(taskModel.qualitySnapshot.reviewCount)} · Blocked {toNumberString(taskModel.qualitySnapshot.blockedCount)}
-            </span>
+            <h3>Update Log</h3>
+            <span>{dashboardUpdates.generatedAt ? `Scanned ${formatDateTime(dashboardUpdates.generatedAt)}` : 'Latest first'}</span>
           </header>
-          {taskModel.clientQualityRows.length === 0 ? (
-            <p className="subhead">No content units found for {selectedOrderLabel} yet.</p>
+          <div className="update-log-summary">
+            <div className="update-log-summary-card">
+              <strong>Order windows</strong>
+              <p>{dashboardUpdates.activeOrderLabels.length > 0 ? dashboardUpdates.activeOrderLabels.join(' · ') : selectedOrderLabel}</p>
+            </div>
+            <div className="update-log-summary-card">
+              <strong>Live patches</strong>
+              <p>
+                {toNumberString(dashboardUpdates.livePatchCount)} patch{dashboardUpdates.livePatchCount === 1 ? '' : 'es'} ·{' '}
+                {dashboardUpdates.liveUpdatedAt ? `Last live write ${formatDateTime(dashboardUpdates.liveUpdatedAt)}` : 'No live write yet'}
+              </p>
+            </div>
+            <div className="update-log-summary-card">
+              <strong>Week JSON audit</strong>
+              <p>
+                {dashboardUpdates.weeks.length > 0
+                  ? dashboardUpdates.weeks
+                      .map((week) =>
+                        `W${week.week}: ${toNumberString(week.realTaskCount)} real${week.ignoredTestTaskCount > 0 ? ` · ignored ${toNumberString(week.ignoredTestTaskCount)} test` : ''}`,
+                      )
+                      .join(' · ')
+                  : 'Audit file not generated yet'}
+              </p>
+            </div>
+          </div>
+          {dashboardUpdates.entries.length === 0 ? (
+            <p className="subhead">No update entries found yet.</p>
           ) : (
-            <ul className="plain-list dashboard-client-list">
-              {taskModel.clientQualityRows.map((row) => {
-                let pill: ClientHealthRow['risk'] = 'on_track'
-                if (row.blockedCount > 0) {
-                  pill = 'at_risk'
-                } else if (row.reviewCount > 0) {
-                  pill = 'watch'
-                }
-
-                const pct = row.unitCount > 0 ? Math.round((row.readyCount / row.unitCount) * 100) : 0
-
-                return (
-                  <li key={row.slug} className="dashboard-client-row">
-                  <div className="dashboard-client-main">
-                    <strong>{row.name}</strong>
-                    <p>
-                      Ready {row.readyCount}/{row.unitCount} · Review {row.reviewCount} · Blocked {row.blockedCount} · Needs QC {row.needsQcCount}
-                    </p>
-                    <p>
-                      Missing image {row.missingFeaturedImageCount} · Thin content {row.thinContentCount} · Link gaps {row.linkGapCount} · Source gaps {row.sourceGapCount}
-                    </p>
-                    <p>
-                      Avg QC {row.avgQcScore ?? '—'} / 10 · Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC rework {row.avgQcFailBeforePass ?? '—'}
-                    </p>
-                    <div className="dashboard-bar-track thin">
-                      <div className="dashboard-bar-fill workflow-draft" style={{ width: `${Math.max(0, Math.min(100, pct))}%` }} />
-                    </div>
-                  </div>
-                  <div className="dashboard-client-actions">
-                    <span className={`risk-pill risk-${pill}`}>{pill === 'at_risk' ? 'Blocked' : pill === 'watch' ? 'Review' : 'Ready'}</span>
-                  </div>
-                </li>
-                )
-              })}
-            </ul>
-          )}
-        </article>
-
-        <article className="panel-card">
-          <header className="panel-card-head">
-            <h3>Maintain / Improve</h3>
-            <span>Keep what is working, fix what is slowing publish</span>
-          </header>
-          {taskModel.clientQualityRows.length === 0 ? (
-            <p className="subhead">No evaluated content yet.</p>
-          ) : (
-            <ul className="plain-list">
-              {taskModel.clientQualityRows.slice(0, 10).map((row) => {
-                const frictionCount =
-                  row.blockedCount +
-                  row.reviewCount +
-                  row.missingFeaturedImageCount +
-                  row.thinContentCount +
-                  row.linkGapCount +
-                  row.sourceGapCount
-                return (
-                  <li key={row.slug} className="client-row">
-                    <div>
-                      <strong>{row.name}</strong>
-                      <p>
-                        {frictionCount === 0 ? 'Maintain' : 'Improve'} · Friction {frictionCount} · Missing image {row.missingFeaturedImageCount} · Thin {row.thinContentCount} · Needs QC {row.needsQcCount}
-                      </p>
-                      <p>
-                        Avg cycle {row.avgCycleHours ?? '—'}h · Avg revisions {row.avgRevisions ?? '—'} · QC rework {row.avgQcFailBeforePass ?? '—'} · QC pass {row.qcPassPct ?? '—'}%
-                      </p>
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </article>
-      </section>
-
-      <section className="dashboard-main-grid">
-        <article className="panel-card">
-          <header className="panel-card-head">
-            <h3>Action Queue</h3>
-            <span>Items blocking publish or causing rework</span>
-          </header>
-          {taskModel.actionUnits.length === 0 ? (
-            <p className="subhead">No publish blockers found.</p>
-          ) : (
-            <ul className="plain-list">
-              {taskModel.actionUnits.map((unit) => (
-                <li key={unit.unitKey} className="client-row">
+            <ul className="plain-list update-log-list">
+              {dashboardUpdates.entries.map((entry) => (
+                <li key={entry.id} className={`client-row update-log-row is-${entry.severity}`}>
                   <div>
-                    <strong>{unit.draftArtifact?.name ?? unit.unitKey}</strong>
-                    <p>
-                      {unit.draftArtifact?.clientName ?? unit.clientSlug} · {unit.readinessLabel} · {unit.issues.join(' · ')}
-                    </p>
-                    <p>
-                      QC {unit.qcScore ?? '—'} / 10 · Words {unit.wordCount ?? '—'} · Links {unit.internalLinksCount ?? '—'} · Sources {unit.externalSourcesCount ?? '—'} · Assets{' '}
-                      {unit.imageAssetCount ?? '—'} · Revisions {unit.revisionCount} · Cycle {unit.cycleHours ?? '—'}h
-                    </p>
+                    <strong>{entry.title}</strong>
+                    <p>{entry.summary}</p>
+                    {entry.detail ? <p>{entry.detail}</p> : null}
                   </div>
+                  <span className="update-log-meta">{formatDateTime(entry.timestamp)}</span>
                 </li>
               ))}
             </ul>
           )}
         </article>
-
-        <article className="panel-card">
-          <header className="panel-card-head">
-            <h3>Stuck Items</h3>
-            <span>Overdue for {STUCK_AFTER_DAYS}+ day(s)</span>
-          </header>
-          {taskModel.stuckTasks.length === 0 ? (
-            <p className="subhead">No stuck items found.</p>
-          ) : (
-            <ul className="plain-list">
-              {taskModel.stuckTasks.map(({ task, due }) => (
-                <li key={task.id} className="client-row">
-                  <div>
-                    <strong>{task.title?.trim() || task.id}</strong>
-                    <p>
-                      {task.client_slug} · {STAGE_LABEL[task.stage]} · Due {due}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </article>
-      </section>
-
-      <section className="panel-card">
-        <header className="panel-card-head">
-          <h3>Recent Artifact Activity</h3>
-          <span>Click any row to preview</span>
-        </header>
-        {recentArtifacts.length === 0 ? (
-          <p className="subhead">No artifact files found.</p>
-        ) : (
-          <ul className="plain-list artifact-list dashboard-artifact-feed">
-            {recentArtifacts.map((artifact) => (
-              <li key={artifact.id}>
-                <button
-                  type="button"
-                  className={`artifact-row-btn ${selectedArtifact?.id === artifact.id ? 'is-selected' : ''}`}
-                  onClick={() => {
-                    setLocateMessage('')
-                    setSelectedArtifact(artifact)
-                  }}
-                >
-                  <div>
-                    <strong>{artifact.name}</strong>
-                    <p>
-                      {artifact.clientName} · {artifact.weekBucket} · {formatArtifactType(artifact.artifactType)} · {formatWorkflow(artifact.workflow)}
-                    </p>
-                  </div>
-                  <span>{formatDate(artifact.date ?? artifact.modifiedAt)}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
       </section>
 
       {selectedArtifact

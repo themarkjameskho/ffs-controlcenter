@@ -23,6 +23,9 @@ export type Task = {
   qc_spotcheck?: boolean
   deliverables?: Record<string, number>
   artifact_path?: string
+  plan_id?: string
+  source_input?: string
+  source_type?: string
 }
 
 export type WeekState = {

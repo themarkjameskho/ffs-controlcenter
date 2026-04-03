@@ -8,10 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint --max-warnings=0 \"src/**/*.{ts,tsx}\"",
     "preview": "vite preview",
-    "orders:build": "node ./scripts/build-order-registry.mjs",
+    "orders:build": "node ./scripts/build-order-registry.mjs && node ./scripts/build-dashboard-updates.mjs",
     "orders:plan": "node ./scripts/plan-agent-distribution.mjs",
     "check:tasks": "node ./scripts/check-tasks.mjs",
-    "snapshot:build": "node ./scripts/build-vercel-snapshot.mjs",
+    "snapshot:build": "node ./scripts/build-vercel-snapshot.mjs && node ./scripts/build-dashboard-updates.mjs",
+    "dashboard:audit": "node ./scripts/build-dashboard-updates.mjs",
     "sanity:sync": "node ./scripts/sanity-sync.mjs",
     "sanity:sync:dry": "node ./scripts/sanity-sync.mjs --dry-run",
     "sanity:watch": "node ./scripts/sanity-sync-watch.mjs"

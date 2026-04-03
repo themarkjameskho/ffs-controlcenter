@@ -437,6 +437,60 @@ body {
   font-size: 0.82rem;
 }
 
+.update-log-card {
+  grid-column: 1 / -1;
+}
+
+.update-log-summary {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 0.8rem;
+}
+
+.update-log-summary-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.62rem 0.7rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.update-log-summary-card strong {
+  display: block;
+  font-size: 0.78rem;
+  margin-bottom: 0.22rem;
+}
+
+.update-log-summary-card p {
+  margin: 0;
+  color: var(--ff-gray-300);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.update-log-list {
+  gap: 0.65rem;
+}
+
+.update-log-row {
+  align-items: flex-start;
+}
+
+.update-log-row.is-warning {
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.update-log-row.is-success {
+  border-color: rgba(34, 197, 94, 0.28);
+}
+
+.update-log-meta {
+  color: var(--ff-gray-300);
+  font-size: 0.76rem;
+  white-space: nowrap;
+  padding-top: 0.12rem;
+}
+
 .ghost-link {
   text-decoration: none;
   color: var(--ff-gray-100);
