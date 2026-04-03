@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { dataSource } from './dataSource'
 
 export type DashboardUpdateWeek = {
   week: number
@@ -20,6 +21,8 @@ export type DashboardUpdateEntry = {
   title: string
   summary: string
   detail?: string
+  body?: string
+  relatedFiles?: string[]
 }
 
 type DashboardUpdatesPayload = {
@@ -65,9 +68,24 @@ export function useDashboardUpdates(pollIntervalMs = 15000) {
 
     const run = async () => {
       try {
-        const res = await fetch(`/ff_state/dashboard-updates.json?t=${Date.now()}`, { cache: 'no-store' })
-        if (!res.ok) throw new Error('Failed to load dashboard updates')
-        const payload = (await res.json()) as DashboardUpdatesPayload
+        const source = dataSource()
+        const candidates =
+          source === 'sanity'
+            ? [`/api/sanity/update-logs?t=${Date.now()}`, `/ff_state/dashboard-updates.json?t=${Date.now()}`]
+            : [`/ff_state/dashboard-updates.json?t=${Date.now()}`]
+        let payload = null
+        let lastError = null
+        for (const url of candidates) {
+          try {
+            const res = await fetch(url, { cache: 'no-store' })
+            if (!res.ok) throw new Error(`Failed to load ${url}`)
+            payload = (await res.json()) as DashboardUpdatesPayload
+            break
+          } catch (error) {
+            lastError = error
+          }
+        }
+        if (!payload) throw (lastError ?? new Error('Failed to load dashboard updates'))
         if (cancelled) return
         setState({
           loading: false,

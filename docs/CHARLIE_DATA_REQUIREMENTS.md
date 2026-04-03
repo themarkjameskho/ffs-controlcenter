@@ -6,6 +6,154 @@ This doc defines the minimum data Charlie/OpenClaw should produce (or keep updat
 
 If the goal is an **online, auto-updating** dashboard, see `docs/CHARLIE_OPENCLAW_INTEGRATION.md` (Sanity-backed target).
 
+## Production Data Requirements — 2026-04-03 07:34 CDT
+
+For the dashboard to be truly useful during production, Charlie/OpenClaw needs to keep **all 7 layers** below updated.
+
+### New metrics hydrator + order-window rule
+
+Control Center now has a derived metrics script:
+- `scripts/build-production-metrics.mjs`
+- output: `public/ff_state/production-metrics.json`
+
+What it does:
+- scans deliverables on disk
+- derives order-window metrics automatically
+- computes what is knowable without asking Charlie to hand-write metrics
+
+Current dashboard rule:
+- trend labels should reflect the **order window**
+- example:
+  - `Week 16-19`
+  - not `W16`
+
+Charlie/OpenClaw does **not** need to manually write:
+- `avgBlogWords`
+- `avgLinkWords`
+- `avgContentRevisions`
+- `avgImageRevisions`
+
+Those should come from the hydrator script whenever possible.
+
+### Required production data
+
+1. **Order plan**
+- File: `public/ff_state/orders.json`
+- Must include:
+  - `generatedAt`
+  - `orders[]`
+  - `label`
+  - `startWeek`, `endWeek`
+  - `plannedTotal`
+  - `plannedByClient`
+  - `plannedByType`
+- Why: this drives the order selector and all planned-vs-done math.
+
+2. **Base board tasks**
+- Files: `public/ff_state/week11.json`, `public/ff_state/week16.json`, `public/ff_state/week17.json`, `public/ff_state/week18.json`, `public/ff_state/week19.json` as applicable
+- Each task should include:
+  - `id`
+  - `type`
+  - `stage`
+  - `status`
+  - `client_slug`
+  - `content_type`
+  - `deliverable_key`
+  - `owner`
+  - `research_date`, `writer_date`, `qc_date`, `publish_date`
+  - `artifact_path`
+  - `plan_id`
+  - `source_input`
+- Why: this drives stage visibility, due dates, stuck items, and workload.
+
+3. **Live operational patches**
+- File: `public/ff_state/live.json`
+- Must include:
+  - `updatedAt`
+  - `tasks[]`
+- Each task patch should include:
+  - `id`
+  - `stage`
+  - `status`
+  - `owner`
+  - `eta`
+  - `research_date`
+  - `writer_date`
+  - `qc_date`
+  - `publish_date`
+  - `parent_id`
+- Why: this is the missing production writer right now. Without it, the dashboard refreshes but does not reflect actual movement while work is happening.
+
+4. **Deliverable artifacts on disk**
+- Root: `/Users/coryrisseeuw/.openclaw/workspace/deliverables/`
+- Needed per unit:
+  - research pack
+  - draft
+  - QC file
+  - publish bundle when applicable
+- Why: this is the filesystem truth the board and Sanity derive from.
+
+5. **QC truth**
+- QC files must exist for each deliverable unit and explicitly say `PASS` or `FAIL`
+- Recommended parse line:
+  - `Hard Gate Result: PASS`
+  - `Hard Gate Result: FAIL`
+- Why: QC PASS is the only valid Done signal.
+
+6. **Timing / revision markers**
+- Per unit, under `.ff/`:
+  - `writer_done.json`
+  - `qc_done.json`
+  - `publish_status.json`
+  - `image_status.json`
+  - `revision_log.json`
+- Why: this powers cycle time, rework, quality trend, and throughput metrics.
+
+7. **Sanity artifact fields**
+- Per artifact in Sanity:
+  - `metrics`
+  - `analysis`
+  - `markers`
+  - `images[]`
+- Minimum useful fields:
+  - `qc_status`
+  - `score_overall`
+  - `publishable_word_count`
+  - `internal_links_count`
+  - `external_sources_count`
+  - `featured_image_present`
+  - `content_revision_count`
+  - `image_revision_count`
+  - `writerDoneAt`
+  - `qcDoneAt`
+- Why: this powers modal/dashboard quality and readiness views online.
+
+### Current production gap
+
+Right now, the main missing layer is:
+- `public/ff_state/live.json`
+
+The dashboard can already auto-refresh, but if Charlie/OpenClaw does not keep writing live task patches there, the UI only keeps reloading stale snapshots.
+
+### What Charlie should do
+
+- Keep `orders.json` current when a new order arrives
+- Keep `week*.json` current when planning changes
+- Keep `live.json` current during production movement
+- Keep deliverables + QC artifacts on disk current
+- Keep Sanity synced so online modal/dashboard metrics update too
+
+### Practical rule
+
+If the dashboard looks stale, Charlie should check the production data in this order:
+1. `orders.json`
+2. `week*.json`
+3. `live.json`
+4. deliverables/QC files on disk
+5. Sanity sync freshness
+
+If one of those is not updating, the dashboard will not be truthful.
+
 ## 1) Order Intake (planned targets)
 
 **Required folder**

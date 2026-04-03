@@ -24,7 +24,15 @@ function computeBodyWordCount(markdown: string): number | null {
   const start = md.search(/^##\s+body_content\s*$/m)
   if (start === -1) return null
   const rest = md.slice(start)
-  const next = rest.slice('## body_content'.length).search(/^##\s+/m)
+  const stopMatches = ['faq', 'internal_links_used', 'Sources']
+    .map((heading) => {
+      const match = rest
+        .slice('## body_content'.length)
+        .match(new RegExp(`^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'im'))
+      return match && match.index != null ? match.index : null
+    })
+    .filter((value): value is number => typeof value === 'number')
+  const next = stopMatches.length > 0 ? Math.min(...stopMatches) : -1
   const body = (next === -1 ? rest : rest.slice(0, '## body_content'.length + next)).replace(/^##\s+body_content\s*$/m, '')
   const cleaned = body
     .replace(/```[\s\S]*?```/g, ' ')

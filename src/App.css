@@ -472,15 +472,27 @@ body {
   gap: 0.65rem;
 }
 
-.update-log-row {
+.update-log-button {
   align-items: flex-start;
+  text-align: left;
+  min-height: 98px;
 }
 
-.update-log-row.is-warning {
+.update-log-button strong {
+  font-size: 0.9rem;
+}
+
+.update-log-button p {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin: 0.28rem 0 0;
+}
+
+.update-log-button.is-warning {
   border-color: rgba(245, 158, 11, 0.35);
 }
 
-.update-log-row.is-success {
+.update-log-button.is-success {
   border-color: rgba(34, 197, 94, 0.28);
 }
 

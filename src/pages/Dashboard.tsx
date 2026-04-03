@@ -3,7 +3,9 @@ import { createPortal } from 'react-dom'
 import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/deliverables'
 import { formatArtifactType, formatWorkflow } from '../lib/deliverables'
 import { isoWeekStartDate } from '../lib/date'
+import type { DashboardUpdateEntry } from '../lib/dashboardUpdates'
 import { useDashboardUpdates } from '../lib/dashboardUpdates'
+import { useProductionMetrics } from '../lib/productionMetrics'
 import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/artifact'
 import ArtifactMetricsSummary from '../components/ArtifactMetricsSummary'
 import { evaluateContentReadiness } from '../lib/contentReadiness'
@@ -489,7 +491,15 @@ function computeBodyWordCount(markdown: string): number | null {
   const start = md.search(/^##\s+body_content\s*$/m)
   if (start === -1) return null
   const rest = md.slice(start)
-  const next = rest.slice('## body_content'.length).search(/^##\s+/m)
+  const stopMatches = ['faq', 'internal_links_used', 'Sources']
+    .map((heading) => {
+      const match = rest
+        .slice('## body_content'.length)
+        .match(new RegExp(`^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'im'))
+      return match && match.index != null ? match.index : null
+    })
+    .filter((value): value is number => typeof value === 'number')
+  const next = stopMatches.length > 0 ? Math.min(...stopMatches) : -1
   const body = (next === -1 ? rest : rest.slice(0, '## body_content'.length + next)).replace(/^##\s+body_content\s*$/m, '')
   const cleaned = body
     .replace(/```[\s\S]*?```/g, ' ')
@@ -507,7 +517,15 @@ function extractBodyImageRefs(markdown: string): Array<{ alt: string; src: strin
   const start = md.search(/^##\s+body_content\s*$/m)
   if (start === -1) return []
   const rest = md.slice(start)
-  const next = rest.slice('## body_content'.length).search(/^##\s+/m)
+  const stopMatches = ['faq', 'internal_links_used', 'Sources']
+    .map((heading) => {
+      const match = rest
+        .slice('## body_content'.length)
+        .match(new RegExp(`^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'im'))
+      return match && match.index != null ? match.index : null
+    })
+    .filter((value): value is number => typeof value === 'number')
+  const next = stopMatches.length > 0 ? Math.min(...stopMatches) : -1
   const body = next === -1 ? rest : rest.slice(0, '## body_content'.length + next)
   const refs: Array<{ alt: string; src: string }> = []
   for (const match of body.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)) {
@@ -524,7 +542,9 @@ function extractBodyImageRefs(markdown: string): Array<{ alt: string; src: strin
 
 export default function Dashboard({ deliverables }: DashboardProps) {
   const dashboardUpdates = useDashboardUpdates()
+  const productionMetrics = useProductionMetrics()
   const [selectedArtifact, setSelectedArtifact] = useState<DeliverablesArtifact | null>(null)
+  const [selectedUpdateEntry, setSelectedUpdateEntry] = useState<DashboardUpdateEntry | null>(null)
   const [locateMessage, setLocateMessage] = useState('')
   const [locating, setLocating] = useState(false)
   const previewKey = selectedArtifact ? (dataSource() === 'sanity' ? selectedArtifact.id : selectedArtifact.relativePath) : null
@@ -1286,6 +1306,23 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
   const usingTestOrderRegistry = isTestRegistrySource(orderRegistryState.sourceCsv)
   const selectedOrderLabel = selectedOrderView === ALL_ORDERS_KEY ? 'All Orders' : selectedWindow?.label ?? DEFAULT_ACTIVE_ORDER.label
+  const displayedTrendPoints = useMemo(() => {
+    const points = productionMetrics.windows
+      .filter((point) => {
+        if (selectedOrderView === ALL_ORDERS_KEY) return true
+        return selectedWindow ? point.startWeek === selectedWindow.startWeek && point.endWeek === selectedWindow.endWeek : false
+      })
+      .map((point) => ({
+        label: point.label,
+        qcPassRate: point.qcPassRate,
+        avgQcScore: point.avgQcScore,
+        avgBlogWords: point.avgBlogWords,
+        avgLinkWords: point.avgLinkWords,
+        avgContentRevisions: point.avgContentRevisions,
+        avgImageRevisions: point.avgImageRevisions
+      }))
+    return points.length > 0 ? points : taskModel.trendPoints
+  }, [productionMetrics.windows, selectedOrderView, selectedWindow, taskModel.trendPoints])
   const sourceCsvName = orderRegistryState.sourceCsv.split('/').pop() || orderRegistryState.sourceCsv
   const selectedOrderRangeText = useMemo(() => {
     if (selectedOrderView !== ALL_ORDERS_KEY) {
@@ -1331,6 +1368,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
       {weekTaskState.error ? <p className="subhead">{weekTaskState.error}</p> : null}
       {orderRegistryState.error ? <p className="subhead">{orderRegistryState.error}</p> : null}
       {dashboardUpdates.error ? <p className="subhead">{dashboardUpdates.error}</p> : null}
+      {productionMetrics.error ? <p className="subhead">{productionMetrics.error}</p> : null}
       {orderRegistryState.sourceCsv ? (
         <p className="subhead">
           Plan source: {sourceCsvName}
@@ -1430,13 +1468,13 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         <TrendChart
           title="QC Pass Rate Trend"
           subtitle="Weekly pass rate for the selected scope"
-          points={taskModel.trendPoints}
+          points={displayedTrendPoints}
           series={[{ key: 'qcPassRate', label: 'Pass rate' }]}
         />
         <TrendChart
           title="Avg QC Score Trend"
           subtitle="Weekly average QC score"
-          points={taskModel.trendPoints}
+          points={displayedTrendPoints}
           series={[{ key: 'avgQcScore', label: 'Avg QC' }]}
         />
       </section>
@@ -1445,7 +1483,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         <TrendChart
           title="Publishable Word Count Trend"
           subtitle="Blogs vs links by week"
-          points={taskModel.trendPoints}
+          points={displayedTrendPoints}
           series={[
             { key: 'avgBlogWords', label: 'Blogs' },
             { key: 'avgLinkWords', label: 'Links' }
@@ -1454,7 +1492,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
         <TrendChart
           title="Rework Trend"
           subtitle="Content revisions and image revisions by week"
-          points={taskModel.trendPoints}
+          points={displayedTrendPoints}
           series={[
             { key: 'avgContentRevisions', label: 'Content revs' },
             { key: 'avgImageRevisions', label: 'Image revs' }
@@ -1498,19 +1536,47 @@ export default function Dashboard({ deliverables }: DashboardProps) {
           ) : (
             <ul className="plain-list update-log-list">
               {dashboardUpdates.entries.map((entry) => (
-                <li key={entry.id} className={`client-row update-log-row is-${entry.severity}`}>
-                  <div>
-                    <strong>{entry.title}</strong>
-                    <p>{entry.summary}</p>
-                    {entry.detail ? <p>{entry.detail}</p> : null}
-                  </div>
-                  <span className="update-log-meta">{formatDateTime(entry.timestamp)}</span>
+                <li key={entry.id}>
+                  <button type="button" className={`artifact-row-btn update-log-button is-${entry.severity}`} onClick={() => setSelectedUpdateEntry(entry)}>
+                    <div>
+                      <strong>{entry.title}</strong>
+                      <p>{entry.summary}</p>
+                      {entry.detail ? <p>{entry.detail}</p> : null}
+                    </div>
+                    <span className="update-log-meta">{formatDateTime(entry.timestamp)}</span>
+                  </button>
                 </li>
               ))}
             </ul>
           )}
         </article>
       </section>
+
+      {selectedUpdateEntry
+        ? createPortal(
+            <section
+              className="item-modal-backdrop"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Update log detail"
+              onClick={() => setSelectedUpdateEntry(null)}
+            >
+              <article className="item-modal" onClick={(e) => e.stopPropagation()}>
+                <header className="item-modal-head">
+                  <h3>{selectedUpdateEntry.title}</h3>
+                  <button type="button" className="item-modal-close" onClick={() => setSelectedUpdateEntry(null)}>
+                    Close
+                  </button>
+                </header>
+                <p className="subhead">{formatDateTime(selectedUpdateEntry.timestamp)}</p>
+                <section className="artifact-section-card">
+                  <pre className="artifact-preview">{selectedUpdateEntry.body?.trim() || selectedUpdateEntry.detail || selectedUpdateEntry.summary}</pre>
+                </section>
+              </article>
+            </section>,
+            document.body,
+          )
+        : null}
 
       {selectedArtifact
         ? createPortal(
