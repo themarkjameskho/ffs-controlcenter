@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "generatedAt": "2026-04-03T12:37:24.612Z",
+  "generatedAt": "2026-04-03T15:56:35.046Z",
   "ordersGeneratedAt": "2026-04-01T18:33:05.591Z",
   "activeOrderLabels": [
     "Week 16-19"
   ],
-  "liveUpdatedAt": "2026-04-03T12:08:28.412Z",
-  "livePatchCount": 9,
+  "liveUpdatedAt": "2026-04-03T15:41:03.223Z",
+  "livePatchCount": 19,
   "weeks": [
     {
       "week": 11,
@@ -88,13 +88,32 @@
       "id": "audit-mixed-week-16",
       "kind": "audit",
       "severity": "warning",
-      "timestamp": "2026-04-03T12:37:24.603Z",
+      "timestamp": "2026-04-03T15:56:35.035Z",
       "title": "Week 16 still has test rows mixed in",
       "summary": "The board file still contains 88 test tasks, so the dashboard is deliberately ignoring them and following the real production plan instead.",
       "detail": "Real plan IDs: week16_19 · Test plan IDs: week16_16_test_2",
       "body": "Week 16 has both real and test plan rows in the same board file.\n\nReal plan IDs: week16_19\nTest plan IDs: week16_16_test_2\n\nCurrent behavior:\n- the dashboard ignores the test rows so the production view stays stable\n- the underlying week JSON still needs cleanup if you want the file itself to be pure production state",
       "relatedFiles": [
         "public/ff_state/week16.json"
+      ]
+    },
+    {
+      "id": "commit-6e2a92b",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-03T10:46:45-05:00",
+      "title": "Sync ff_state source of truth",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit 6e2a92b",
+      "body": "Commit 6e2a92b\n\nSync ff_state source of truth\n\nAffected files:\n- public/ff_state/dashboard-updates.json\n- public/ff_state/live.json\n- public/ff_state/orders.json\n- public/ff_state/week16.json\n- public/ff_state/week17.json\n- public/ff_state/week18.json\n- public/ff_state/week19.json",
+      "relatedFiles": [
+        "public/ff_state/dashboard-updates.json",
+        "public/ff_state/live.json",
+        "public/ff_state/orders.json",
+        "public/ff_state/week16.json",
+        "public/ff_state/week17.json",
+        "public/ff_state/week18.json",
+        "public/ff_state/week19.json"
       ]
     },
     {
@@ -254,20 +273,6 @@
         "package-lock.json",
         "package.json",
         "scripts/sanity-sync-watch.mjs"
-      ]
-    },
-    {
-      "id": "commit-3432e05",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-03-18T07:43:30-05:00",
-      "title": "Fix year=0 for orders and Sanity sync",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 3432e05",
-      "body": "Commit 3432e05\n\nFix year=0 for orders and Sanity sync\n\nAffected files:\n- scripts/plan-agent-distribution.mjs\n- scripts/sanity-sync.mjs",
-      "relatedFiles": [
-        "scripts/plan-agent-distribution.mjs",
-        "scripts/sanity-sync.mjs"
       ]
     }
   ]

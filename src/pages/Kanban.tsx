@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import type { DragEvent } from 'react'
 import type { Stage, Task } from '../lib/types'
 import { useClients, useWeekBoard } from '../lib/state'
-import { dataSource } from '../lib/dataSource'
 
 type LaneId = 'inbox' | 'work-in-progress' | 'approval' | 'done'
 
@@ -177,14 +176,7 @@ async function fetchJson<T>(path: string): Promise<T | null> {
 }
 
 async function fetchOrderRegistry() {
-  const source = dataSource()
-  if (source === 'sanity') {
-    return await fetchJson<OrderRegistryPayload>(`/api/sanity/order-registry?t=${Date.now()}`)
-  }
-  if (source === 'static') {
-    return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
-  }
-  return await fetchJson<OrderRegistryPayload>(`/api/order-registry?t=${Date.now()}`)
+  return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
 }
 
 export default function Kanban() {

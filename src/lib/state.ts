@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { LiveState, Stage, Task, WeekState } from './types'
 import { extractTasksFromWeekState } from './weekState'
-import { dataSource } from './dataSource'
 
 export const STAGES: Stage[] = ['human-order', 'planner', 'researcher', 'writer', 'qc', 'publisher']
 
@@ -193,33 +192,6 @@ export function useWeekBoard(initialWeek = 11, options: WeekBoardOptions = {}) {
     let cancelled = false
 
     const syncBoard = async () => {
-      const source = dataSource()
-      if (source === 'sanity') {
-        const payload = await fetchJson<{ ok?: boolean; generatedAt?: string; weeks?: number[]; tasks?: Task[] }>(
-          `/api/sanity/tasks?weeks=${encodeURIComponent(loadedWeeks.join(','))}&t=${Date.now()}`,
-        )
-        if (cancelled) return
-        const nextTasks = Array.isArray(payload?.tasks) ? payload!.tasks : []
-        const nextSignature = boardSignature(nextTasks)
-        const prevTasks = tasksRef.current
-        const hasDataChange = nextSignature !== signatureRef.current
-
-        if (hasDataChange) {
-          const pulses = collectTaskPulses(prevTasks, nextTasks)
-          signatureRef.current = nextSignature
-          tasksRef.current = nextTasks
-          setTasks(nextTasks)
-          queuePulses(pulses)
-        }
-
-        const syncStamp = payload?.generatedAt ?? (hasDataChange ? new Date().toISOString() : '')
-        if (syncStamp) {
-          setLastSync((prev) => (prev === syncStamp ? prev : syncStamp))
-        }
-        setYear(new Date().getFullYear())
-        return
-      }
-
       const [states, live] = await Promise.all([
         Promise.all(loadedWeeks.map((w) => fetchJson<WeekState>(`/ff_state/week${w}.json?t=${Date.now()}`))),
         fetchJson<LiveState>(`/ff_state/live.json?t=${Date.now()}`)

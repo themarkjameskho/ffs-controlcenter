@@ -69,10 +69,10 @@ export function useDashboardUpdates(pollIntervalMs = 15000) {
     const run = async () => {
       try {
         const source = dataSource()
-        const candidates =
-          source === 'sanity'
-            ? [`/api/sanity/update-logs?t=${Date.now()}`, `/ff_state/dashboard-updates.json?t=${Date.now()}`]
-            : [`/ff_state/dashboard-updates.json?t=${Date.now()}`]
+        const candidates = [`/ff_state/dashboard-updates.json?t=${Date.now()}`]
+        if (source === 'sanity') {
+          candidates.push(`/api/sanity/update-logs?t=${Date.now()}`)
+        }
         let payload = null
         let lastError = null
         for (const url of candidates) {

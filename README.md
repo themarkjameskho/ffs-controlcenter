@@ -22,6 +22,18 @@ If teammates only need to **read** dashboards and **download markdown** artifact
 
 For auto-updating online data (without manual sync), Charlie can run `npm run sanity:watch` on the machine that writes deliverables.
 
+Recommended run mode:
+- during active production: run `npm run sanity:watch`
+- for helper refreshes only when needed:
+  - `bridge/hmstr/scripts/queue_runner.mjs`
+  - `npm run dashboard:audit`
+  - `npm run metrics:hydrate`
+- after production ends: stop `npm run sanity:watch`
+
+Operational source-of-truth rule:
+- dashboard order progress, task movement, update log, and trend labels follow `public/ff_state/*.json`
+- Sanity follows the filesystem truth for synced content/metrics; it does not drive the operational board totals
+
 ## CSV Uploader (No Generator)
 
 `CSV Importer 1` uploads selected CSV files directly into:

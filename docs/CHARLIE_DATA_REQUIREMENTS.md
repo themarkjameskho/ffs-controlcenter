@@ -10,6 +10,19 @@ If the goal is an **online, auto-updating** dashboard, see `docs/CHARLIE_OPENCLA
 
 For the dashboard to be truly useful during production, Charlie/OpenClaw needs to keep **all 7 layers** below updated.
 
+### Operational source-of-truth rule
+
+For Control Center operations, the truth order is:
+1. `public/ff_state/orders.json`
+2. `public/ff_state/week*.json`
+3. `public/ff_state/live.json`
+4. derived snapshots such as `public/ff_state/production-metrics.json` and `public/ff_state/dashboard-updates.json`
+5. Sanity follows those sources for synced artifact metadata
+
+That means:
+- board totals, order progress, and live operational movement should match `ff_state`
+- Sanity should not override the board into an older test snapshot
+
 ### New metrics hydrator + order-window rule
 
 Control Center now has a derived metrics script:

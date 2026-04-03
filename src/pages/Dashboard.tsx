@@ -407,14 +407,7 @@ async function fetchJson<T>(path: string): Promise<T | null> {
 }
 
 async function fetchOrderRegistry() {
-  const source = dataSource()
-  if (source === 'sanity') {
-    return await fetchJson<OrderRegistryPayload>(`/api/sanity/order-registry?t=${Date.now()}`)
-  }
-  if (source === 'static') {
-    return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
-  }
-  return await fetchJson<OrderRegistryPayload>(`/api/order-registry?t=${Date.now()}`)
+  return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
 }
 
 function isTestRegistrySource(sourceCsv: string) {
@@ -675,22 +668,6 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
     const load = async () => {
       try {
-        if (dataSource() === 'sanity') {
-          const payload = await fetchJson<{ ok?: boolean; generatedAt?: string; tasks?: Task[] }>(
-            `/api/sanity/tasks?weeks=${encodeURIComponent(allWeeks.join(','))}&t=${Date.now()}`,
-          )
-          if (cancelled) return
-          const tasks = Array.isArray(payload?.tasks) ? payload!.tasks : []
-          setWeekTaskState({
-            loading: false,
-            error: '',
-            tasks,
-            loadedWeeks: [...allWeeks],
-            lastSync: payload?.generatedAt ?? new Date().toISOString()
-          })
-          return
-        }
-
         const [weekStates, live] = await Promise.all([
           Promise.all(allWeeks.map((week) => fetchJson<WeekState>(`/ff_state/week${week}.json?t=${Date.now()}`))),
           fetchJson<LiveState>(`/ff_state/live.json?t=${Date.now()}`)
