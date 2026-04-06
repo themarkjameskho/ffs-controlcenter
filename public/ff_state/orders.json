@@ -1,12 +1,31 @@
 {
   "ok": true,
   "sourceCsv": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-19.csv",
-  "sourceInput": "/Users/coryrisseeuw/.openclaw/workspace/human_orders/_inbox/week16-19.csv",
-  "sourceType": "csv",
-  "generatedAt": "2026-04-01T18:33:05.591Z",
+  "generatedAt": "2026-04-06T11:22:35.093Z",
   "orders": [
     {
-      "id": "order-2026-week16-19",
+      "id": "order-week11-15",
+      "label": "Week 11-15",
+      "year": 2026,
+      "startWeek": 11,
+      "endWeek": 15,
+      "plannedTotal": 54,
+      "plannedByClient": {
+        "bed_bug_bbq": 14,
+        "bed_bugs_be_gone": 10,
+        "heat_tech_bed_bug": 22,
+        "chapman_plumbing": 8
+      },
+      "plannedByType": {
+        "gpp_post": 20,
+        "blog_post": 24,
+        "link_2": 4,
+        "link_3": 4,
+        "link_1": 2
+      }
+    },
+    {
+      "id": "order-week16-19",
       "label": "Week 16-19",
       "year": 2026,
       "startWeek": 16,
@@ -24,8 +43,45 @@
         "blog_post": 38,
         "link_2": 6,
         "link_3": 7,
-        "gpp_post": 30,
+        "gbp_post": 30,
         "link_1": 3
+      }
+    },
+    {
+      "id": "order-week16-16",
+      "label": "Week 16-16",
+      "year": 2026,
+      "startWeek": 16,
+      "endWeek": 16,
+      "plannedTotal": 6,
+      "plannedByClient": {
+        "bed_bug_bbq": 1,
+        "bed_bugs_be_gone": 1,
+        "chapman_plumbing": 1,
+        "heat_tech_bed_bug": 1,
+        "madden_plumbing": 1,
+        "top_bed_bug_pros": 1
+      },
+      "plannedByType": {
+        "blog_post": 6
+      }
+    },
+    {
+      "id": "order-week17-17",
+      "label": "Week 17-17",
+      "year": 2026,
+      "startWeek": 17,
+      "endWeek": 17,
+      "plannedTotal": 16,
+      "plannedByClient": {
+        "bed_bug_bbq": 4,
+        "bed_bugs_be_gone": 4,
+        "chapman_plumbing": 4,
+        "heat_tech_bed_bug": 4
+      },
+      "plannedByType": {
+        "blog_post": 12,
+        "gpp_post": 4
       }
     }
   ]

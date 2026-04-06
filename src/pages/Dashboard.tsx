@@ -474,6 +474,10 @@ function toOrderWindow(entry: OrderRegistryEntry): OrderWindow {
   }
 }
 
+function isRealOrderWindow(entry: OrderRegistryEntry) {
+  return Number(entry.endWeek) > Number(entry.startWeek)
+}
+
 function orderKey(window: OrderWindow) {
   return `${window.year}:${window.startWeek}-${window.endWeek}`
 }
@@ -579,6 +583,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
   const orderWindows = useMemo(() => {
     const registryOrders = isTestRegistrySource(orderRegistryState.sourceCsv) ? [] : orderRegistryState.orders
     const windows = registryOrders
+      .filter(isRealOrderWindow)
       .map(toOrderWindow)
       .sort((a, b) => (a.year !== b.year ? a.year - b.year : a.startWeek - b.startWeek))
     if (windows.length > 0) return windows
@@ -621,8 +626,9 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
   const selectedRegistryOrders = useMemo(() => {
     if (isTestRegistrySource(orderRegistryState.sourceCsv)) return []
-    if (selectedOrderView === ALL_ORDERS_KEY) return orderRegistryState.orders
-    return orderRegistryState.orders.filter((order) => orderKey(toOrderWindow(order)) === selectedOrderView)
+    const registryOrders = orderRegistryState.orders.filter(isRealOrderWindow)
+    if (selectedOrderView === ALL_ORDERS_KEY) return registryOrders
+    return registryOrders.filter((order) => orderKey(toOrderWindow(order)) === selectedOrderView)
   }, [orderRegistryState.orders, orderRegistryState.sourceCsv, selectedOrderView])
 
   useEffect(() => {

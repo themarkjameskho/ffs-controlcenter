@@ -94,6 +94,10 @@ const EMPTY_STATE: DeliverablesIndexState = {
   artifacts: []
 }
 
+export function isTestWeekBucket(value: string) {
+  return /(?:^|[_/-])test(?:[_/-]|\d|$)/i.test(String(value ?? ''))
+}
+
 function sortByName<T extends { name: string }>(items: T[]) {
   return [...items].sort((a, b) => a.name.localeCompare(b.name))
 }
@@ -120,9 +124,11 @@ async function loadDeliverablesIndex(): Promise<DeliverablesIndexState> {
     loading: false,
     error: '',
     generatedAt: payload.generatedAt ?? '',
-    weeks: Array.isArray(payload.weeks) ? payload.weeks : [],
+    weeks: Array.isArray(payload.weeks) ? payload.weeks.filter((week) => !isTestWeekBucket(week)) : [],
     clients: sortByName(Array.isArray(payload.clients) ? payload.clients : []),
-    artifacts: Array.isArray(payload.artifacts) ? payload.artifacts.filter((artifact) => !isQcArtifact(artifact)) : []
+    artifacts: Array.isArray(payload.artifacts)
+      ? payload.artifacts.filter((artifact) => !isQcArtifact(artifact) && !isTestWeekBucket(artifact.weekBucket))
+      : []
   }
 }
 

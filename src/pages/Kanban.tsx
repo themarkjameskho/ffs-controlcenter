@@ -64,6 +64,10 @@ function weekRange(window: OrderWindow) {
   return out
 }
 
+function isRealOrderWindow(window: OrderWindow) {
+  return Number(window.endWeek) > Number(window.startWeek)
+}
+
 function formatDeliverableKind(kind: string) {
   return kind
     .replace(/[_-]+/g, ' ')
@@ -210,6 +214,7 @@ export default function Kanban() {
             endWeek: entry.endWeek,
             label: entry.label
           }))
+          .filter(isRealOrderWindow)
           .sort((a, b) => (a.year !== b.year ? a.year - b.year : a.startWeek - b.startWeek))
         setOrderRegistry({
           loading: false,

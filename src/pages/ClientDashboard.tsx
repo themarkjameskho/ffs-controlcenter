@@ -5,7 +5,7 @@ import { artifactDownloadUrl, locateArtifact, useArtifactPreview } from '../lib/
 import ArtifactMetricsSummary from '../components/ArtifactMetricsSummary'
 import { evaluateContentReadiness } from '../lib/contentReadiness'
 import type { DeliverablesArtifact, DeliverablesIndexState } from '../lib/deliverables'
-import { formatContentCategory, humanizeClientSlug } from '../lib/deliverables'
+import { formatContentCategory, humanizeClientSlug, isTestWeekBucket } from '../lib/deliverables'
 import { dataSource } from '../lib/dataSource'
 
 type ClientDashboardProps = {
@@ -95,7 +95,9 @@ export default function ClientDashboard({ deliverables }: ClientDashboardProps) 
   }, [clientSlug, deliverables.artifacts])
 
   const weekBuckets = useMemo(() => {
-    return Array.from(new Set(clientArtifacts.map((artifact) => artifact.weekBucket))).sort((a, b) => a.localeCompare(b))
+    return Array.from(new Set(clientArtifacts.map((artifact) => artifact.weekBucket)))
+      .filter((value) => !isTestWeekBucket(value))
+      .sort((a, b) => a.localeCompare(b))
   }, [clientArtifacts])
 
   const filteredArtifacts = useMemo(() => {
