@@ -105,6 +105,9 @@ Those should come from the hydrator script whenever possible.
   - QC file
   - publish bundle when applicable
 - Why: this is the filesystem truth the board and Sanity derive from.
+- Auto-sync note:
+  - `npm run sanity:watch` now watches new `deliverables/**/*.md` files plus `.ff/*.json` markers
+  - each detected artifact/marker change triggers dashboard update-log refresh + Sanity re-sync
 
 5. **QC truth**
 - QC files must exist for each deliverable unit and explicitly say `PASS` or `FAIL`

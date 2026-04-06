@@ -135,6 +135,60 @@ npm run lint
 npm run build
 ```
 
+## Production ON / OFF
+
+Use the smallest safe runtime setup.
+
+### During active production
+
+Run **one** continuous watcher:
+
+```bash
+npm run sanity:watch
+```
+
+What it is for:
+- watches deliverables + `public/ff_state/*.json`
+- watches new artifact markdown files and `.ff/*.json` marker updates
+- refreshes the dashboard update log before each sync pass
+- syncs updates into Sanity while production is active
+- keeps the online dashboard current without asking Charlie to hand-write metrics
+
+### Only run these on demand
+
+```bash
+node /Users/coryrisseeuw/.openclaw/workspace/bridge/hmstr/scripts/queue_runner.mjs ...
+npm run dashboard:audit
+npm run metrics:hydrate
+```
+
+What they do:
+- `queue_runner.mjs`
+  - artifact-path + lint refresh helper
+  - not a planner
+  - not a continuous daemon
+- `dashboard:audit`
+  - refreshes the Update Log feed
+- `metrics:hydrate`
+  - refreshes derived order-window trend metrics
+
+### When production is done
+
+Stop:
+
+```bash
+npm run sanity:watch
+```
+
+Meaning:
+- stop the running watcher process
+- do not leave continuous sync running after the order/production is complete
+
+This is the preferred low-conflict operating mode:
+- one watcher ON during production
+- helper scripts manual only
+- watcher OFF after production
+
 Use `orders:plan` when the request is about converting a human order or CSV into assigned agent work.
 
 Use `live.json` patches when the request is about reversible movement for work already planned.

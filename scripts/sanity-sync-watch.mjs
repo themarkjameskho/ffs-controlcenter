@@ -15,28 +15,52 @@ let timer = null
 let running = null
 let lastReason = ''
 
+function runNodeScript(scriptPath) {
+  return spawn(process.execPath, [scriptPath], {
+    cwd: REPO_ROOT,
+    stdio: 'inherit',
+    env: process.env
+  })
+}
+
 function runSync() {
   if (running) {
     pending = true
     return
   }
 
-  running = spawn(process.execPath, [path.join(REPO_ROOT, 'scripts', 'sanity-sync.mjs')], {
-    cwd: REPO_ROOT,
-    stdio: 'inherit',
-    env: process.env
-  })
+  const auditScript = path.join(REPO_ROOT, 'scripts', 'build-dashboard-updates.mjs')
+  const syncScript = path.join(REPO_ROOT, 'scripts', 'sanity-sync.mjs')
 
-  running.on('exit', (code) => {
-    running = null
-    if (code !== 0) {
+  const audit = runNodeScript(auditScript)
+  running = audit
+
+  audit.on('exit', (auditCode) => {
+    if (auditCode !== 0) {
+      running = null
       // eslint-disable-next-line no-console
-      console.error(`sanity-sync failed (code ${code})`)
+      console.error(`dashboard-audit failed (code ${auditCode})`)
+      if (pending) {
+        pending = false
+        runSync()
+      }
+      return
     }
-    if (pending) {
-      pending = false
-      runSync()
-    }
+
+    const sync = runNodeScript(syncScript)
+    running = sync
+
+    sync.on('exit', (code) => {
+      running = null
+      if (code !== 0) {
+        // eslint-disable-next-line no-console
+        console.error(`sanity-sync failed (code ${code})`)
+      }
+      if (pending) {
+        pending = false
+        runSync()
+      }
+    })
   })
 }
 
@@ -63,9 +87,12 @@ console.log(`- debounce:     ${DEBOUNCE_MS}ms`)
 const watcher = chokidar.watch(
   [
     path.join(DELIVERABLES_DIR, '**/*.md'),
+    path.join(DELIVERABLES_DIR, '**/.ff/*.json'),
     path.join(FF_STATE_DIR, 'clients.json'),
+    path.join(FF_STATE_DIR, 'live.json'),
     path.join(FF_STATE_DIR, 'orders.json'),
-    path.join(FF_STATE_DIR, 'week*.json')
+    path.join(FF_STATE_DIR, 'week*.json'),
+    path.join(FF_STATE_DIR, 'production-metrics.json')
   ],
   {
     ignoreInitial: true,
@@ -83,4 +110,3 @@ process.on('SIGINT', async () => {
   await watcher.close()
   process.exit(0)
 })
-
