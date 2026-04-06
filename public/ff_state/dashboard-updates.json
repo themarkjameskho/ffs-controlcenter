@@ -1,12 +1,15 @@
 {
   "ok": true,
-  "generatedAt": "2026-04-03T15:56:35.046Z",
-  "ordersGeneratedAt": "2026-04-01T18:33:05.591Z",
+  "generatedAt": "2026-04-06T13:15:43.038Z",
+  "ordersGeneratedAt": "2026-04-06T11:22:35.093Z",
   "activeOrderLabels": [
-    "Week 16-19"
+    "Week 11-15",
+    "Week 16-19",
+    "Week 16-16",
+    "Week 17-17"
   ],
-  "liveUpdatedAt": "2026-04-03T15:41:03.223Z",
-  "livePatchCount": 19,
+  "liveUpdatedAt": "2026-04-06T13:03:45.767Z",
+  "livePatchCount": 39,
   "weeks": [
     {
       "week": 11,
@@ -88,13 +91,64 @@
       "id": "audit-mixed-week-16",
       "kind": "audit",
       "severity": "warning",
-      "timestamp": "2026-04-03T15:56:35.035Z",
+      "timestamp": "2026-04-06T13:15:43.029Z",
       "title": "Week 16 still has test rows mixed in",
       "summary": "The board file still contains 88 test tasks, so the dashboard is deliberately ignoring them and following the real production plan instead.",
       "detail": "Real plan IDs: week16_19 · Test plan IDs: week16_16_test_2",
       "body": "Week 16 has both real and test plan rows in the same board file.\n\nReal plan IDs: week16_19\nTest plan IDs: week16_16_test_2\n\nCurrent behavior:\n- the dashboard ignores the test rows so the production view stays stable\n- the underlying week JSON still needs cleanup if you want the file itself to be pure production state",
       "relatedFiles": [
         "public/ff_state/week16.json"
+      ]
+    },
+    {
+      "id": "audit-orders-active",
+      "kind": "audit",
+      "severity": "success",
+      "timestamp": "2026-04-06T11:22:35.093Z",
+      "title": "Active order windows detected",
+      "summary": "The current production order windows detected from orders.json Week 11-15 · Week 16-19 · Week 16-16 · Week 17-17.",
+      "detail": "Order registry refreshed 2026-04-06T11:22:35.093Z.",
+      "body": "Current active order windows detected from orders.json:\n- Week 11-15 · planned total 54\n- Week 16-19 · planned total 84\n- Week 16-16 · planned total 6\n- Week 17-17 · planned total 16",
+      "relatedFiles": [
+        "public/ff_state/orders.json"
+      ]
+    },
+    {
+      "id": "commit-5ece575",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-06T08:15:13-05:00",
+      "title": "Sync live dashboard state and hide test folders",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit 5ece575",
+      "body": "Commit 5ece575\n\nSync live dashboard state and hide test folders\n\nAffected files:\n- public/ff_state/live.json\n- public/ff_state/orders.json\n- public/ff_state/week16.json\n- src/lib/deliverables.ts\n- src/pages/ClientDashboard.tsx\n- src/pages/Dashboard.tsx\n- src/pages/Kanban.tsx",
+      "relatedFiles": [
+        "public/ff_state/live.json",
+        "public/ff_state/orders.json",
+        "public/ff_state/week16.json",
+        "src/lib/deliverables.ts",
+        "src/pages/ClientDashboard.tsx",
+        "src/pages/Dashboard.tsx",
+        "src/pages/Kanban.tsx"
+      ]
+    },
+    {
+      "id": "commit-22b4ddd",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-03T10:57:33-05:00",
+      "title": "Use ff_state as dashboard source of truth",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit 22b4ddd",
+      "body": "Commit 22b4ddd\n\nUse ff_state as dashboard source of truth\n\nAffected files:\n- README.md\n- docs/CHARLIE_DATA_REQUIREMENTS.md\n- public/ff_state/dashboard-updates.json\n- src/lib/dashboardUpdates.ts\n- src/lib/state.ts\n- src/pages/Dashboard.tsx\n- src/pages/Kanban.tsx",
+      "relatedFiles": [
+        "README.md",
+        "docs/CHARLIE_DATA_REQUIREMENTS.md",
+        "public/ff_state/dashboard-updates.json",
+        "src/lib/dashboardUpdates.ts",
+        "src/lib/state.ts",
+        "src/pages/Dashboard.tsx",
+        "src/pages/Kanban.tsx"
       ]
     },
     {
@@ -160,19 +214,6 @@
       ]
     },
     {
-      "id": "audit-orders-active",
-      "kind": "audit",
-      "severity": "success",
-      "timestamp": "2026-04-01T18:33:05.591Z",
-      "title": "Active order windows detected",
-      "summary": "The current production order window detected from orders.json Week 16-19.",
-      "detail": "Order registry refreshed 2026-04-01T18:33:05.591Z.",
-      "body": "Current active order windows detected from orders.json:\n- Week 16-19 · planned total 84",
-      "relatedFiles": [
-        "public/ff_state/orders.json"
-      ]
-    },
-    {
       "id": "commit-5230815",
       "kind": "commit",
       "severity": "info",
@@ -231,48 +272,6 @@
         "src/lib/deliverables.ts",
         "src/pages/ClientDashboard.tsx",
         "src/pages/Dashboard.tsx"
-      ]
-    },
-    {
-      "id": "commit-6c991f1",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-01T06:05:21-05:00",
-      "title": "Add content quality dashboard and deployment docs",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 6c991f1",
-      "body": "Commit 6c991f1\n\nAdd content quality dashboard and deployment docs\n\nAffected files:\n- api/sanity/artifact.mjs\n- api/sanity/deliverables-index.mjs\n- docs/CHARLIE_CODEX_SYNC.md\n- docs/CHARLIE_DATA_REQUIREMENTS.md\n- docs/OPENCLAW_GITHUB_VERCEL_DEPLOY.md\n- docs/OPENCLAW_RUNBOOK.md\n- docs/pipeline_markers.md\n- public/ff_state/clients.json\n- public/ff_state/orders.json\n- public/ff_state/week16.json\n- scripts/controlcenter-attach-images.mjs\n- scripts/heattech-attach-images.mjs",
-      "relatedFiles": [
-        "api/sanity/artifact.mjs",
-        "api/sanity/deliverables-index.mjs",
-        "docs/CHARLIE_CODEX_SYNC.md",
-        "docs/CHARLIE_DATA_REQUIREMENTS.md",
-        "docs/OPENCLAW_GITHUB_VERCEL_DEPLOY.md",
-        "docs/OPENCLAW_RUNBOOK.md",
-        "docs/pipeline_markers.md",
-        "public/ff_state/clients.json",
-        "public/ff_state/orders.json",
-        "public/ff_state/week16.json",
-        "scripts/controlcenter-attach-images.mjs",
-        "scripts/heattech-attach-images.mjs"
-      ]
-    },
-    {
-      "id": "commit-456336d",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-03-18T07:58:39-05:00",
-      "title": "Add Sanity auto-sync watch script",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 456336d",
-      "body": "Commit 456336d\n\nAdd Sanity auto-sync watch script\n\nAffected files:\n- README.md\n- docs/CHARLIE_CODEX_SYNC.md\n- docs/VERCEL_DEPLOYMENT.md\n- package-lock.json\n- package.json\n- scripts/sanity-sync-watch.mjs",
-      "relatedFiles": [
-        "README.md",
-        "docs/CHARLIE_CODEX_SYNC.md",
-        "docs/VERCEL_DEPLOYMENT.md",
-        "package-lock.json",
-        "package.json",
-        "scripts/sanity-sync-watch.mjs"
       ]
     }
   ]
