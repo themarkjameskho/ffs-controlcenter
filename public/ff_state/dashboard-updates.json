@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generatedAt": "2026-04-06T13:15:43.038Z",
+  "generatedAt": "2026-04-06T16:42:10.508Z",
   "ordersGeneratedAt": "2026-04-06T11:22:35.093Z",
   "activeOrderLabels": [
     "Week 11-15",
@@ -91,7 +91,7 @@
       "id": "audit-mixed-week-16",
       "kind": "audit",
       "severity": "warning",
-      "timestamp": "2026-04-06T13:15:43.029Z",
+      "timestamp": "2026-04-06T16:42:10.500Z",
       "title": "Week 16 still has test rows mixed in",
       "summary": "The board file still contains 88 test tasks, so the dashboard is deliberately ignoring them and following the real production plan instead.",
       "detail": "Real plan IDs: week16_19 · Test plan IDs: week16_16_test_2",
@@ -111,6 +111,61 @@
       "body": "Current active order windows detected from orders.json:\n- Week 11-15 · planned total 54\n- Week 16-19 · planned total 84\n- Week 16-16 · planned total 6\n- Week 17-17 · planned total 16",
       "relatedFiles": [
         "public/ff_state/orders.json"
+      ]
+    },
+    {
+      "id": "commit-efd6229",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-06T08:26:24-05:00",
+      "title": "Fix Sanity publishable word count parsing",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit efd6229",
+      "body": "Commit efd6229\n\nFix Sanity publishable word count parsing\n\nAffected files:\n- scripts/sanity-sync.mjs",
+      "relatedFiles": [
+        "scripts/sanity-sync.mjs"
+      ]
+    },
+    {
+      "id": "commit-3d4a58e",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-06T08:20:38-05:00",
+      "title": "Add dashboard sync freshness indicator",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit 3d4a58e",
+      "body": "Commit 3d4a58e\n\nAdd dashboard sync freshness indicator\n\nAffected files:\n- src/App.css\n- src/pages/Dashboard.tsx",
+      "relatedFiles": [
+        "src/App.css",
+        "src/pages/Dashboard.tsx"
+      ]
+    },
+    {
+      "id": "commit-c592ebb",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-06T08:18:45-05:00",
+      "title": "Auto-sync new artifacts to Sanity",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit c592ebb",
+      "body": "Commit c592ebb\n\nAuto-sync new artifacts to Sanity\n\nAffected files:\n- docs/CHARLIE_DATA_REQUIREMENTS.md\n- docs/OPENCLAW_RUNBOOK.md\n- scripts/sanity-sync-watch.mjs",
+      "relatedFiles": [
+        "docs/CHARLIE_DATA_REQUIREMENTS.md",
+        "docs/OPENCLAW_RUNBOOK.md",
+        "scripts/sanity-sync-watch.mjs"
+      ]
+    },
+    {
+      "id": "commit-7ca69f7",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-06T08:15:51-05:00",
+      "title": "Refresh dashboard update log",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit 7ca69f7",
+      "body": "Commit 7ca69f7\n\nRefresh dashboard update log\n\nAffected files:\n- public/ff_state/dashboard-updates.json",
+      "relatedFiles": [
+        "public/ff_state/dashboard-updates.json"
       ]
     },
     {
@@ -190,86 +245,6 @@
         "src/App.css",
         "src/lib/dashboardUpdates.ts",
         "src/lib/productionMetrics.ts",
-        "src/pages/ClientDashboard.tsx",
-        "src/pages/Dashboard.tsx"
-      ]
-    },
-    {
-      "id": "commit-02f1780",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-03T07:02:51-05:00",
-      "title": "Add dashboard audit feed and update log",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 02f1780",
-      "body": "Commit 02f1780\n\nAdd dashboard audit feed and update log\n\nAffected files:\n- package.json\n- public/ff_state/dashboard-updates.json\n- scripts/build-dashboard-updates.mjs\n- src/App.css\n- src/lib/dashboardUpdates.ts\n- src/lib/types.ts\n- src/pages/Dashboard.tsx",
-      "relatedFiles": [
-        "package.json",
-        "public/ff_state/dashboard-updates.json",
-        "scripts/build-dashboard-updates.mjs",
-        "src/App.css",
-        "src/lib/dashboardUpdates.ts",
-        "src/lib/types.ts",
-        "src/pages/Dashboard.tsx"
-      ]
-    },
-    {
-      "id": "commit-5230815",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-01T13:03:14-05:00",
-      "title": "Refine dashboard filters and modal metrics layout",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 5230815",
-      "body": "Commit 5230815\n\nRefine dashboard filters and modal metrics layout\n\nAffected files:\n- docs/CHARLIE_CODEX_SYNC.md\n- src/App.css\n- src/components/ArtifactMetricsSummary.tsx\n- src/pages/ClientDashboard.tsx\n- src/pages/Dashboard.tsx",
-      "relatedFiles": [
-        "docs/CHARLIE_CODEX_SYNC.md",
-        "src/App.css",
-        "src/components/ArtifactMetricsSummary.tsx",
-        "src/pages/ClientDashboard.tsx",
-        "src/pages/Dashboard.tsx"
-      ]
-    },
-    {
-      "id": "commit-251265c",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-01T07:54:48-05:00",
-      "title": "Improve publish readiness metrics and QC handling",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 251265c",
-      "body": "Commit 251265c\n\nImprove publish readiness metrics and QC handling\n\nAffected files:\n- api/sanity/artifact.mjs\n- api/sanity/deliverables-index.mjs\n- docs/CHARLIE_CODEX_SYNC.md\n- scripts/sanity-sync.mjs\n- src/lib/artifact.ts\n- src/lib/contentReadiness.ts\n- src/lib/deliverables.ts\n- src/pages/ClientDashboard.tsx\n- src/pages/Dashboard.tsx\n- vite.config.ts",
-      "relatedFiles": [
-        "api/sanity/artifact.mjs",
-        "api/sanity/deliverables-index.mjs",
-        "docs/CHARLIE_CODEX_SYNC.md",
-        "scripts/sanity-sync.mjs",
-        "src/lib/artifact.ts",
-        "src/lib/contentReadiness.ts",
-        "src/lib/deliverables.ts",
-        "src/pages/ClientDashboard.tsx",
-        "src/pages/Dashboard.tsx",
-        "vite.config.ts"
-      ]
-    },
-    {
-      "id": "commit-8fe3258",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-01T06:54:00-05:00",
-      "title": "Add artifact metrics and official FFS icon",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 8fe3258",
-      "body": "Commit 8fe3258\n\nAdd artifact metrics and official FFS icon\n\nAffected files:\n- api/sanity/artifact.mjs\n- api/sanity/deliverables-index.mjs\n- docs/CHARLIE_CODEX_SYNC.md\n- index.html\n- public/FFS Icon.png\n- scripts/sanity-sync.mjs\n- src/lib/artifact.ts\n- src/lib/deliverables.ts\n- src/pages/ClientDashboard.tsx\n- src/pages/Dashboard.tsx",
-      "relatedFiles": [
-        "api/sanity/artifact.mjs",
-        "api/sanity/deliverables-index.mjs",
-        "docs/CHARLIE_CODEX_SYNC.md",
-        "index.html",
-        "public/FFS Icon.png",
-        "scripts/sanity-sync.mjs",
-        "src/lib/artifact.ts",
-        "src/lib/deliverables.ts",
         "src/pages/ClientDashboard.tsx",
         "src/pages/Dashboard.tsx"
       ]
