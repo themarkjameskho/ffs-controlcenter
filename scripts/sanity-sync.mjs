@@ -252,7 +252,7 @@ function markdownSignals(rawMarkdown) {
   }
 }
 
-function sectionBody(rawMarkdown, headings) {
+function sectionBody(rawMarkdown, headings, stopHeadings = []) {
   const markdown = String(rawMarkdown || '')
   const headingList = Array.isArray(headings) ? headings : [headings]
   for (const heading of headingList) {
@@ -261,9 +261,15 @@ function sectionBody(rawMarkdown, headings) {
     if (!match || match.index == null) continue
     const startIndex = match.index + match[0].length
     const rest = markdown.slice(startIndex)
-    const nextHeading = rest.match(/^\s*##\s+/m)
-    const body = nextHeading && nextHeading.index != null ? rest.slice(0, nextHeading.index) : rest
-    return body.trim()
+    const candidates = stopHeadings
+      .map((stopHeading) => {
+        const escapedStop = String(stopHeading).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        const stopMatch = rest.match(new RegExp(`^##\\s+${escapedStop}\\s*$`, 'im'))
+        return stopMatch && stopMatch.index != null ? stopMatch.index : null
+      })
+      .filter((value) => typeof value === 'number')
+    const nextIndex = candidates.length > 0 ? Math.min(...candidates) : -1
+    return (nextIndex >= 0 ? rest.slice(0, nextIndex) : rest).trim()
   }
   return ''
 }
@@ -512,7 +518,7 @@ async function main() {
       revisionLastAt
     }
 
-    const bodyContent = sectionBody(rawMarkdown, ['body_content', 'article_body'])
+    const bodyContent = sectionBody(rawMarkdown, ['body_content', 'article_body'], ['faq', 'internal_links_used', 'Sources'])
     const publishableWordCount = bodyContent ? plainWordCount(bodyContent) : null
     const h2CountBody = bodyContent ? countHeadingLevel(bodyContent, 2) : 0
     const internalLinksCount = bodyContent ? countInternalLinks(bodyContent) : 0
