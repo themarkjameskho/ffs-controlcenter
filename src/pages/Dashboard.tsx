@@ -482,6 +482,21 @@ function orderKey(window: OrderWindow) {
   return `${window.year}:${window.startWeek}-${window.endWeek}`
 }
 
+function safeDateMs(value: string | null | undefined) {
+  if (!value) return null
+  const stamp = Date.parse(value)
+  return Number.isFinite(stamp) ? stamp : null
+}
+
+function syncHealthLabel(lastSeenAt: string | null | undefined) {
+  const stamp = safeDateMs(lastSeenAt)
+  if (!stamp) return { label: 'Sync Unknown', tone: 'muted' as const }
+  const ageMinutes = (Date.now() - stamp) / (1000 * 60)
+  if (ageMinutes <= 15) return { label: 'Sync Fresh', tone: 'fresh' as const }
+  if (ageMinutes <= 60) return { label: 'Sync Delayed', tone: 'warn' as const }
+  return { label: 'Sync Stale', tone: 'stale' as const }
+}
+
 
 function computeBodyWordCount(markdown: string): number | null {
   const md = String(markdown || '')
@@ -623,6 +638,15 @@ export default function Dashboard({ deliverables }: DashboardProps) {
     }
     return weeks
   }, [selectedWindows])
+
+  const syncHealth = useMemo(() => {
+    const latestStamp = Math.max(
+      safeDateMs(deliverables.generatedAt) ?? 0,
+      safeDateMs(weekTaskState.lastSync) ?? 0,
+      safeDateMs(dashboardUpdates.generatedAt) ?? 0,
+    )
+    return syncHealthLabel(latestStamp ? new Date(latestStamp).toISOString() : null)
+  }, [dashboardUpdates.generatedAt, deliverables.generatedAt, weekTaskState.lastSync])
 
   const selectedRegistryOrders = useMemo(() => {
     if (isTestRegistrySource(orderRegistryState.sourceCsv)) return []
@@ -1341,6 +1365,7 @@ export default function Dashboard({ deliverables }: DashboardProps) {
               ))}
             </select>
           </label>
+          <span className={`meta-pill sync-pill ${syncHealth.tone}`}>{syncHealth.label}</span>
           <span className="meta-pill">Scan: {formatDateTime(deliverables.generatedAt || null)}</span>
           <span className="meta-pill">Task Sync: {formatDateTime(weekTaskState.lastSync || null)}</span>
         </div>

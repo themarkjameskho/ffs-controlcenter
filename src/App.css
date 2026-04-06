@@ -782,6 +782,34 @@ body {
   border: none;
 }
 
+.meta-pill.sync-pill {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.meta-pill.sync-pill.fresh {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #b8f7cb;
+}
+
+.meta-pill.sync-pill.warn {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.38);
+  color: #ffd58a;
+}
+
+.meta-pill.sync-pill.stale {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ffb2b2;
+}
+
+.meta-pill.sync-pill.muted {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.3);
+  color: var(--ff-gray-300);
+}
+
 .summary-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
