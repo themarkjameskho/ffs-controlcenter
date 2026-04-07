@@ -407,7 +407,14 @@ async function fetchJson<T>(path: string): Promise<T | null> {
 }
 
 async function fetchOrderRegistry() {
-  return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
+  const source = dataSource()
+  if (source === 'sanity') {
+    return await fetchJson<OrderRegistryPayload>(`/api/sanity/order-registry?t=${Date.now()}`)
+  }
+  if (source === 'static') {
+    return await fetchJson<OrderRegistryPayload>(`/ff_state/orders.json?t=${Date.now()}`)
+  }
+  return await fetchJson<OrderRegistryPayload>(`/api/order-registry?t=${Date.now()}`)
 }
 
 function isTestRegistrySource(sourceCsv: string) {
@@ -606,10 +613,11 @@ export default function Dashboard({ deliverables }: DashboardProps) {
   }, [orderRegistryState.orders, orderRegistryState.sourceCsv])
 
   useEffect(() => {
+    const latestWindow = orderWindows[orderWindows.length - 1] ?? null
     setSelectedOrderView((prev) => {
-      if (prev === ALL_ORDERS_KEY) return prev
+      if (prev === ALL_ORDERS_KEY) return latestWindow ? orderKey(latestWindow) : prev
       if (orderWindows.some((window) => orderKey(window) === prev)) return prev
-      return orderWindows.length > 0 ? orderKey(orderWindows[0]) : ALL_ORDERS_KEY
+      return latestWindow ? orderKey(latestWindow) : ALL_ORDERS_KEY
     })
   }, [orderWindows])
 
@@ -698,6 +706,22 @@ export default function Dashboard({ deliverables }: DashboardProps) {
 
     const load = async () => {
       try {
+        if (dataSource() === 'sanity') {
+          const payload = await fetchJson<{ ok?: boolean; generatedAt?: string; tasks?: Task[] }>(
+            `/api/sanity/tasks?weeks=${encodeURIComponent(allWeeks.join(','))}&t=${Date.now()}`,
+          )
+          if (cancelled) return
+          const tasks = Array.isArray(payload?.tasks) ? payload.tasks : []
+          setWeekTaskState({
+            loading: false,
+            error: '',
+            tasks,
+            loadedWeeks: [...allWeeks],
+            lastSync: payload?.generatedAt ?? new Date().toISOString()
+          })
+          return
+        }
+
         const [weekStates, live] = await Promise.all([
           Promise.all(allWeeks.map((week) => fetchJson<WeekState>(`/ff_state/week${week}.json?t=${Date.now()}`))),
           fetchJson<LiveState>(`/ff_state/live.json?t=${Date.now()}`)

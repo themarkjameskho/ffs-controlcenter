@@ -20,6 +20,8 @@ if (fs.existsSync(ENV_LOCAL_FILE)) {
 const FF_STATE_DIR = path.resolve(REPO_ROOT, 'public', 'ff_state')
 const CLIENTS_FILE = path.resolve(FF_STATE_DIR, 'clients.json')
 const ORDERS_FILE = path.resolve(FF_STATE_DIR, 'orders.json')
+const LIVE_FILE = path.resolve(FF_STATE_DIR, 'live.json')
+const PRODUCTION_METRICS_FILE = path.resolve(FF_STATE_DIR, 'production-metrics.json')
 const DELIVERABLES_DIR = path.resolve(WORKSPACE_ROOT, 'deliverables')
 
 function requiredEnv(name) {
@@ -390,6 +392,8 @@ async function main() {
     .map((c) => ({ _id: `client-${c.slug}`, _type: 'client', ...c }))
 
   const ordersPayload = loadJson(ORDERS_FILE, { orders: [] })
+  const livePayload = loadJson(LIVE_FILE, { updatedAt: null, tasks: [] })
+  const productionMetricsPayload = loadJson(PRODUCTION_METRICS_FILE, { windows: [] })
   const orderDocs = (ordersPayload.orders ?? []).map((o) => {
     const year = safeYear(o.year, ordersPayload.generatedAt)
     const startWeek = safeWeek(o.startWeek)
@@ -415,9 +419,24 @@ async function main() {
   })
 
   const taskDocs = []
+  const weekSnapshotDocs = []
   for (const filePath of listWeekStateFiles()) {
     const parsed = loadJson(filePath, null)
-    for (const task of extractTasksFromWeekFile(parsed)) {
+    const weekName = path.basename(filePath)
+    const weekMatch = weekName.match(/^week(\d+)\.json$/i)
+    const snapshotWeek = safeWeek(weekMatch?.[1] ?? parsed?.week)
+    const extractedTasks = extractTasksFromWeekFile(parsed)
+    if (snapshotWeek) {
+      weekSnapshotDocs.push({
+        _id: `ffstate-week-${snapshotWeek}`,
+        _type: 'ffStateWeek',
+        week: snapshotWeek,
+        year: safeYear(parsed?.year, parsed?.updatedAt ?? ordersPayload.generatedAt),
+        updatedAt: String(parsed?.updatedAt ?? ordersPayload.generatedAt ?? new Date().toISOString()),
+        tasks: extractedTasks
+      })
+    }
+    for (const task of extractedTasks) {
       if (!task || typeof task !== 'object') continue
       if (!task.id || !task.client_slug || !task.stage) continue
       taskDocs.push({
@@ -427,6 +446,29 @@ async function main() {
       })
     }
   }
+
+  const snapshotDocs = [
+    {
+      _id: 'ffstate-orders',
+      _type: 'ffStateOrders',
+      sourceCsv: String(ordersPayload.sourceCsv ?? ''),
+      generatedAt: String(ordersPayload.generatedAt ?? new Date().toISOString()),
+      orders: Array.isArray(ordersPayload.orders) ? ordersPayload.orders : []
+    },
+    {
+      _id: 'ffstate-live',
+      _type: 'ffStateLive',
+      updatedAt: String(livePayload.updatedAt ?? ''),
+      tasks: Array.isArray(livePayload.tasks) ? livePayload.tasks : []
+    },
+    {
+      _id: 'ffstate-production-metrics',
+      _type: 'ffStateProductionMetrics',
+      generatedAt: String(productionMetricsPayload.generatedAt ?? ''),
+      windows: Array.isArray(productionMetricsPayload.windows) ? productionMetricsPayload.windows : []
+    },
+    ...weekSnapshotDocs
+  ]
 
   const existingArtifactDocs = await client.fetch(
     `*[_type == "artifact"]{_id, relativePath, images, metrics, body}`
@@ -583,12 +625,13 @@ async function main() {
   }
 
   await upsertDocs(client, clientsDocs, { dryRun })
+  await upsertDocs(client, snapshotDocs, { dryRun })
   await upsertDocs(client, orderDocs, { dryRun })
   await upsertDocs(client, taskDocs, { dryRun })
   await upsertDocs(client, artifactDocs, { dryRun })
 
   // eslint-disable-next-line no-console
-  console.log(`Sanity sync complete. clients=${clientsDocs.length} orders=${orderDocs.length} tasks=${taskDocs.length} artifacts=${artifactDocs.length}`)
+  console.log(`Sanity sync complete. clients=${clientsDocs.length} snapshots=${snapshotDocs.length} orders=${orderDocs.length} tasks=${taskDocs.length} artifacts=${artifactDocs.length}`)
 }
 
 main().catch((err) => {

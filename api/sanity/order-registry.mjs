@@ -11,6 +11,27 @@ export default async function handler(req, res) {
 
   try {
     const client = sanityClient({ mode: 'read' })
+    const snapshot = await client.fetch(`*[_id == "ffstate-orders"][0]{sourceCsv, generatedAt, orders}`)
+    if (snapshot && Array.isArray(snapshot.orders)) {
+      const normalizedSnapshot = snapshot.orders.map((o) => ({
+        id: String(o.id ?? ''),
+        label: String(o.label ?? ''),
+        year: coerceNumber(o.year),
+        startWeek: coerceNumber(o.startWeek),
+        endWeek: coerceNumber(o.endWeek),
+        plannedTotal: coerceNumber(o.plannedTotal),
+        plannedByClient: (o.plannedByClient && typeof o.plannedByClient === 'object' ? o.plannedByClient : {}) ?? {},
+        plannedByType: (o.plannedByType && typeof o.plannedByType === 'object' ? o.plannedByType : {}) ?? {}
+      }))
+
+      return json(res, 200, {
+        ok: true,
+        sourceCsv: String(snapshot.sourceCsv ?? ''),
+        generatedAt: String(snapshot.generatedAt ?? new Date().toISOString()),
+        orders: normalizedSnapshot
+      })
+    }
+
     const orders = await client.fetch(
       `*[_type == "orderWindow"] | order(year asc, startWeek asc) {
         _id,
@@ -46,4 +67,3 @@ export default async function handler(req, res) {
     json(res, 500, { ok: false, error: error instanceof Error ? error.message : 'Failed to load order registry' })
   }
 }
-

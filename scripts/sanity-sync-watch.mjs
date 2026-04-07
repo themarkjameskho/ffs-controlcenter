@@ -29,17 +29,18 @@ function runSync() {
     return
   }
 
+  const metricsScript = path.join(REPO_ROOT, 'scripts', 'build-production-metrics.mjs')
   const auditScript = path.join(REPO_ROOT, 'scripts', 'build-dashboard-updates.mjs')
   const syncScript = path.join(REPO_ROOT, 'scripts', 'sanity-sync.mjs')
 
-  const audit = runNodeScript(auditScript)
-  running = audit
+  const metrics = runNodeScript(metricsScript)
+  running = metrics
 
-  audit.on('exit', (auditCode) => {
-    if (auditCode !== 0) {
+  metrics.on('exit', (metricsCode) => {
+    if (metricsCode !== 0) {
       running = null
       // eslint-disable-next-line no-console
-      console.error(`dashboard-audit failed (code ${auditCode})`)
+      console.error(`production-metrics failed (code ${metricsCode})`)
       if (pending) {
         pending = false
         runSync()
@@ -47,19 +48,35 @@ function runSync() {
       return
     }
 
-    const sync = runNodeScript(syncScript)
-    running = sync
+    const audit = runNodeScript(auditScript)
+    running = audit
 
-    sync.on('exit', (code) => {
-      running = null
-      if (code !== 0) {
+    audit.on('exit', (auditCode) => {
+      if (auditCode !== 0) {
+        running = null
         // eslint-disable-next-line no-console
-        console.error(`sanity-sync failed (code ${code})`)
+        console.error(`dashboard-audit failed (code ${auditCode})`)
+        if (pending) {
+          pending = false
+          runSync()
+        }
+        return
       }
-      if (pending) {
-        pending = false
-        runSync()
-      }
+
+      const sync = runNodeScript(syncScript)
+      running = sync
+
+      sync.on('exit', (code) => {
+        running = null
+        if (code !== 0) {
+          // eslint-disable-next-line no-console
+          console.error(`sanity-sync failed (code ${code})`)
+        }
+        if (pending) {
+          pending = false
+          runSync()
+        }
+      })
     })
   })
 }

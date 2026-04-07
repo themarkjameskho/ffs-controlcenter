@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { dataSource } from './dataSource'
 
 export type ProductionMetricPoint = {
   key: string
@@ -32,9 +33,24 @@ export function useProductionMetrics(pollIntervalMs = 15000) {
     let cancelled = false
     const run = async () => {
       try {
-        const res = await fetch(`/ff_state/production-metrics.json?t=${Date.now()}`, { cache: 'no-store' })
-        if (!res.ok) throw new Error('Failed to load production metrics')
-        const payload = (await res.json()) as ProductionMetricsPayload
+        const source = dataSource()
+        const candidates =
+          source === 'sanity'
+            ? [`/api/sanity/production-metrics?t=${Date.now()}`, `/ff_state/production-metrics.json?t=${Date.now()}`]
+            : [`/ff_state/production-metrics.json?t=${Date.now()}`]
+        let payload: ProductionMetricsPayload | null = null
+        let lastError: Error | null = null
+        for (const url of candidates) {
+          try {
+            const res = await fetch(url, { cache: 'no-store' })
+            if (!res.ok) throw new Error('Failed to load production metrics')
+            payload = (await res.json()) as ProductionMetricsPayload
+            break
+          } catch (error) {
+            lastError = error instanceof Error ? error : new Error('Failed to load production metrics')
+          }
+        }
+        if (!payload) throw (lastError ?? new Error('Failed to load production metrics'))
         if (cancelled) return
         setState({
           loading: false,
