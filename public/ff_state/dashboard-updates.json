@@ -1,14 +1,14 @@
 {
   "ok": true,
-  "generatedAt": "2026-04-07T15:33:26.404Z",
-  "ordersGeneratedAt": "2026-04-06T11:22:35.093Z",
+  "generatedAt": "2026-04-15T10:19:39.991Z",
+  "ordersGeneratedAt": "2026-04-15T10:19:26.615Z",
   "activeOrderLabels": [
     "Week 11-15",
     "Week 16-19",
     "Week 16-16",
     "Week 17-17"
   ],
-  "liveUpdatedAt": "2026-04-07T15:23:31.580Z",
+  "liveUpdatedAt": "2026-04-15T10:19:12.912Z",
   "livePatchCount": 44,
   "weeks": [
     {
@@ -91,13 +91,39 @@
       "id": "audit-mixed-week-16",
       "kind": "audit",
       "severity": "warning",
-      "timestamp": "2026-04-07T15:33:26.396Z",
+      "timestamp": "2026-04-15T10:19:39.982Z",
       "title": "Week 16 still has test rows mixed in",
       "summary": "The board file still contains 88 test tasks, so the dashboard is deliberately ignoring them and following the real production plan instead.",
       "detail": "Real plan IDs: week16_19 · Test plan IDs: week16_16_test_2",
       "body": "Week 16 has both real and test plan rows in the same board file.\n\nReal plan IDs: week16_19\nTest plan IDs: week16_16_test_2\n\nCurrent behavior:\n- the dashboard ignores the test rows so the production view stays stable\n- the underlying week JSON still needs cleanup if you want the file itself to be pure production state",
       "relatedFiles": [
         "public/ff_state/week16.json"
+      ]
+    },
+    {
+      "id": "audit-orders-active",
+      "kind": "audit",
+      "severity": "success",
+      "timestamp": "2026-04-15T10:19:26.615Z",
+      "title": "Active order windows detected",
+      "summary": "The current production order windows detected from orders.json Week 11-15 · Week 16-19 · Week 16-16 · Week 17-17.",
+      "detail": "Order registry refreshed 2026-04-15T10:19:26.615Z.",
+      "body": "Current active order windows detected from orders.json:\n- Week 11-15 · planned total 54\n- Week 16-19 · planned total 84\n- Week 16-16 · planned total 6\n- Week 17-17 · planned total 16",
+      "relatedFiles": [
+        "public/ff_state/orders.json"
+      ]
+    },
+    {
+      "id": "commit-cfe0abb",
+      "kind": "commit",
+      "severity": "info",
+      "timestamp": "2026-04-07T10:33:27-05:00",
+      "title": "Refresh update log for live sync rollout",
+      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
+      "detail": "Commit cfe0abb",
+      "body": "Commit cfe0abb\n\nRefresh update log for live sync rollout\n\nAffected files:\n- public/ff_state/dashboard-updates.json",
+      "relatedFiles": [
+        "public/ff_state/dashboard-updates.json"
       ]
     },
     {
@@ -133,19 +159,6 @@
       "body": "Commit 18dfbc3\n\nRefresh dashboard update log after metric fix\n\nAffected files:\n- public/ff_state/dashboard-updates.json",
       "relatedFiles": [
         "public/ff_state/dashboard-updates.json"
-      ]
-    },
-    {
-      "id": "audit-orders-active",
-      "kind": "audit",
-      "severity": "success",
-      "timestamp": "2026-04-06T11:22:35.093Z",
-      "title": "Active order windows detected",
-      "summary": "The current production order windows detected from orders.json Week 11-15 · Week 16-19 · Week 16-16 · Week 17-17.",
-      "detail": "Order registry refreshed 2026-04-06T11:22:35.093Z.",
-      "body": "Current active order windows detected from orders.json:\n- Week 11-15 · planned total 54\n- Week 16-19 · planned total 84\n- Week 16-16 · planned total 6\n- Week 17-17 · planned total 16",
-      "relatedFiles": [
-        "public/ff_state/orders.json"
       ]
     },
     {
@@ -218,25 +231,6 @@
         "public/ff_state/week16.json",
         "src/lib/deliverables.ts",
         "src/pages/ClientDashboard.tsx",
-        "src/pages/Dashboard.tsx",
-        "src/pages/Kanban.tsx"
-      ]
-    },
-    {
-      "id": "commit-22b4ddd",
-      "kind": "commit",
-      "severity": "info",
-      "timestamp": "2026-04-03T10:57:33-05:00",
-      "title": "Use ff_state as dashboard source of truth",
-      "summary": "A Control Center dashboard/codebase update was applied and logged so the team can track what changed during this production window.",
-      "detail": "Commit 22b4ddd",
-      "body": "Commit 22b4ddd\n\nUse ff_state as dashboard source of truth\n\nAffected files:\n- README.md\n- docs/CHARLIE_DATA_REQUIREMENTS.md\n- public/ff_state/dashboard-updates.json\n- src/lib/dashboardUpdates.ts\n- src/lib/state.ts\n- src/pages/Dashboard.tsx\n- src/pages/Kanban.tsx",
-      "relatedFiles": [
-        "README.md",
-        "docs/CHARLIE_DATA_REQUIREMENTS.md",
-        "public/ff_state/dashboard-updates.json",
-        "src/lib/dashboardUpdates.ts",
-        "src/lib/state.ts",
         "src/pages/Dashboard.tsx",
         "src/pages/Kanban.tsx"
       ]

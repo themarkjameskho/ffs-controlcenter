@@ -1,7 +1,20 @@
 {
   "ok": true,
-  "generatedAt": "2026-04-03T12:36:57.290Z",
+  "generatedAt": "2026-04-15T10:19:31.410Z",
   "windows": [
+    {
+      "key": "2026:11-15",
+      "label": "Week 11-15",
+      "year": 2026,
+      "startWeek": 11,
+      "endWeek": 15,
+      "qcPassRate": 100,
+      "avgQcScore": null,
+      "avgBlogWords": 1158,
+      "avgLinkWords": null,
+      "avgContentRevisions": 0,
+      "avgImageRevisions": 0
+    },
     {
       "key": "2026:16-19",
       "label": "Week 16-19",
@@ -10,9 +23,35 @@
       "endWeek": 19,
       "qcPassRate": null,
       "avgQcScore": null,
-      "avgBlogWords": 1193.6,
+      "avgBlogWords": 1194.5,
       "avgLinkWords": null,
-      "avgContentRevisions": 0.8,
+      "avgContentRevisions": 0.1,
+      "avgImageRevisions": 0
+    },
+    {
+      "key": "2026:16-16",
+      "label": "Week 16-16",
+      "year": 2026,
+      "startWeek": 16,
+      "endWeek": 16,
+      "qcPassRate": null,
+      "avgQcScore": null,
+      "avgBlogWords": 1194.5,
+      "avgLinkWords": null,
+      "avgContentRevisions": 0.1,
+      "avgImageRevisions": 0
+    },
+    {
+      "key": "2026:17-17",
+      "label": "Week 17-17",
+      "year": 2026,
+      "startWeek": 17,
+      "endWeek": 17,
+      "qcPassRate": null,
+      "avgQcScore": null,
+      "avgBlogWords": 1194.5,
+      "avgLinkWords": null,
+      "avgContentRevisions": 0.1,
       "avgImageRevisions": 0
     }
   ],
@@ -1350,6 +1389,63 @@
       "imageRevisionCount": 0
     },
     {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/article_01/2026-04-07_bed-bug-bbq_week16-19_round2_blog_post_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|article_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/article_02/2026-04-07_bed-bug-bbq_week16-19_round2_blog_post_article_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|article_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/article_03/2026-04-07_bed-bug-bbq_week16-19_round2_blog_post_article_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
       "unitKey": "week16-19|bed_bug_bbq|blog_post|post_01",
       "weekBucket": "week16-19",
       "weekNumbers": [
@@ -1385,6 +1481,272 @@
       "qcScore": null,
       "publishableWordCount": 1206,
       "contentRevisionCount": 1,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_03/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1184,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_04/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1174,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_05/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1174,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_06",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_06/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_06_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1197,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_07",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_07/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_07_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1185,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|blog_post|post_08",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/blog_post/post_08/2026-04-03_bed-bug-bbq_week16-19_round1_blog-post_08_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1188,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|gbp_post|post_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/gbp_post/post_01/2026-04-07_bed-bug-bbq_week16-19_round3_gpp-post_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|gbp_post|post_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/gbp_post/post_02/2026-04-07_bed-bug-bbq_week16-19_round3_gpp-post_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|gbp_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/gbp_post/post_03/2026-04-07_bed-bug-bbq_week16-19_round3_gpp-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|gbp_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/gbp_post/post_04/2026-04-07_bed-bug-bbq_week16-19_round3_gpp-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|gbp_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/gbp_post/post_05/2026-04-07_bed-bug-bbq_week16-19_round3_gpp-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|link_1|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "l1",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/link_1/article_01/2026-04-07_bed_bug_bbq_week16-19_round2_link_1_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|link_2|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "l2",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/link_2/article_01/2026-04-06_bed-bug-bbq_week16-19_round2_link_2_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bug_bbq|link_3|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bug_bbq",
+      "category": "l3",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bug_bbq/link_3/article_01/2026-04-07_bed_bug_bbq_week16-19_round2_link_3_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
       "imageRevisionCount": 0
     },
     {
@@ -1426,6 +1788,82 @@
       "imageRevisionCount": 0
     },
     {
+      "unitKey": "week16-19|bed_bugs_be_gone|blog_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bugs_be_gone",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bugs_be_gone/blog_post/post_03/2026-04-03_bed-bugs-be-gone_week16-19_round1_blog-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1181,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bugs_be_gone|blog_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bugs_be_gone",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bugs_be_gone/blog_post/post_04/2026-04-03_bed-bugs-be-gone_week16-19_round1_blog-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1171,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bugs_be_gone|link_1|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bugs_be_gone",
+      "category": "l1",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bugs_be_gone/link_1/article_01/2026-04-07_bed-bugs-be-gone_week16-19_round2_link_1_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|bed_bugs_be_gone|link_3|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "bed_bugs_be_gone",
+      "category": "l3",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/bed_bugs_be_gone/link_3/article_01/2026-04-06_bed-bugs-be-gone_week16-19_round2_link_3_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
       "unitKey": "week16-19|chapman_plumbing|blog_post|post_01",
       "weekBucket": "week16-19",
       "weekNumbers": [
@@ -1445,6 +1883,82 @@
       "imageRevisionCount": 0
     },
     {
+      "unitKey": "week16-19|chapman_plumbing|blog_post|post_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "chapman_plumbing",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/chapman_plumbing/blog_post/post_02/2026-04-03_chapman-plumbing_week16-19_round1_blog-post_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1179,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|chapman_plumbing|blog_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "chapman_plumbing",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/chapman_plumbing/blog_post/post_03/2026-04-03_chapman-plumbing_week16-19_round1_blog-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1187,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|chapman_plumbing|link_1|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "chapman_plumbing",
+      "category": "l1",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/chapman_plumbing/link_1/article_01/2026-04-06_chapman-plumbing_week16-19_round2_link_1_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|chapman_plumbing|link_2|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "chapman_plumbing",
+      "category": "l2",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/chapman_plumbing/link_2/article_01/2026-04-06_chapman-plumbing_week16-19_round2_link_2_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
       "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_01",
       "weekBucket": "week16-19",
       "weekNumbers": [
@@ -1459,7 +1973,7 @@
       "qcPath": null,
       "qcStatus": null,
       "qcScore": null,
-      "publishableWordCount": 999,
+      "publishableWordCount": 1201,
       "contentRevisionCount": 1,
       "imageRevisionCount": 0
     },
@@ -1498,6 +2012,405 @@
       "qcStatus": null,
       "qcScore": null,
       "publishableWordCount": 1194,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_04/2026-04-03_heat-tech_week16-19_round1_blog-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1203,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_05/2026-04-03_heat-tech_week16-19_round1_blog-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1171,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_06",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_06/2026-04-03_heat-tech_week16-19_round1_blog-post_06_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1187,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_07",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_07/2026-04-03_heat-tech_week16-19_round1_blog-post_07_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1175,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_08",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_08/2026-04-03_heat-tech_week16-19_round1_blog-post_08_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1185,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_09",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_09/2026-04-03_heat-tech_week16-19_round1_blog-post_09_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1238,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|blog_post|post_10",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/blog_post/post_10/2026-04-03_heat-tech_week16-19_round1_blog-post_10_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1204,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_01/2026-04-07_heat-tech_week16-19_round3_gpp-post_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_02/2026-04-07_heat-tech_week16-19_round3_gpp-post_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_03/2026-04-07_heat-tech_week16-19_round3_gpp-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_04/2026-04-07_heat-tech_week16-19_round3_gpp-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_05/2026-04-07_heat-tech_week16-19_round3_gpp-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_06",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_06/2026-04-07_heat-tech_week16-19_round3_gpp-post_06_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_07",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_07/2026-04-07_heat-tech_week16-19_round3_gpp-post_07_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_08",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_08/2026-04-07_heat-tech_week16-19_round3_gpp-post_08_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_09",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_09/2026-04-07_heat-tech_week16-19_round3_gpp-post_09_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|gbp_post|post_10",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/gbp_post/post_10/2026-04-07_heat-tech_week16-19_round3_gpp-post_10_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|link_2|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "l2",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/link_2/article_01/2026-04-06_heat-tech_week16-19_round2_link_2_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|link_2|article_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "l2",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/link_2/article_02/2026-04-06_heat-tech_week16-19_round2_link_2_article_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|link_3|article_01",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "l3",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/link_3/article_01/2026-04-06_heat-tech_week16-19_round2_link_3_article_01_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|heat_tech_bed_bug|link_3|article_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "heat_tech_bed_bug",
+      "category": "l3",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/heat_tech_bed_bug/link_3/article_02/2026-04-06_heat-tech_week16-19_round2_link_3_article_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
       "contentRevisionCount": 0,
       "imageRevisionCount": 0
     },
@@ -1559,6 +2472,25 @@
       "imageRevisionCount": 0
     },
     {
+      "unitKey": "week16-19|madden_plumbing|blog_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "madden_plumbing",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/madden_plumbing/blog_post/post_04/2026-04-03_madden-plumbing_week16-19_round1_blog-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1191,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
       "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_01",
       "weekBucket": "week16-19",
       "weekNumbers": [
@@ -1593,6 +2525,272 @@
       "qcStatus": null,
       "qcScore": null,
       "publishableWordCount": 1191,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_03",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_03/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_03_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1192,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_04",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_04/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_04_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1199,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_05/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1185,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_06",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_06/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_06_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1174,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_07",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_07/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_07_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1186,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_08",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_08/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_08_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1174,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_09",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_09/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_09_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1184,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|blog_post|post_10",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "blog",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/blog_post/post_10/2026-04-03_top-bed-bug-pros_week16-19_round1_blog-post_10_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": 1198,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|gbp_post|post_05",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/gbp_post/post_05/2026-04-07_top-bed-bug-pros_week16-19_round3_gpp-post_05_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|gbp_post|post_06",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/gbp_post/post_06/2026-04-07_top-bed-bug-pros_week16-19_round3_gpp-post_06_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|gbp_post|post_07",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/gbp_post/post_07/2026-04-07_top-bed-bug-pros_week16-19_round3_gpp-post_07_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|gbp_post|post_08",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/gbp_post/post_08/2026-04-07_top-bed-bug-pros_week16-19_round3_gpp-post_08_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|gbp_post|post_09",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "gmb",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/gbp_post/post_09/2026-04-07_top-bed-bug-pros_week16-19_round3_gpp-post_09_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
+      "contentRevisionCount": 0,
+      "imageRevisionCount": 0
+    },
+    {
+      "unitKey": "week16-19|top_bed_bug_pros|link_3|article_02",
+      "weekBucket": "week16-19",
+      "weekNumbers": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "clientSlug": "top_bed_bug_pros",
+      "category": "l3",
+      "draftPath": "/Users/coryrisseeuw/.openclaw/workspace/deliverables/week16-19/top_bed_bug_pros/link_3/article_02/2026-04-07_top-bed-bug-pros_week16-19_round2_link_3_article_02_draft.md",
+      "qcPath": null,
+      "qcStatus": null,
+      "qcScore": null,
+      "publishableWordCount": null,
       "contentRevisionCount": 0,
       "imageRevisionCount": 0
     }

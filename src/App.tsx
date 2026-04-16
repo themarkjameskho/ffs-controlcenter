@@ -4,7 +4,6 @@ import { useDeliverablesIndex } from './lib/deliverables'
 import Dashboard from './pages/Dashboard'
 import Calendar from './pages/Calendar'
 import ClientDashboard from './pages/ClientDashboard'
-import Kanban from './pages/Kanban'
 
 function Sidebar({ clients }: { clients: Array<{ slug: string; name: string }> }) {
   const navClass = ({ isActive }: { isActive: boolean }) => `sidebar-link ${isActive ? 'active' : ''}`
@@ -18,9 +17,6 @@ function Sidebar({ clients }: { clients: Array<{ slug: string; name: string }> }
       <nav className="sidebar-nav" aria-label="Main">
         <NavLink to="/" end className={navClass}>
           Dashboard
-        </NavLink>
-        <NavLink to="/kanban" className={navClass}>
-          Kanban
         </NavLink>
         <NavLink to="/calendar" className={navClass}>
           Calendar
@@ -54,7 +50,7 @@ export default function App() {
       <main className="content-pane">
         <Routes>
           <Route path="/" element={<Dashboard deliverables={deliverables} />} />
-          <Route path="/kanban" element={<Kanban />} />
+          <Route path="/kanban" element={<Navigate to="/" replace />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/clients/:clientSlug" element={<ClientDashboard deliverables={deliverables} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
